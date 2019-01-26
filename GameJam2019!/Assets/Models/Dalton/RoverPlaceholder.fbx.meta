@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7ec8a8c40ffd0924bb2de8e73d5660c0
+guid: e53c61581b9e82f44a19ca59071570e0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -46,6 +46,23 @@ ModelImporter:
     100080: WheelFoot_BR
     100082: WheelFoot_FL
     100084: WheelFoot_FR
+    100086: BackLeg_L
+    100088: BackLeg_R
+    100090: BigLeg_BL
+    100092: BigLeg_BR
+    100094: BigLeg_FL
+    100096: BigLeg_FR
+    100098: FrontLeg_L
+    100100: FrontLeg_R
+    100102: LittleBack_L
+    100104: LittleBack_R
+    100106: LittleFront_L
+    100108: LittleFront_R
+    100110: LittleLeg_LB
+    100112: LittleLeg_LM
+    100114: LittleLeg_RB
+    100116: LittleLeg_RM
+    100118: WheelFoot_FL 1
     400000: BigLeg_L
     400002: BigLeg_R
     400004: BigLittleLegConnector_L
@@ -89,6 +106,23 @@ ModelImporter:
     400080: WheelFoot_BR
     400082: WheelFoot_FL
     400084: WheelFoot_FR
+    400086: BackLeg_L
+    400088: BackLeg_R
+    400090: BigLeg_BL
+    400092: BigLeg_BR
+    400094: BigLeg_FL
+    400096: BigLeg_FR
+    400098: FrontLeg_L
+    400100: FrontLeg_R
+    400102: LittleBack_L
+    400104: LittleBack_R
+    400106: LittleFront_L
+    400108: LittleFront_R
+    400110: LittleLeg_LB
+    400112: LittleLeg_LM
+    400114: LittleLeg_RB
+    400116: LittleLeg_RM
+    400118: WheelFoot_FL 1
     2100000: lambert1
     2300000: BigLeg_L
     2300002: BigLeg_R
@@ -118,6 +152,14 @@ ModelImporter:
     2300050: Tread_4
     2300052: Tread_5
     2300054: Tread_6
+    2300056: BigLeg_BL
+    2300058: BigLeg_BR
+    2300060: BigLeg_FL
+    2300062: BigLeg_FR
+    2300064: LittleLeg_LB
+    2300066: LittleLeg_LM
+    2300068: LittleLeg_RB
+    2300070: LittleLeg_RM
     3300000: BigLeg_L
     3300002: BigLeg_R
     3300004: BigLittleLegConnector_L
@@ -146,6 +188,14 @@ ModelImporter:
     3300050: Tread_4
     3300052: Tread_5
     3300054: Tread_6
+    3300056: BigLeg_BL
+    3300058: BigLeg_BR
+    3300060: BigLeg_FL
+    3300062: BigLeg_FR
+    3300064: LittleLeg_LB
+    3300066: LittleLeg_LM
+    3300068: LittleLeg_RB
+    3300070: LittleLeg_RM
     4300000: Leg_Base
     4300002: Body
     4300004: BigLeg_L
@@ -174,6 +224,14 @@ ModelImporter:
     4300050: Tread_3
     4300052: Sproket_3
     4300054: SteeringConnector_BR
+    4300056: BigLeg_FL
+    4300058: LittleLeg_LM
+    4300060: LittleLeg_LB
+    4300062: BigLeg_BL
+    4300064: BigLeg_FR
+    4300066: LittleLeg_RM
+    4300068: LittleLeg_RB
+    4300070: BigLeg_BR
   externalObjects: {}
   materials:
     importMaterials: 1

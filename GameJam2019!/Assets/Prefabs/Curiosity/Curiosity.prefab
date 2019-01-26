@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 462240520341299750}
   - component: {fileID: 462240520341299749}
   - component: {fileID: 2726949152520061088}
+  - component: {fileID: 462240520341299756}
   m_Layer: 0
   m_Name: Curiosity
   m_TagString: Player
@@ -106,6 +107,23 @@ MonoBehaviour:
     Forward: 0
     Turn: 0
     Boost: 0
+    Scan: 0
+--- !u!114 &462240520341299756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462240520341299755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d93862fd82c8f84f86570f245d0bcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScanRadius: 100
+  scanRadiusGrowthRate: 50
+  scanStayTime: 5
+  scanRadiusShrinkRate: 50
 --- !u!1 &462240520768547546
 GameObject:
   m_ObjectHideFlags: 0

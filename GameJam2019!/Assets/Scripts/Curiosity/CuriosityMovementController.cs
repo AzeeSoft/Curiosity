@@ -36,8 +36,6 @@ public class CuriosityMovementController : MonoBehaviour
 
         _frontLeftWheel = FrontLeftWheelObject.AddComponent<Wheel>();
         _frontRightWheel = FrontRightWheelObject.AddComponent<Wheel>();
-
-        _frontLeftWheel.inverted = true;
     }
 
     void Start()

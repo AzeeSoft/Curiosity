@@ -11,17 +11,24 @@ public class SonarScanner : MonoBehaviour
     public float scanStayTime = 5f;
     public float scanRadiusShrinkRate = 10f;
 
+    [SerializeField] private float _curScanRadius = 0;
+
+    private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;
-    [SerializeField] [ReadOnly] private float _curScanRadius = 0;
+    private SonarEffect _sonarEffect;
+
 
     private void Awake()
     {
+        _curiosityModel = GetComponent<CuriosityModel>();
         _curiosityInputController = GetComponent<CuriosityInputController>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        _sonarEffect = _curiosityModel.thirdPersonPlayerCamera.GetComponentInChildren<SonarEffect>();
+        _sonarEffect.sonarScanner = this;
     }
 
     private void OnDrawGizmos()
@@ -69,5 +76,10 @@ public class SonarScanner : MonoBehaviour
         }
 
         _curScanRadius = 0;
+    }
+
+    public float getCurrentScanRadius()
+    {
+        return _curScanRadius;
     }
 }

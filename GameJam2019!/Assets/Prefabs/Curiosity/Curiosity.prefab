@@ -139,7 +139,7 @@ MonoBehaviour:
   MaxReverseThreshold: 0.9
   Acceleration: 2
   Deceleration: 1
-  TurnSpeed: 2
+  TurnSpeed: 5
   TurnAcceleration: 8
   TurnDeceleration: 8
   WheelTurnModifier: 0.4

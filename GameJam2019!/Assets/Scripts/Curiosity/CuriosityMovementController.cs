@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class CuriosityMovementController : MonoBehaviour
 {
-//    [Header("Required Objects")] public GameObject SteeringWheel;
+    [Header("Required Objects")] public GameObject FrontLeftWheelObject;
+    public GameObject FrontRightWheelObject;
 
     [Header("Forward/Backward Movement")] public float MaxSpeed = 25;
     public float MaxReverseThreshold = 0.8f;
@@ -15,12 +16,15 @@ public class CuriosityMovementController : MonoBehaviour
     [Header("Turning")] public float TurnSpeed = 0.1f;
     public float TurnAcceleration = 8;
     public float TurnDeceleration = 5;
+    public float WheelTurnModifier = 60;
 
     [Header("Others")] public float MaxRotation = 2f;
     public float AntiRotationSpeed = 3f;
 
     private Rigidbody _rigidbody;
     private CuriosityInputController _curiosityInputController;
+    private Wheel _frontLeftWheel;
+    private Wheel _frontRightWheel;
 
     private float _currentRotationAngle = 0;
     private bool _invertTurn = false;
@@ -29,6 +33,9 @@ public class CuriosityMovementController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _curiosityInputController = GetComponent<CuriosityInputController>();
+
+        _frontLeftWheel = FrontLeftWheelObject.AddComponent<Wheel>();
+        _frontRightWheel = FrontRightWheelObject.AddComponent<Wheel>();
     }
 
     void Start()
@@ -80,11 +87,18 @@ public class CuriosityMovementController : MonoBehaviour
                           Mathf.Abs(glideAngle) > 90f;
         }
 
+        float wheelAngle = curiosityInput.Turn * WheelTurnModifier;
+        
+        _frontLeftWheel.RotateWheel(wheelAngle);
+        _frontRightWheel.RotateWheel(wheelAngle);
+
         float targetAngle = curiosityInput.Turn * TurnSpeed * _rigidbody.velocity.magnitude;
+        
         if (_invertTurn)
         {
             targetAngle *= -1;
         }
+        
 
         bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle) - Mathf.Sign(_currentRotationAngle)) < 0.0001) &&
                                Mathf.Abs(targetAngle) < Mathf.Abs(_currentRotationAngle);

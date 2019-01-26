@@ -63,6 +63,32 @@ ModelImporter:
     100114: LittleLeg_RB
     100116: LittleLeg_RM
     100118: WheelFoot_FL 1
+    100120: AntennaThingy
+    100122: Arm
+    100124: Arm_1
+    100126: Arm_2
+    100128: Arm_BaseJoint
+    100130: BottomClaw
+    100132: Camera
+    100134: ChinThing
+    100136: Claw
+    100138: Claw_1
+    100140: Claw_2
+    100142: Face
+    100144: FaceWithBase
+    100146: FaceWithNeck
+    100148: FaceWithShaft
+    100150: Forearm
+    100152: Front
+    100154: Idk
+    100156: Joint_2
+    100158: Joint_3
+    100160: Lense
+    100162: Neck_Base
+    100164: Neck_Joint
+    100166: Neck_Shaft
+    100168: SolarPanel
+    100170: TopClaw
     400000: BigLeg_L
     400002: BigLeg_R
     400004: BigLittleLegConnector_L
@@ -123,6 +149,32 @@ ModelImporter:
     400114: LittleLeg_RB
     400116: LittleLeg_RM
     400118: WheelFoot_FL 1
+    400120: AntennaThingy
+    400122: Arm
+    400124: Arm_1
+    400126: Arm_2
+    400128: Arm_BaseJoint
+    400130: BottomClaw
+    400132: Camera
+    400134: ChinThing
+    400136: Claw
+    400138: Claw_1
+    400140: Claw_2
+    400142: Face
+    400144: FaceWithBase
+    400146: FaceWithNeck
+    400148: FaceWithShaft
+    400150: Forearm
+    400152: Front
+    400154: Idk
+    400156: Joint_2
+    400158: Joint_3
+    400160: Lense
+    400162: Neck_Base
+    400164: Neck_Joint
+    400166: Neck_Shaft
+    400168: SolarPanel
+    400170: TopClaw
     2100000: lambert1
     2300000: BigLeg_L
     2300002: BigLeg_R
@@ -160,6 +212,23 @@ ModelImporter:
     2300066: LittleLeg_LM
     2300068: LittleLeg_RB
     2300070: LittleLeg_RM
+    2300072: AntennaThingy
+    2300074: Arm_1
+    2300076: Arm_2
+    2300078: Arm_BaseJoint
+    2300080: Camera
+    2300082: ChinThing
+    2300084: Claw_1
+    2300086: Claw_2
+    2300088: Front
+    2300090: Idk
+    2300092: Joint_2
+    2300094: Joint_3
+    2300096: Lense
+    2300098: Neck_Base
+    2300100: Neck_Joint
+    2300102: Neck_Shaft
+    2300104: SolarPanel
     3300000: BigLeg_L
     3300002: BigLeg_R
     3300004: BigLittleLegConnector_L
@@ -196,6 +265,23 @@ ModelImporter:
     3300066: LittleLeg_LM
     3300068: LittleLeg_RB
     3300070: LittleLeg_RM
+    3300072: AntennaThingy
+    3300074: Arm_1
+    3300076: Arm_2
+    3300078: Arm_BaseJoint
+    3300080: Camera
+    3300082: ChinThing
+    3300084: Claw_1
+    3300086: Claw_2
+    3300088: Front
+    3300090: Idk
+    3300092: Joint_2
+    3300094: Joint_3
+    3300096: Lense
+    3300098: Neck_Base
+    3300100: Neck_Joint
+    3300102: Neck_Shaft
+    3300104: SolarPanel
     4300000: Leg_Base
     4300002: Body
     4300004: BigLeg_L
@@ -232,6 +318,23 @@ ModelImporter:
     4300066: LittleLeg_RM
     4300068: LittleLeg_RB
     4300070: BigLeg_BR
+    4300072: ChinThing
+    4300074: Lense
+    4300076: Camera
+    4300078: Neck_Joint
+    4300080: Neck_Shaft
+    4300082: Neck_Base
+    4300084: Claw_2
+    4300086: Claw_1
+    4300088: Joint_3
+    4300090: Joint_2
+    4300092: Arm_2
+    4300094: Arm_BaseJoint
+    4300096: Arm_1
+    4300098: Front
+    4300100: Idk
+    4300102: AntennaThingy
+    4300104: SolarPanel
   externalObjects: {}
   materials:
     importMaterials: 1

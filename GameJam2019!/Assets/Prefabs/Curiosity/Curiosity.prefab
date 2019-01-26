@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 462240520341299748}
+  - component: {fileID: 8765573379447552401}
   - component: {fileID: 462240520341299750}
   - component: {fileID: 462240520341299749}
   - component: {fileID: 2726949152520061088}
+  - component: {fileID: 462240520341299756}
   m_Layer: 0
   m_Name: Curiosity
   m_TagString: Player
@@ -35,6 +37,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &8765573379447552401
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462240520341299755}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &462240520341299750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,7 +79,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd66f2a34f2ff44c86a9c13fe811a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 10
+  FrontLeftWheelObject: {fileID: 610252026870268258}
+  FrontRightWheelObject: {fileID: 610252026870268038}
+  MaxSpeed: 18
+  MaxReverseThreshold: 0.9
+  Acceleration: 2
+  Deceleration: 1
+  TurnSpeed: 0.14
+  TurnAcceleration: 8
+  TurnDeceleration: 8
+  WheelTurnModifier: 0.4
+  MaxRotation: 2
+  AntiRotationSpeed: 3
 --- !u!114 &2726949152520061088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -74,6 +103,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10d66334ee6b71649abee1d7821f1f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _curiosityInput:
+    Forward: 0
+    Turn: 0
+    Boost: 0
+    Scan: 0
+--- !u!114 &462240520341299756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462240520341299755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d93862fd82c8f84f86570f245d0bcd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxScanRadius: 100
+  scanRadiusGrowthRate: 50
+  scanStayTime: 5
+  scanRadiusShrinkRate: 50
 --- !u!1 &462240520768547546
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 462240520768547547}
+  - component: {fileID: 2495729460739953629}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -105,6 +156,18 @@ Transform:
   m_Father: {fileID: 462240520341299748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2495729460739953629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462240520768547546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b754d2e4d3c99a4580427073b65387f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8560392915906939876
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,6 +258,18 @@ PrefabInstance:
 --- !u!4 &610252026870701360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400032, guid: e53c61581b9e82f44a19ca59071570e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 610252026870302608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &610252026870268258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100082, guid: e53c61581b9e82f44a19ca59071570e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 610252026870302608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &610252026870268038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100118, guid: e53c61581b9e82f44a19ca59071570e0,
     type: 3}
   m_PrefabInstance: {fileID: 610252026870302608}
   m_PrefabAsset: {fileID: 0}

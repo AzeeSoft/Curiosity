@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebd66f2a34f2ff44c86a9c13fe811a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FrontLeftWheelObject: {fileID: 610252026870268258}
+  FrontRightWheelObject: {fileID: 610252026870268038}
   MaxSpeed: 18
   MaxReverseThreshold: 0.9
   Acceleration: 2
@@ -85,6 +87,7 @@ MonoBehaviour:
   TurnSpeed: 0.14
   TurnAcceleration: 8
   TurnDeceleration: 8
+  WheelTurnModifier: 0.4
   MaxRotation: 2
   AntiRotationSpeed: 3
 --- !u!114 &2726949152520061088
@@ -237,6 +240,18 @@ PrefabInstance:
 --- !u!4 &610252026870701360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400032, guid: e53c61581b9e82f44a19ca59071570e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 610252026870302608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &610252026870268258 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100082, guid: e53c61581b9e82f44a19ca59071570e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 610252026870302608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &610252026870268038 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100118, guid: e53c61581b9e82f44a19ca59071570e0,
     type: 3}
   m_PrefabInstance: {fileID: 610252026870302608}
   m_PrefabAsset: {fileID: 0}

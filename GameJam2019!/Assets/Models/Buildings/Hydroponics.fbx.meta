@@ -7,20 +7,38 @@ ModelImporter:
     100002: Hydroponics:Glass
     100004: Hydroponics:HydroponicsBase
     100006: Hydroponics:Ribs
+    100008: HydroponicsModule:Hydroponics:Glass
+    100010: HydroponicsModule:Hydroponics:HydroponicsBase
+    100012: HydroponicsModule:Hydroponics:Ribs
     400000: //RootNode
     400002: Hydroponics:Glass
     400004: Hydroponics:HydroponicsBase
     400006: Hydroponics:Ribs
+    400008: HydroponicsModule:Hydroponics:Glass
+    400010: HydroponicsModule:Hydroponics:HydroponicsBase
+    400012: HydroponicsModule:Hydroponics:Ribs
     2100000: lambert1
+    2100002: HAB2_greyWall1
+    2100004: HAB2_bodyWhite
+    2100006: HAB2_opaqueGlass1
     2300000: Hydroponics:Glass
     2300002: Hydroponics:HydroponicsBase
     2300004: Hydroponics:Ribs
+    2300006: HydroponicsModule:Hydroponics:Glass
+    2300008: HydroponicsModule:Hydroponics:HydroponicsBase
+    2300010: HydroponicsModule:Hydroponics:Ribs
     3300000: Hydroponics:Glass
     3300002: Hydroponics:HydroponicsBase
     3300004: Hydroponics:Ribs
+    3300006: HydroponicsModule:Hydroponics:Glass
+    3300008: HydroponicsModule:Hydroponics:HydroponicsBase
+    3300010: HydroponicsModule:Hydroponics:Ribs
     4300000: Hydroponics:Ribs
     4300002: Hydroponics:HydroponicsBase
     4300004: Hydroponics:Glass
+    4300006: HydroponicsModule:Hydroponics:Ribs
+    4300008: HydroponicsModule:Hydroponics:HydroponicsBase
+    4300010: HydroponicsModule:Hydroponics:Glass
   externalObjects: {}
   materials:
     importMaterials: 1

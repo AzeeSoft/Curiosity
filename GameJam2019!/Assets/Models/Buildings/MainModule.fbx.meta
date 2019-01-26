@@ -7,20 +7,63 @@ ModelImporter:
     100002: Foundation
     100004: //RootNode
     100006: Skylight
+    100008: Floor
+    100010: MainBody
+    100012: Wall
+    100014: CentralSection1:Floor
+    100016: CentralSection1:Foundation
+    100018: CentralSection1:MainBody
+    100020: CentralSection1:Skylight
+    100022: CentralSection1:Wall
     400000: CentralModule
     400002: Foundation
     400004: //RootNode
     400006: Skylight
+    400008: Floor
+    400010: MainBody
+    400012: Wall
+    400014: CentralSection1:Floor
+    400016: CentralSection1:Foundation
+    400018: CentralSection1:MainBody
+    400020: CentralSection1:Skylight
+    400022: CentralSection1:Wall
     2100000: lambert1
+    2100002: bodyWhite
+    2100004: Garage1_transparentGlass
+    2100006: greyWall
     2300000: CentralModule
     2300002: Foundation
     2300004: Skylight
+    2300006: Floor
+    2300008: MainBody
+    2300010: Wall
+    2300012: CentralSection1:Floor
+    2300014: CentralSection1:Foundation
+    2300016: CentralSection1:MainBody
+    2300018: CentralSection1:Skylight
+    2300020: CentralSection1:Wall
     3300000: CentralModule
     3300002: Foundation
     3300004: Skylight
+    3300006: Floor
+    3300008: MainBody
+    3300010: Wall
+    3300012: CentralSection1:Floor
+    3300014: CentralSection1:Foundation
+    3300016: CentralSection1:MainBody
+    3300018: CentralSection1:Skylight
+    3300020: CentralSection1:Wall
     4300000: Foundation
     4300002: CentralModule
     4300004: Skylight
+    4300006: Floor
+    4300008: MainBody
+    4300010: Wall
+    4300012: CentralSection1:Foundation
+    4300014: CentralSection1:Skylight
+    4300016: CentralSection1:Floor
+    4300018: CentralSection1:MainBody
+    4300020: CentralSection1:Wall
   externalObjects: {}
   materials:
     importMaterials: 1

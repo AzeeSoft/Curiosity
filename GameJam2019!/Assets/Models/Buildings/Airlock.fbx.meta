@@ -11,6 +11,10 @@ ModelImporter:
     100010: Airlock:airlockWindowGlass
     100012: Airlock:pCube10
     100014: Airlock:pCube14
+    100016: Airlock:Airlock:airlockDoor
+    100018: Airlock:AirlockGroup
+    100020: polySurface1
+    100022: polySurface2
     400000: //RootNode
     400002: Airlock:airlock
     400004: Airlock:airlockDoor
@@ -19,7 +23,15 @@ ModelImporter:
     400010: Airlock:airlockWindowGlass
     400012: Airlock:pCube10
     400014: Airlock:pCube14
+    400016: Airlock:Airlock:airlockDoor
+    400018: Airlock:AirlockGroup
+    400020: polySurface1
+    400022: polySurface2
     2100000: lambert1
+    2100002: HAB2_greyWall
+    2100004: HAB2_opaqueGlass
+    2100006: HAB2_bodyWhite
+    2100008: redAirlock
     2300000: Airlock:airlock
     2300002: Airlock:airlockDoor
     2300004: Airlock:airlockDoorFrame
@@ -27,6 +39,8 @@ ModelImporter:
     2300008: Airlock:airlockWindowGlass
     2300010: Airlock:pCube10
     2300012: Airlock:pCube14
+    2300014: polySurface1
+    2300016: polySurface2
     3300000: Airlock:airlock
     3300002: Airlock:airlockDoor
     3300004: Airlock:airlockDoorFrame
@@ -34,6 +48,8 @@ ModelImporter:
     3300008: Airlock:airlockWindowGlass
     3300010: Airlock:pCube10
     3300012: Airlock:pCube14
+    3300014: polySurface1
+    3300016: polySurface2
     4300000: Airlock:airlockDoor
     4300002: Airlock:pCube10
     4300004: Airlock:pCube14
@@ -41,6 +57,8 @@ ModelImporter:
     4300008: Airlock:airlockWindowFrame
     4300010: Airlock:airlockWindowGlass
     4300012: Airlock:airlock
+    4300014: polySurface1
+    4300016: polySurface2
   externalObjects: {}
   materials:
     importMaterials: 1

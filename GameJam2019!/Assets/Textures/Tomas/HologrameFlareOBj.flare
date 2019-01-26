@@ -7,7 +7,7 @@ Flare:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: HologrameFlareOBj
-  m_FlareTexture: {fileID: 2800000, guid: abc0fdf78126d3341b1b40b2f173546f, type: 3}
+  m_FlareTexture: {fileID: 2800000, guid: f7c48f8017a8db948b541a1e5264fe11, type: 3}
   m_TextureLayout: 2
   m_Elements:
   - m_ImageIndex: 0
@@ -16,6 +16,14 @@ Flare:
     m_Color: {r: 1, g: 1, b: 1, a: 1}
     m_UseLightColor: 1
     m_Rotate: 0
-    m_Zoom: 1
+    m_Zoom: 0
+    m_Fade: 1
+  - m_ImageIndex: 0
+    m_Position: 1.5
+    m_Size: 47.2
+    m_Color: {r: 0, g: 0.270906, b: 0.2735849, a: 0.05490196}
+    m_UseLightColor: 0
+    m_Rotate: 0
+    m_Zoom: 0
     m_Fade: 1
   m_UseFog: 1

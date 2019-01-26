@@ -89,6 +89,12 @@ ModelImporter:
     100166: Neck_Shaft
     100168: SolarPanel
     100170: TopClaw
+    100172: HeadRotation_X
+    100174: HeadRotation_Y
+    100176: NeckRotation_X
+    100178: NeckRotation_Y
+    100180: Rover
+    100182: Wheels
     400000: BigLeg_L
     400002: BigLeg_R
     400004: BigLittleLegConnector_L
@@ -175,6 +181,12 @@ ModelImporter:
     400166: Neck_Shaft
     400168: SolarPanel
     400170: TopClaw
+    400172: HeadRotation_X
+    400174: HeadRotation_Y
+    400176: NeckRotation_X
+    400178: NeckRotation_Y
+    400180: Rover
+    400182: Wheels
     2100000: lambert1
     2300000: BigLeg_L
     2300002: BigLeg_R

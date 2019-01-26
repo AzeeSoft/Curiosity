@@ -27,12 +27,13 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
     {
         _camera = GetComponentInChildren<Camera>();
         _cameraInputController = GetComponentInChildren<CameraInputController>();
+        
+        curiosityModel.thirdPersonPlayerCamera = this;
     }
 
     // Use this for initialization
     void Start()
     {
-        curiosityModel.ThirdPersonPlayerCamera = this;
         HelperUtilities.UpdateCursorLock(true);
     }
 

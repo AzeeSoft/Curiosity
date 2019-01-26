@@ -5,7 +5,7 @@ using UnityEngine;
 public class CuriosityModel : MonoBehaviour
 {
     public Transform CamTarget;
-    [ReadOnly] public ThirdPersonPlayerCamera ThirdPersonPlayerCamera;
+    [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
 
     // Start is called before the first frame update
     void Start()

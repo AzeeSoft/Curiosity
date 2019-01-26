@@ -238,6 +238,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290430570}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &291639544 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 462240520341299748, guid: ad8b08f4c4c89db43b4fefe6b8697bc9,
+    type: 3}
+  m_PrefabInstance: {fileID: 462240519184399692}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1165696874 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 462240520341299750, guid: ad8b08f4c4c89db43b4fefe6b8697bc9,
@@ -802,5 +808,9 @@ PrefabInstance:
       propertyPath: curiosityModel
       value: 
       objectReference: {fileID: 1165696874}
+    - target: {fileID: 1402427312, guid: b53d27da472d30c4683d10d9e96a61eb, type: 3}
+      propertyPath: ScannerOrigin
+      value: 
+      objectReference: {fileID: 291639544}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b53d27da472d30c4683d10d9e96a61eb, type: 3}

@@ -8,24 +8,53 @@ ModelImporter:
     100004: Garage:Garage
     100006: Garage:Glass
     100008: Garage:Ramps
+    100010: Floor
+    100012: MainBody
+    100014: Rib
+    100016: Roof
+    100018: Connector1:Connector2
+    100020: Garage1
     400000: //RootNode
     400002: Garage:Foundation
     400004: Garage:Garage
     400006: Garage:Glass
     400008: Garage:Ramps
+    400010: Floor
+    400012: MainBody
+    400014: Rib
+    400016: Roof
+    400018: Connector1:Connector2
+    400020: Garage1
     2100000: lambert1
+    2100002: transparentGlass
+    2100004: HAB2_greyWall
+    2100006: lambert3
+    2100008: HAB2_bodyWhite
+    2100010: redAirlock
     2300000: Garage:Foundation
     2300002: Garage:Garage
     2300004: Garage:Glass
     2300006: Garage:Ramps
+    2300008: Floor
+    2300010: MainBody
+    2300012: Rib
+    2300014: Roof
     3300000: Garage:Foundation
     3300002: Garage:Garage
     3300004: Garage:Glass
     3300006: Garage:Ramps
+    3300008: Floor
+    3300010: MainBody
+    3300012: Rib
+    3300014: Roof
     4300000: Garage:Glass
     4300002: Garage:Ramps
     4300004: Garage:Foundation
     4300006: Garage:Garage
+    4300008: Floor
+    4300010: Rib
+    4300012: MainBody
+    4300014: Roof
   externalObjects: {}
   materials:
     importMaterials: 1

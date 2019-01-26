@@ -360,7 +360,42 @@ ModelImporter:
     4300110: polySurface1
     4300112: polySurface2
     4300114: pSphere1
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blue_buttons
+    second: {fileID: 2100000, guid: 097e6887ff4b8dd41963b596caaa5d71, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: conduits_cords
+    second: {fileID: 2100000, guid: 606d7ef2b89c0a242a53957959a3fc6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metals
+    second: {fileID: 2100000, guid: 264fc17bc1f917142bd948bb03bc036e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: projector1
+    second: {fileID: 2100000, guid: f2d47295f46f77a4397a83a2d9d5f378, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: red
+    second: {fileID: 2100000, guid: 4b125fcab4592a74a98fac8c51d98611, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: screen_projection
+    second: {fileID: 2100000, guid: 259cbe25f4e9c0746990f822c0e86983, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: yellow_buttons
+    second: {fileID: 2100000, guid: 85bdec93656e128419885f6491b53f2c, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

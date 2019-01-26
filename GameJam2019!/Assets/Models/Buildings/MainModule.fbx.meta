@@ -64,7 +64,22 @@ ModelImporter:
     4300016: CentralSection1:Floor
     4300018: CentralSection1:MainBody
     4300020: CentralSection1:Wall
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Garage1_transparentGlass
+    second: {fileID: 2100000, guid: 9d15d020ceec9a24387799dcd959a630, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: bodyWhite
+    second: {fileID: 2100000, guid: 743b008e3bea10a40b7b9f503e493df1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: greyWall
+    second: {fileID: 2100000, guid: c256ea5960474274396555f2ba3a8581, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

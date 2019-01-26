@@ -33,6 +33,7 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
     void Start()
     {
         curiosityModel.ThirdPersonPlayerCamera = this;
+        HelperUtilities.UpdateCursorLock(true);
     }
 
     // Update is called once per frame

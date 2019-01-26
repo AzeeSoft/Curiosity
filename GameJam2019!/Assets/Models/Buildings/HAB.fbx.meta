@@ -23,6 +23,12 @@ ModelImporter:
     100034: HAB1:skylight
     100036: HAB1:struts
     100038: HAB1:windowPanes
+    100040: foundation
+    100042: HABBody
+    100044: HABWall
+    100046: skylight
+    100048: struts
+    100050: windowPanes
     400000: //RootNode
     400002: HAB1:airlock
     400004: HAB1:body
@@ -43,7 +49,16 @@ ModelImporter:
     400034: HAB1:skylight
     400036: HAB1:struts
     400038: HAB1:windowPanes
+    400040: foundation
+    400042: HABBody
+    400044: HABWall
+    400046: skylight
+    400048: struts
+    400050: windowPanes
     2100000: lambert1
+    2100002: greyWall
+    2100004: opaqueGlass
+    2100006: bodyWhite
     2300000: HAB1:body
     2300002: HAB1:pCube10
     2300004: HAB1:pCube14
@@ -54,6 +69,12 @@ ModelImporter:
     2300014: HAB1:skylight
     2300016: HAB1:struts
     2300018: HAB1:windowPanes
+    2300020: foundation
+    2300022: HABBody
+    2300024: HABWall
+    2300026: skylight
+    2300028: struts
+    2300030: windowPanes
     3300000: HAB1:body
     3300002: HAB1:pCube10
     3300004: HAB1:pCube14
@@ -64,6 +85,12 @@ ModelImporter:
     3300014: HAB1:skylight
     3300016: HAB1:struts
     3300018: HAB1:windowPanes
+    3300020: foundation
+    3300022: HABBody
+    3300024: HABWall
+    3300026: skylight
+    3300028: struts
+    3300030: windowPanes
     4300000: HAB1:pCube10
     4300002: HAB1:pCube14
     4300004: HAB1:windowPanes
@@ -74,6 +101,12 @@ ModelImporter:
     4300014: HAB1:pCylinder2
     4300016: HAB1:pCylinder1
     4300018: HAB1:pCylinder2
+    4300020: struts
+    4300022: skylight
+    4300024: HABWall
+    4300026: HABBody
+    4300028: windowPanes
+    4300030: foundation
   externalObjects: {}
   materials:
     importMaterials: 1

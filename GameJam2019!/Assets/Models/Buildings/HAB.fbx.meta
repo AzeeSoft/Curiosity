@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 5b736d3e70b0e7944bac02b86a3afde3
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: HAB1:airlock
+    100004: HAB1:body
+    100006: HAB1:foundationLegs
+    100008: HAB1:group1
+    100010: HAB1:group2
+    100012: HAB1:group3
+    100014: HAB1:hab
+    100016: HAB1:habUnit
+    100018: HAB1:mainBody
+    100020: HAB1:pCube10
+    100022: HAB1:pCube14
+    100024: HAB1:pCylinder1
+    100026: HAB1:pCylinder1 1
+    100028: HAB1:pCylinder2
+    100030: HAB1:pCylinder2 1
+    100032: HAB1:polySurface1
+    100034: HAB1:skylight
+    100036: HAB1:struts
+    100038: HAB1:windowPanes
+    100040: foundation
+    100042: HABBody
+    100044: HABWall
+    100046: skylight
+    100048: struts
+    100050: windowPanes
+    400000: //RootNode
+    400002: HAB1:airlock
+    400004: HAB1:body
+    400006: HAB1:foundationLegs
+    400008: HAB1:group1
+    400010: HAB1:group2
+    400012: HAB1:group3
+    400014: HAB1:hab
+    400016: HAB1:habUnit
+    400018: HAB1:mainBody
+    400020: HAB1:pCube10
+    400022: HAB1:pCube14
+    400024: HAB1:pCylinder1
+    400026: HAB1:pCylinder1 1
+    400028: HAB1:pCylinder2
+    400030: HAB1:pCylinder2 1
+    400032: HAB1:polySurface1
+    400034: HAB1:skylight
+    400036: HAB1:struts
+    400038: HAB1:windowPanes
+    400040: foundation
+    400042: HABBody
+    400044: HABWall
+    400046: skylight
+    400048: struts
+    400050: windowPanes
+    2100000: lambert1
+    2100002: greyWall
+    2100004: opaqueGlass
+    2100006: bodyWhite
+    2300000: HAB1:body
+    2300002: HAB1:pCube10
+    2300004: HAB1:pCube14
+    2300006: HAB1:pCylinder1
+    2300008: HAB1:pCylinder1 1
+    2300010: HAB1:pCylinder2
+    2300012: HAB1:pCylinder2 1
+    2300014: HAB1:skylight
+    2300016: HAB1:struts
+    2300018: HAB1:windowPanes
+    2300020: foundation
+    2300022: HABBody
+    2300024: HABWall
+    2300026: skylight
+    2300028: struts
+    2300030: windowPanes
+    3300000: HAB1:body
+    3300002: HAB1:pCube10
+    3300004: HAB1:pCube14
+    3300006: HAB1:pCylinder1
+    3300008: HAB1:pCylinder1 1
+    3300010: HAB1:pCylinder2
+    3300012: HAB1:pCylinder2 1
+    3300014: HAB1:skylight
+    3300016: HAB1:struts
+    3300018: HAB1:windowPanes
+    3300020: foundation
+    3300022: HABBody
+    3300024: HABWall
+    3300026: skylight
+    3300028: struts
+    3300030: windowPanes
+    4300000: HAB1:pCube10
+    4300002: HAB1:pCube14
+    4300004: HAB1:windowPanes
+    4300006: HAB1:struts
+    4300008: HAB1:skylight
+    4300010: HAB1:body
+    4300012: HAB1:pCylinder1
+    4300014: HAB1:pCylinder2
+    4300016: HAB1:pCylinder1
+    4300018: HAB1:pCylinder2
+    4300020: struts
+    4300022: skylight
+    4300024: HABWall
+    4300026: HABBody
+    4300028: windowPanes
+    4300030: foundation
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

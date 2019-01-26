@@ -7,7 +7,6 @@ public class AudioManager : MonoBehaviour
     //to play audio from the manager!!
     //FindObjectOfType<AudioManager>().Play("");
     public Sound[] sounds;
-
     public static AudioManager instance;
 
     void Awake()

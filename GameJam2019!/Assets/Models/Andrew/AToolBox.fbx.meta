@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c7ec5b7b532700a4d944e9e504deeddd
+guid: 8602133f731834247b7a0688e24d3229
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -8,8 +8,7 @@ ModelImporter:
     2100000: lambert1
     2300000: //RootNode
     3300000: //RootNode
-    4300000: ToolStorage
-    2186277476908879412: ImportLogs
+    4300000: AToolBox
   externalObjects: {}
   materials:
     importMaterials: 1

@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d93862fd82c8f84f86570f245d0bcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScanRadius: 100
+  maxScanRadius: 600
   scanRadiusGrowthRate: 50
   scanStayTime: 5
   scanRadiusShrinkRate: 50

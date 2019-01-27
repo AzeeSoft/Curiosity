@@ -11,7 +11,7 @@ public class CuriosityModel : MonoBehaviour
     void Start()
     {
         AvatarColliderGenerator avatarColliderGenerator = GetComponentInChildren<AvatarColliderGenerator>();
-        avatarColliderGenerator.GenerateMeshColliders();
+//        avatarColliderGenerator.GenerateMeshColliders();
     }
 
     // Update is called once per frame

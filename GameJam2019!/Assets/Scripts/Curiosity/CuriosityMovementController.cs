@@ -119,12 +119,12 @@ public class CuriosityMovementController : MonoBehaviour
 
         Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
 
-        /*bool slowingDown = targetVelocity.magnitude < _rigidbody.velocity.magnitude;
+        bool slowingDown = targetVelocity.magnitude < _rigidbody.velocity.magnitude;
         _rigidbody.velocity =
             Vector3.Lerp(_rigidbody.velocity, targetVelocity,
-                (slowingDown ? Deceleration : Acceleration) * Time.fixedDeltaTime);*/
+                (slowingDown ? Deceleration : Acceleration) * Time.fixedDeltaTime);
 
-        transform.Translate(targetVelocity);
+//        transform.Translate(targetVelocity);
 
         // Turning
         Vector3 glideDir = _rigidbody.velocity;

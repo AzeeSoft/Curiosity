@@ -2248,7 +2248,7 @@ PrefabInstance:
       objectReference: {fileID: 555353284}
     - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
       propertyPath: dayCycleSpeed
-      value: 5
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
@@ -3096,6 +3096,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SunAndMoon
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_Flare
+      value: 
+      objectReference: {fileID: 12100000, guid: 44ea104fd575d05429855c46baaf0200,
+        type: 2}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_DrawHalo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4667884479175049196, guid: dd664349644b61740a0e7139a358527c,
         type: 3}
@@ -4393,6 +4409,9 @@ MonoBehaviour:
   dayCycleSpeed: 0.2
   sun: {fileID: 0}
   moon: {fileID: 0}
+  sunSetColor: {r: 0, g: 0, b: 0, a: 0}
+  sunSetIntensity: 0
+  sunSetLerpRate: 0
   _hourOfDay: 0
   _sunState: 0
 --- !u!4 &712051474
@@ -9876,6 +9895,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: a6594f0ab696746448353a27d3a18c68, type: 2}
+--- !u!124 &1554826224
+Behaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554826217}
+  m_Enabled: 1
 --- !u!1001 &1555122030
 PrefabInstance:
   m_ObjectHideFlags: 0

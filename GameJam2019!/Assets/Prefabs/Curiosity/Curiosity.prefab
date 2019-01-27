@@ -142,14 +142,12 @@ MonoBehaviour:
   TurnSpeed: 0.08
   TurnAcceleration: 8
   TurnDeceleration: 8
-  WheelTurnModifier: 0.4
+  WheelTurnModifier: 45
   MaxRotation: 2
   AntiRotationSpeed: 3
   FloorAlignTarget: {fileID: 2035715483}
   GroundHugMaxDistance: 1
   GroundHugMinDistance: 0
-  FloorAlignSpeed: 2
-  GroundHugSpeed: 2
   bodyOffset: {x: 0, y: 0.75, z: 0}
 --- !u!114 &2726949152520061088
 MonoBehaviour:

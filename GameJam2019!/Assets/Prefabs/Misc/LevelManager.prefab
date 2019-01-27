@@ -47,6 +47,9 @@ MonoBehaviour:
   HUD: {fileID: 0}
   WinScreen: {fileID: 0}
   LoseScreen: {fileID: 0}
+  FadeOut: {fileID: 0}
+  MainMenuSceneName: MainMenu
+  curiosityModel: {fileID: 0}
 --- !u!114 &108870352
 MonoBehaviour:
   m_ObjectHideFlags: 0

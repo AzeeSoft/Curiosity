@@ -43,7 +43,13 @@ public class CuriosityModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!LevelManager.Instance.GameOver)
+        // Forced Respawn
+        if (Input.GetButtonDown("Respawn"))
+        {
+            Respawn();
+        }
+        
+        if (Battery > 0)
         {
             if (solarChargeMode)
             {
@@ -52,12 +58,6 @@ public class CuriosityModel : MonoBehaviour
             else
             {
                 DepleteBattery(BatteryDepletionRate * Time.deltaTime);
-            }
-            
-            // Forced Respawn
-            if (Input.GetButtonDown("Respawn"))
-            {
-                Respawn();
             }
         }
     }

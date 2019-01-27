@@ -292,10 +292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d93862fd82c8f84f86570f245d0bcd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxScanRadius: 800
-  scanRadiusGrowthRate: 200
+  maxScanRadius: 200
+  scanRadiusGrowthRate: 100
   scanStayTime: 2.5
-  scanRadiusShrinkRate: 400
+  scanRadiusShrinkRate: 200
   cooldownInterval: 10
   CooldownLevel: 0
   _curScanRadius: 0
@@ -832,6 +832,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rover_Final Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835662257158203182, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -187
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835662257158203182, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 103
       objectReference: {fileID: 0}
     - target: {fileID: 5835662257158503246, guid: de1ef324b0e3a2348a9b32d412e53fb6,
         type: 3}

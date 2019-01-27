@@ -5,43 +5,49 @@ using UnityEngine.SceneManagement;
 
 public class PausedMenu : MonoBehaviour
 {
+    private bool isPaused;
+
     public GameObject menu;
     public GameObject subMenu;
-    private bool showMenu;
 
     void Start()
     {
         menu = GameObject.Find("PauseMenu");
         subMenu = GameObject.Find("ConfirmMenu");
+
+        menu.SetActive(false);
         subMenu.SetActive(false);
-        showMenu = false;
+
+        isPaused = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!menu.activeSelf)
+            if (isPaused)
             {
+                Time.timeScale = 1;
                 menu.SetActive(true);
-                Debug.Log("SetActive set true");
+                HelperUtilities.UpdateCursorLock(true);
             }
             else
             {
+                Time.timeScale = 0;
                 menu.SetActive(false);
-                Debug.Log("else statement");
+                if (subMenu.activeSelf)
+                    subMenu.SetActive(false);
+                HelperUtilities.UpdateCursorLock(false);
             }
-        }
-    }
 
-    public void ResumeGame()
-    {
-        menu.SetActive(false);
+            isPaused = !isPaused;
+
+        }
     }
 
     public void UserConfirm()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MainScene_Chris");
     }
 
     public void ShowConfirm()

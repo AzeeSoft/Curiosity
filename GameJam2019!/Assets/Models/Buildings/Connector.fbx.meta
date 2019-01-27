@@ -39,6 +39,9 @@ ModelImporter:
     4300006: Connector1:Stripes
     4300008: Connector1:ConnectorBody
     4300010: Connector1:ConnectorGlass
+    6400000: Connector1:ConnectorBody
+    6400002: Connector1:ConnectorGlass
+    6400004: Connector1:Stripes
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -72,7 +75,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

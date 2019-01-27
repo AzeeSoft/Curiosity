@@ -98,7 +98,11 @@ public class CuriosityMovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move(_curiosityInputController.GetPlayerInput());
+        if (_curiosityModel.Battery > 0)
+        {
+            Move(_curiosityInputController.GetPlayerInput());
+        }
+
 //        AlignWithFloor();
 //        HugWithFloor();
         StayWithWheels();

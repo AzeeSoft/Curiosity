@@ -43,13 +43,22 @@ public class CuriosityModel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (solarChargeMode)
+        if (!LevelManager.Instance.GameOver)
         {
-            RechargeBattery(SolarChargeRate * Time.deltaTime);
-        }
-        else
-        {
-            DepleteBattery(BatteryDepletionRate * Time.deltaTime);
+            if (solarChargeMode)
+            {
+                RechargeBattery(SolarChargeRate * Time.deltaTime);
+            }
+            else
+            {
+                DepleteBattery(BatteryDepletionRate * Time.deltaTime);
+            }
+            
+            // Forced Respawn
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Respawn();
+            }
         }
     }
 
@@ -69,6 +78,14 @@ public class CuriosityModel : MonoBehaviour
         {
             Battery = MaxBattery;
         }
+    }
+
+    void Respawn()
+    {
+        Vector3 targetPos = transform.position;
+        targetPos.y += 10f;
+
+        transform.position = targetPos;
     }
 
     private void OnTriggerEnter(Collider other)

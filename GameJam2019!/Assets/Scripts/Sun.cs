@@ -59,7 +59,7 @@ public class Sun : MonoBehaviour
         
         _hourOfDay = GetHourOfTheDay();
 
-        if (_hourOfDay > 2 && _hourOfDay < 12)
+        if (_hourOfDay >= 2 && _hourOfDay < 12)
         {
             _sunState = SunState.Day;
         }

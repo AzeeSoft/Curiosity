@@ -4193,6 +4193,7 @@ GameObject:
   - component: {fileID: 2836187674333785296}
   - component: {fileID: 9111591173278933198}
   - component: {fileID: 6032363594184659760}
+  - component: {fileID: 2718337160021692647}
   m_Layer: 0
   m_Name: charging_pad1:pad_ring1
   m_TagString: Untagged
@@ -4259,6 +4260,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2718337160021692647
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6148218615128844652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300122, guid: 6d632101225bc80418410da7994f7b7e, type: 3}
 --- !u!1 &6164495668878064467
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,6 +7569,7 @@ GameObject:
   - component: {fileID: 816697389054230904}
   - component: {fileID: 3141678283368627953}
   - component: {fileID: 9089585908876179012}
+  - component: {fileID: 3967165184220126944}
   m_Layer: 0
   m_Name: charging_pad1:pad_platform1
   m_TagString: Untagged
@@ -7620,6 +7636,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3967165184220126944
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9147587411449139728}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300132, guid: 6d632101225bc80418410da7994f7b7e, type: 3}
 --- !u!1 &9208171115612854493
 GameObject:
   m_ObjectHideFlags: 0

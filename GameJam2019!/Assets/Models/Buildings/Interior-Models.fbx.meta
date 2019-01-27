@@ -513,6 +513,88 @@ ModelImporter:
     4300160: polySurface12
     4300162: polySurface13
     4300164: polySurface14
+    6400000: Barrel
+    6400002: Battery
+    6400004: Battery1
+    6400006: charging_pad1:pad_light1
+    6400008: charging_pad1:pad_light2
+    6400010: charging_pad1:pad_light3
+    6400012: charging_pad1:pad_light4
+    6400014: charging_pad1:pad_platform1
+    6400016: charging_pad1:pad_ring1
+    6400018: conduit1
+    6400020: conduit2
+    6400022: conduit3
+    6400024: left_protrusion
+    6400026: light1
+    6400028: light10
+    6400030: light11
+    6400032: light12
+    6400034: light13
+    6400036: light14
+    6400038: light15
+    6400040: light16
+    6400042: light17
+    6400044: light18
+    6400046: light19
+    6400048: light2
+    6400050: light20
+    6400052: light21
+    6400054: light22
+    6400056: light23
+    6400058: light24
+    6400060: light3
+    6400062: light4
+    6400064: light5
+    6400066: light6
+    6400068: light7
+    6400070: light8
+    6400072: light9
+    6400074: main_terminal
+    6400076: pCylinder5
+    6400078: polySurface1
+    6400080: polySurface10
+    6400082: polySurface11
+    6400084: polySurface12
+    6400086: polySurface13
+    6400088: polySurface14
+    6400090: polySurface2
+    6400092: polySurface3
+    6400094: polySurface3 1
+    6400096: polySurface4
+    6400098: polySurface4 1
+    6400100: polySurface5
+    6400102: polySurface5 1
+    6400104: polySurface6
+    6400106: polySurface7
+    6400108: polySurface8
+    6400110: projector_rod
+    6400112: pSphere1
+    6400114: ring1
+    6400116: ring10
+    6400118: ring11
+    6400120: ring12
+    6400122: ring13
+    6400124: ring14
+    6400126: ring15
+    6400128: ring16
+    6400130: ring17
+    6400132: ring18
+    6400134: ring19
+    6400136: ring2
+    6400138: ring20
+    6400140: ring21
+    6400142: ring22
+    6400144: ring23
+    6400146: ring24
+    6400148: ring3
+    6400150: ring4
+    6400152: ring5
+    6400154: ring6
+    6400156: ring7
+    6400158: ring8
+    6400160: ring9
+    6400162: screen_1
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -546,7 +628,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

@@ -8,10 +8,11 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     public event Action<bool> OnGameOver;
+    public bool GameOver { get; private set; }
 
     private CuriosityModel _curiosityModel;
     private Sun _sun;
-
+    
     void Awake()
     {
         if (Instance)
@@ -41,9 +42,12 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_curiosityModel.Battery <= 0)
+        if (!GameOver)
         {
-            GameLost();
+            if (_curiosityModel.Battery <= 0)
+            {
+                GameLost();
+            }
         }
     }
 
@@ -54,6 +58,8 @@ public class LevelManager : MonoBehaviour
 
     void GameLost()
     {
+        GameOver = true;
+        
         Debug.Log("You Lost");
         OnGameOver?.Invoke(false);
     }

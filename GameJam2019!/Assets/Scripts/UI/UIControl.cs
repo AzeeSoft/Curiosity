@@ -1,32 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIControl : MonoBehaviour
 {
-    public GameObject master;
-    public GameObject mainMenu;
-    public GameObject pauseMenu;
+    private GameObject master;
+    private GameObject mainMenu;
+    private GameObject credsMenu;
+    private GameObject optMenu;
+    private string sceneName;
 
-    private bool hasInitiated;
 
     void Start()
     {
         master = GameObject.Find("UI");
         mainMenu = GameObject.Find("MMenu");
-        pauseMenu = GameObject.Find("PMenu");
+        credsMenu = GameObject.Find("CMenu");
+        optMenu = GameObject.Find("OMenu");
+        sceneName = "TestGame";
 
         mainMenu.SetActive(true);
-        pauseMenu.SetActive(false);
-
-        hasInitiated = true;
+        credsMenu.SetActive(false);
+        optMenu.SetActive(false);
     }
 
-    void Update()
+    public void ShowMain()
     {
-        if (hasInitiated)
-        {
-            pauseMenu.SetActive(true);
-        }
+        mainMenu.SetActive(true);
+        credsMenu.SetActive(false);
+        optMenu.SetActive(false);
+    }
+
+    public void ShowCredits()
+    {
+        mainMenu.SetActive(false);
+        credsMenu.SetActive(true);
+        optMenu.SetActive(false);
+    }
+
+    public void ShowOptions()
+    {
+        mainMenu.SetActive(false);
+        credsMenu.SetActive(false);
+        optMenu.SetActive(true);
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

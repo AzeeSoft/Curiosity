@@ -5,60 +5,55 @@ using UnityEngine.SceneManagement;
 
 public class PausedMenu : MonoBehaviour
 {
-    private bool isPaused;
-
-    public GameObject menu;
-    public GameObject subMenu;
+    private GameObject pauseMenu;
+    private string sceneName = "MainScene_Chris";
 
     void Start()
     {
-        menu = GameObject.Find("PauseMenu");
-        subMenu = GameObject.Find("ConfirmMenu");
+        pauseMenu = GameObject.Find("PauseMenu");
+        pauseMenu.SetActive(false);
 
-        menu.SetActive(false);
-        subMenu.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
 
-        isPaused = false;
+        Time.timeScale = 1;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            if (isPaused)
-            {
-                Time.timeScale = 1;
-                menu.SetActive(true);
-                HelperUtilities.UpdateCursorLock(true);
-            }
-            else
-            {
-                Time.timeScale = 0;
-                menu.SetActive(false);
-                if (subMenu.activeSelf)
-                    subMenu.SetActive(false);
-                HelperUtilities.UpdateCursorLock(false);
-            }
-
-            isPaused = !isPaused;
-
+            ShowPause();
         }
     }
 
-    public void UserConfirm()
+    public void ShowPause()
     {
-        SceneManager.LoadScene("MainScene_Chris");
+        Cursor.lockState = CursorLockMode.None;
+
+        pauseMenu.SetActive(true);
+
+        if (Time.timeScale == 1)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            ResumeGame();
+        }
     }
 
-    public void ShowConfirm()
+    public void ResumeGame()
     {
-        menu.SetActive(false);
-        subMenu.SetActive(true);
+        Cursor.lockState = CursorLockMode.Locked;
+
+        pauseMenu.SetActive(false);
+
+        Time.timeScale = 1;
     }
 
-    public void ShowMenu()
+    public void ExitGame()
     {
-        subMenu.SetActive(false);
-        menu.SetActive(true);
+        SceneManager.LoadScene(sceneName);
+        Time.timeScale = 1;
     }
 }

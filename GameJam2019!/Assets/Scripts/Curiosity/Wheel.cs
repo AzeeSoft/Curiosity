@@ -34,7 +34,7 @@ public class Wheel : MonoBehaviour
             }
         }
         
-        GenerateMeshColliders();
+//        GenerateMeshColliders();
     }
     
     // Start is called before the first frame update

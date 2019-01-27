@@ -29,6 +29,8 @@ public class CuriosityMovementController : MonoBehaviour
     public WheelSetup BackRightWheelSetup;
     public GameObject Avatar;
     public GameObject Body;
+    public GameObject HeadRotY;
+    public GameObject HeadRotX;
     public ParticleSystem[] DustParticleSystems;
 
     [Header("Forward/Backward Movement")] public float MaxSpeed = 25;
@@ -55,6 +57,7 @@ public class CuriosityMovementController : MonoBehaviour
     public Vector3 bodyOffset;
 
     private Rigidbody _rigidbody;
+    private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;
     private List<Wheel> wheels = new List<Wheel>();
 
@@ -64,6 +67,7 @@ public class CuriosityMovementController : MonoBehaviour
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _curiosityModel = GetComponent<CuriosityModel>();
         _curiosityInputController = GetComponent<CuriosityInputController>();
 
         FrontLeftWheelSetup.SetupWheel();
@@ -87,6 +91,9 @@ public class CuriosityMovementController : MonoBehaviour
 
     void Update()
     {
+        UpdateAudioSources();
+        UpdateDustParticles();
+        UpdateHeadRotation();
     }
 
     void FixedUpdate()
@@ -96,8 +103,6 @@ public class CuriosityMovementController : MonoBehaviour
 //        HugWithFloor();
         StayWithWheels();
         UpdateWheelSpinning();
-        UpdateAudioSources();
-        UpdateDustParticles();
     }
 
     void OnDrawGizmos()
@@ -232,6 +237,15 @@ public class CuriosityMovementController : MonoBehaviour
         }
     }
 
+    void UpdateHeadRotation()
+    {
+        Transform thirdPersonCameraTransform = _curiosityModel.thirdPersonPlayerCamera.camera.transform;
+
+//        HeadRotY.transform.rotation = Quaternion.Euler(0,thirdPersonCameraTransform.rotation.eulerAngles.y,0);
+        HeadRotX.transform.rotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
+            thirdPersonCameraTransform.rotation.eulerAngles.y, 0);
+    }
+
     void StayWithWheels()
     {
         Vector3 wheelsSuperPosition = Vector3.zero;
@@ -279,7 +293,7 @@ public class CuriosityMovementController : MonoBehaviour
 
         Quaternion newRotation = Quaternion.LookRotation(Body.transform.forward, normalToPlane);
         Body.transform.rotation = newRotation;
-        
+
         Quaternion newLocalRotation = Body.transform.localRotation;
         newLocalRotation.y = 0;
         Body.transform.localRotation = newLocalRotation;

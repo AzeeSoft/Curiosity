@@ -8,10 +8,10 @@ public class CuriosityModel : MonoBehaviour
 
     public float Battery = 100f;
 
-    [ReadOnly] public float SolarChargeRate = 5f;
+    public float SolarChargeRate = 5f;
     public float BatteryDepletionRate = 5f;
 
-    public bool solarChargeMode = false;
+    [ReadOnly] public bool solarChargeMode = false;
 
     public Transform CamTarget;
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;

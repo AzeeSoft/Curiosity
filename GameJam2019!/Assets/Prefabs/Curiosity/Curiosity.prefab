@@ -144,16 +144,18 @@ MonoBehaviour:
   MaxSpeed: 18
   MaxReverseThreshold: 0.9
   Acceleration: 2
-  Deceleration: 1
-  TurnSpeed: 0.08
-  TurnAcceleration: 8
-  TurnDeceleration: 8
+  Deceleration: 2
+  TurnSpeed: 0.1
+  TurnAcceleration: 5
+  TurnDeceleration: 5
   WheelTurnModifier: 45
+  MaxZTilt: 60
   MaxRotation: 2
   AntiRotationSpeed: 3
   FloorAlignTarget: {fileID: 2035715483}
   GroundHugMaxDistance: 1
   GroundHugMinDistance: 0
+  MaxWheelSpinSpeed: 30
   roverAudioSource: {fileID: 1834164296}
   gravelAudioSource: {fileID: 1834164295}
   bodyOffset: {x: 0, y: 0.75, z: 0}
@@ -522,6 +524,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5835662257158503246, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de1ef324b0e3a2348a9b32d412e53fb6, type: 3}

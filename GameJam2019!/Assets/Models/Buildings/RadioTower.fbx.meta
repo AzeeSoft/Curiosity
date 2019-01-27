@@ -40,6 +40,12 @@ ModelImporter:
     4300006: pCylinder15
     4300008: pCylinder16
     4300010: pCylinder17
+    6400000: beams
+    6400002: box
+    6400004: pCylinder15
+    6400006: pCylinder16
+    6400008: pCylinder17
+    6400010: supports
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -73,7 +79,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

@@ -55,6 +55,13 @@ ModelImporter:
     4300010: Rib
     4300012: MainBody
     4300014: Roof
+    6400000: Floor
+    6400002: Garage:Foundation
+    6400004: Garage:Glass
+    6400006: Garage:Ramps
+    6400008: MainBody
+    6400010: Rib
+    6400012: Roof
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -88,7 +95,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

@@ -59,6 +59,13 @@ ModelImporter:
     4300012: Airlock:airlock
     4300014: polySurface1
     4300016: polySurface2
+    6400000: Airlock:airlock
+    6400002: Airlock:airlockWindowFrame
+    6400004: Airlock:airlockWindowGlass
+    6400006: Airlock:pCube10
+    6400008: Airlock:pCube14
+    6400010: polySurface1
+    6400012: polySurface2
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -92,7 +99,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

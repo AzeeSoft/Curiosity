@@ -35,13 +35,13 @@ public class HelperUtilities {
     {
         if (lockCursor)
         {
-            //Cursor.lockState = CursorLockMode.Locked;
-           // Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+           Cursor.visible = false;
         }
         else
         {
-            //Cursor.lockState = CursorLockMode.None;
-            //Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 }

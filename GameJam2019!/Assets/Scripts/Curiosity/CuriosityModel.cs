@@ -55,7 +55,7 @@ public class CuriosityModel : MonoBehaviour
             }
             
             // Forced Respawn
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetButtonDown("Respawn"))
             {
                 Respawn();
             }

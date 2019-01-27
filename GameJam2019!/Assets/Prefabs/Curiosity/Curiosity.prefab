@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 531632871}
   - component: {fileID: 531632872}
+  - component: {fileID: 86633025}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -69,6 +70,32 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &86633025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531632870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafc90245bfe9e2408e358f71deace2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SampleCount: 11
+  ScatteringCoef: 0.188
+  ExtinctionCoef: 0.01
+  SkyboxExtinctionCoef: 0.9
+  MieG: 0.065
+  HeightFog: 0
+  HeightScale: 0.1
+  GroundLevel: 0
+  Noise: 1
+  NoiseScale: 0.04
+  NoiseIntensity: 2.68
+  NoiseIntensityOffset: 0.3
+  NoiseVelocity: {x: 10, y: 10}
+  MaxRayLength: 400
 --- !u!1 &2035715482
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,9 +293,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxScanRadius: 800
-  scanRadiusGrowthRate: 400
-  scanStayTime: 5
+  scanRadiusGrowthRate: 200
+  scanStayTime: 2.5
   scanRadiusShrinkRate: 400
+  cooldownInterval: 10
+  CooldownLevel: 0
   _curScanRadius: 0
 --- !u!82 &1834164296
 AudioSource:
@@ -876,6 +905,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de1ef324b0e3a2348a9b32d412e53fb6, type: 3}
+--- !u!4 &1357323182259850490 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5835662257158203066, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4767695557249591872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1357323182260343054 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5835662257158503246, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4767695557249591872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1357323182259850618 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5835662257158203194, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4767695557249591872}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1357323182260343062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5835662257158503254, guid: de1ef324b0e3a2348a9b32d412e53fb6,
@@ -885,12 +932,6 @@ GameObject:
 --- !u!1 &1357323182260343060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5835662257158503252, guid: de1ef324b0e3a2348a9b32d412e53fb6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4767695557249591872}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1357323182259850606 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5835662257158203182, guid: de1ef324b0e3a2348a9b32d412e53fb6,
     type: 3}
   m_PrefabInstance: {fileID: 4767695557249591872}
   m_PrefabAsset: {fileID: 0}
@@ -930,21 +971,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4767695557249591872}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1357323182260343054 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5835662257158503246, guid: de1ef324b0e3a2348a9b32d412e53fb6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4767695557249591872}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1357323182259850490 stripped
+--- !u!4 &1357323182259850606 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 5835662257158203066, guid: de1ef324b0e3a2348a9b32d412e53fb6,
-    type: 3}
-  m_PrefabInstance: {fileID: 4767695557249591872}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1357323182259850618 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5835662257158203194, guid: de1ef324b0e3a2348a9b32d412e53fb6,
+  m_CorrespondingSourceObject: {fileID: 5835662257158203182, guid: de1ef324b0e3a2348a9b32d412e53fb6,
     type: 3}
   m_PrefabInstance: {fileID: 4767695557249591872}
   m_PrefabAsset: {fileID: 0}

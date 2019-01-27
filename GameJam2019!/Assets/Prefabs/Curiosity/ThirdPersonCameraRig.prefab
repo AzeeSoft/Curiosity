@@ -67,7 +67,7 @@ MonoBehaviour:
   returnTime: 0.4
   sphereCastRadius: 0.1
   visualiseInEditor: 0
-  closestDistance: 4
+  closestDistance: 8
   dontClipTag: Player
 --- !u!114 &3535196792227700436
 MonoBehaviour:
@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3535196792893594739}
   - component: {fileID: 3535196792893594738}
   - component: {fileID: 1402427312}
+  - component: {fileID: 560180801}
   m_Layer: 0
   m_Name: ThirdPersonCamera
   m_TagString: MainCamera
@@ -181,3 +182,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScannerOrigin: {fileID: 0}
   EffectMaterial: {fileID: 2100000, guid: a221e699781b97844b83197b058dcc51, type: 2}
+  sonarScanner: {fileID: 0}
+--- !u!114 &560180801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3535196792893594737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Resolution: 0
+  DefaultSpotCookie: {fileID: 2800000, guid: 5157bf6d690b6df458f6c0ce0c06d329, type: 3}

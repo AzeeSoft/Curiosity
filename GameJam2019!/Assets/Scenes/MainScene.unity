@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: bf1bf92a3ce592e40b898be6c21cc2fa, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 4c8c25572a1086d469a5de812da188b2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 555353291}
   m_IndirectSpecularColor: {r: 0.61507493, g: 0.489259, b: 0.47010654, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
@@ -2246,6 +2246,10 @@ PrefabInstance:
       propertyPath: moon
       value: 
       objectReference: {fileID: 555353284}
+    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
+      propertyPath: dayCycleSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
 --- !u!4 &434788174 stripped
@@ -3159,6 +3163,12 @@ GameObject:
 --- !u!1 &555353285 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4630655869271731468, guid: dd664349644b61740a0e7139a358527c,
+    type: 3}
+  m_PrefabInstance: {fileID: 555353283}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &555353291 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
     type: 3}
   m_PrefabInstance: {fileID: 555353283}
   m_PrefabAsset: {fileID: 0}
@@ -9847,6 +9857,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1550689896}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1554826217 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3535196792893594737, guid: b53d27da472d30c4683d10d9e96a61eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1580198688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1554826223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554826217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff26db721962cdf4a8edcdfa9a767d2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: a6594f0ab696746448353a27d3a18c68, type: 2}
 --- !u!1001 &1555122030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10036,17 +10065,17 @@ PrefabInstance:
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 104.2
+      value: 829
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 186.1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 209.2
+      value: 385
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}

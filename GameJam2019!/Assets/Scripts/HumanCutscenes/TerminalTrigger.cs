@@ -60,6 +60,8 @@ public class TerminalTrigger : MonoBehaviour
                     hasPlayed = true;
                     break;
             }
+            
+            LevelManager.Instance.OnTerminalExplored(currentAnim);
         }
     }
     

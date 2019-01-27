@@ -8,11 +8,20 @@ public class LevelManager : MonoBehaviour
     public static LevelManager Instance { get; private set; }
 
     public event Action<bool> OnGameOver;
+    public event Action OnAllTerminalsExplored;
     public bool GameOver { get; private set; }
 
     private CuriosityModel _curiosityModel;
     private Sun _sun;
-    
+
+    private Dictionary<TerminalTrigger.State, bool> terminalExplorationStates =
+        new Dictionary<TerminalTrigger.State, bool>
+        {
+            {TerminalTrigger.State.First, false},
+            {TerminalTrigger.State.Second, false},
+            {TerminalTrigger.State.Last, false},
+        };
+
     void Awake()
     {
         if (Instance)
@@ -36,7 +45,6 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -56,10 +64,27 @@ public class LevelManager : MonoBehaviour
         return _sun;
     }
 
+    public bool HasExploredAllTerminals()
+    {
+        return terminalExplorationStates[TerminalTrigger.State.First] &&
+               terminalExplorationStates[TerminalTrigger.State.Second] &&
+               terminalExplorationStates[TerminalTrigger.State.Last];
+    }
+
+    public void OnTerminalExplored(TerminalTrigger.State terminalState)
+    {
+        terminalExplorationStates[terminalState] = true;
+
+        if (HasExploredAllTerminals())
+        {
+            OnAllTerminalsExplored?.Invoke();
+        }
+    }
+
     void GameLost()
     {
         GameOver = true;
-        
+
         Debug.Log("You Lost");
         OnGameOver?.Invoke(false);
     }

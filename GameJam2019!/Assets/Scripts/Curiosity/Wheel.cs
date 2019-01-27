@@ -41,9 +41,8 @@ public class Wheel : MonoBehaviour
             angle = -angle;
         }
         
-        Quaternion newLocalRotation = transform.localRotation;
-        newLocalRotation.y = angle;
-        transform.localRotation = newLocalRotation;
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        transform.Rotate(transform.up, angle);
     }
     
     void AlignWithFloor()

@@ -10,14 +10,17 @@ public class SonarScanner : MonoBehaviour
     public float scanRadiusGrowthRate = 10f;
     public float scanStayTime = 5f;
     public float scanRadiusShrinkRate = 10f;
+    public float cooldownInterval = 10f;
+
+    public float CooldownLevel = 0;
 
     [SerializeField] private float _curScanRadius = 0;
 
     private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;
     private SonarEffect _sonarEffect;
-    
-    private bool _isScanning = false;
+
+    private bool _canScan = true;
 
 
     private void Awake()
@@ -50,9 +53,16 @@ public class SonarScanner : MonoBehaviour
     {
         CuriosityInputController.CuriosityInput input = _curiosityInputController.GetPlayerInput();
 
-        if (input.Scan && !_isScanning)
+        if (input.Scan && _canScan && CooldownLevel <= 0)
         {
             ScanEnvironment();
+        } else if (CooldownLevel > 0)
+        {
+            CooldownLevel -= cooldownInterval * Time.deltaTime;
+            if (CooldownLevel < 0)
+            {
+                CooldownLevel = 0;
+            }
         }
     }
 
@@ -60,7 +70,7 @@ public class SonarScanner : MonoBehaviour
     {
         Debug.Log("Scanning environment");
 
-        _isScanning = true;
+        _canScan = false;
 
         int updateFrequency = 60;
 
@@ -81,7 +91,8 @@ public class SonarScanner : MonoBehaviour
 
         _curScanRadius = 0;
 
-        _isScanning = false;
+        CooldownLevel = 100;
+        _canScan = true;
     }
 
     public float getCurrentScanRadius()

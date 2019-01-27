@@ -169,6 +169,7 @@ MonoBehaviour:
   Battery: 100
   SolarChargeRate: 1
   BatteryDepletionRate: 1
+  ChargePadRechargeAmount: 100
   solarChargeMode: 0
   CamTarget: {fileID: 1357323182259850606}
   thirdPersonPlayerCamera: {fileID: 0}

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 383704271}
   m_Layer: 0
   m_Name: TriggerCylinder
-  m_TagString: Untagged
+  m_TagString: ChargePad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 8572753189426617873}
   m_Layer: 0
   m_Name: ChargingPad
-  m_TagString: Untagged
+  m_TagString: ChargePad
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -231,6 +231,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 81677c0846faa234ab05fc15d9b1bf37, type: 3}
       propertyPath: m_Name
       value: charging_pad
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 81677c0846faa234ab05fc15d9b1bf37, type: 3}
+      propertyPath: m_TagString
+      value: ChargePad
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 81677c0846faa234ab05fc15d9b1bf37, type: 3}
       propertyPath: m_LocalPosition.x

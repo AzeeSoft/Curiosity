@@ -10,6 +10,7 @@ public class CuriosityModel : MonoBehaviour
 
     public float SolarChargeRate = 5f;
     public float BatteryDepletionRate = 5f;
+    public float ChargePadRechargeAmount = 100f;
 
     [ReadOnly] public bool solarChargeMode = false;
 
@@ -67,6 +68,14 @@ public class CuriosityModel : MonoBehaviour
         if (Battery > MaxBattery)
         {
             Battery = MaxBattery;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("ChargePad"))
+        {
+            RechargeBattery(ChargePadRechargeAmount);
         }
     }
 }

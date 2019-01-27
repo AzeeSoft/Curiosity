@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,12 +11,14 @@ public class LevelManager : MonoBehaviour
     public GameObject HUD;
     public GameObject WinScreen;
     public GameObject LoseScreen;
-    
+
+    public string MainMenuSceneName = "MainMenu";
+
     public event Action<bool> OnGameOver;
     public event Action OnAllTerminalsExplored;
     public bool GameOver { get; private set; }
 
-    private CuriosityModel _curiosityModel;
+    [HideInInspector] public CuriosityModel curiosityModel;
     private Sun _sun;
 
     private Dictionary<TerminalTrigger.State, bool> terminalExplorationStates =
@@ -28,6 +31,8 @@ public class LevelManager : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1;
+
         if (Instance)
         {
             Destroy(this.gameObject);
@@ -38,13 +43,11 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
 
-        Time.timeScale = 0;
-        
-        _curiosityModel = FindObjectOfType<CuriosityModel>();
+        curiosityModel = FindObjectOfType<CuriosityModel>();
         _sun = GetComponent<Sun>();
         _sun.OnSunStateChanged += newSunState =>
         {
-            _curiosityModel.solarChargeMode = (newSunState == Sun.SunState.Day);
+            curiosityModel.solarChargeMode = (newSunState == Sun.SunState.Day);
         };
     }
 
@@ -58,7 +61,7 @@ public class LevelManager : MonoBehaviour
     {
         if (!GameOver)
         {
-            if (_curiosityModel.Battery <= 0)
+            if (curiosityModel.Battery <= 0)
             {
                 GameLost();
             }
@@ -103,14 +106,24 @@ public class LevelManager : MonoBehaviour
         GameWon();
     }
 
-    async void GameWon()
+    void GameWon()
     {
         GameOver = true;
-        
+
         Debug.Log("You Won");
         OnGameOver?.Invoke(true);
-        
+
         Time.timeScale = 0;
         WinScreen.SetActive(true);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene(MainMenuSceneName);
     }
 }

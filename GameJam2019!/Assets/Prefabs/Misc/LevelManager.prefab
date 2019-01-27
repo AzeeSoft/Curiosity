@@ -44,6 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a369771192939af4ea8d67e518f7bb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
+  WinScreen: {fileID: 0}
+  LoseScreen: {fileID: 0}
 --- !u!114 &108870352
 MonoBehaviour:
   m_ObjectHideFlags: 0

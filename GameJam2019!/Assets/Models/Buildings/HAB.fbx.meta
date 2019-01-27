@@ -107,6 +107,12 @@ ModelImporter:
     4300026: HABBody
     4300028: windowPanes
     4300030: foundation
+    6400000: foundation
+    6400002: HABBody
+    6400004: HABWall
+    6400006: skylight
+    6400008: struts
+    6400010: windowPanes
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -140,7 +146,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

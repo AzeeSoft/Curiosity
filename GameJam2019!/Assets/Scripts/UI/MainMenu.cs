@@ -6,43 +6,34 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject main;
-    public GameObject options;
-    public Slider mySlider;
+    public GameObject gameObject;
+    private bool isPaused;
 
     void Start()
     {
-        main = GameObject.Find("MainMenu");
-        options = GameObject.Find("OptionsMenu");
-        options.SetActive(false);
+        gameObject = GameObject.Find("UI");
     }
 
     public void PlayGame()
     {
-        //Add scene to build and place name here when available
-        //SceneManager.LoadScene();
+        gameObject = GameObject.Find("MMenu");
+        gameObject.SetActive(false);
+
+        gameObject = GameObject.Find("PMenu");
+        gameObject.SetActive(false);
     }
 
     public void QuitGame()
     {
-        Debug.Log("Quit button clicked.");
         Application.Quit();
     }
 
     public void ShowOptions()
     {
-        //De-activate ManMenu
-        main.SetActive(false);
-        Debug.Log("Main menu de-activated");
+        gameObject.SetActive(false);
 
-        //Activate OptionsMenu
-        options.SetActive(true);
-    }
-
-    public void ShowMain()
-    {
-        options.SetActive(false);
-        main.SetActive(true);
+        gameObject = GameObject.Find("OptionsMenu");
+        gameObject.SetActive(true);
     }
 
 }

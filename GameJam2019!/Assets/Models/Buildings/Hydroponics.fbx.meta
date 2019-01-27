@@ -39,6 +39,9 @@ ModelImporter:
     4300006: HydroponicsModule:Hydroponics:Ribs
     4300008: HydroponicsModule:Hydroponics:HydroponicsBase
     4300010: HydroponicsModule:Hydroponics:Glass
+    6400000: HydroponicsModule:Hydroponics:Glass
+    6400002: HydroponicsModule:Hydroponics:HydroponicsBase
+    6400004: HydroponicsModule:Hydroponics:Ribs
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -72,7 +75,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

@@ -64,6 +64,11 @@ ModelImporter:
     4300016: CentralSection1:Floor
     4300018: CentralSection1:MainBody
     4300020: CentralSection1:Wall
+    6400000: CentralSection1:Floor
+    6400002: CentralSection1:Foundation
+    6400004: CentralSection1:MainBody
+    6400006: CentralSection1:Skylight
+    6400008: CentralSection1:Wall
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -112,7 +117,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1

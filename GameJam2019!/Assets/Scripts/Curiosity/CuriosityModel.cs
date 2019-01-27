@@ -49,7 +49,7 @@ public class CuriosityModel : MonoBehaviour
             Respawn();
         }
         
-        if (!LevelManager.Instance.GameOver)
+        if (Battery > 0)
         {
             if (solarChargeMode)
             {

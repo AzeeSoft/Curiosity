@@ -93,6 +93,7 @@ public class CuriosityModel : MonoBehaviour
         if (other.CompareTag("ChargePad"))
         {
             RechargeBattery(ChargePadRechargeAmount);
+            other.GetComponentInParent<AudioSource>().Play();
         }
     }
 }

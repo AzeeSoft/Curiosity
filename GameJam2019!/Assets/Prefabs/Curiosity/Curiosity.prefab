@@ -245,7 +245,7 @@ MonoBehaviour:
   - {fileID: 6022509133072650011}
   - {fileID: 6022509133245773059}
   - {fileID: 6022509131515053655}
-  MaxSpeed: 18
+  MaxSpeed: 4
   MaxReverseThreshold: 0.9
   Acceleration: 2
   Deceleration: 2

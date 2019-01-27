@@ -44,8 +44,6 @@ public class CuriosityMovementController : MonoBehaviour
     public Transform FloorAlignTarget;
     public float GroundHugMaxDistance = 3f;
     public float GroundHugMinDistance = 2f;
-    public float FloorAlignSpeed = 2f;
-    public float GroundHugSpeed = 2f;
 
     public Vector3 bodyOffset;
 
@@ -94,6 +92,27 @@ public class CuriosityMovementController : MonoBehaviour
 
     void OnDrawGizmos()
     {
+        /*Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
+            FrontRightWheelSetup.wheel.transform.position);
+
+        Vector3 middleNormal = Vector3.Cross(MiddleLeftWheelSetup.wheel.transform.position,
+            MiddleRightWheelSetup.wheel.transform.position);
+
+        Vector3 backNormal = Vector3.Cross(BackLeftWheelSetup.wheel.transform.position,
+            BackRightWheelSetup.wheel.transform.position);
+
+        Gizmos.color = Color.blue;
+
+        Vector3 frontStart = (FrontLeftWheelSetup.wheel.transform.position +
+                              FrontRightWheelSetup.wheel.transform.position) / 2;
+        Vector3 middleStart = (MiddleLeftWheelSetup.wheel.transform.position +
+                               MiddleRightWheelSetup.wheel.transform.position) / 2;
+        Vector3 backStart = (BackLeftWheelSetup.wheel.transform.position +
+                             BackRightWheelSetup.wheel.transform.position) / 2;
+
+        Gizmos.DrawRay(frontStart, frontStart + frontNormal);
+        Gizmos.DrawRay(middleStart, middleStart + middleNormal);
+        Gizmos.DrawRay(backStart, backStart + backNormal);*/
     }
 
     /*public void Move(CuriosityInputController.CuriosityInput curiosityInput)
@@ -119,12 +138,12 @@ public class CuriosityMovementController : MonoBehaviour
 
         Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
 
-        /*bool slowingDown = targetVelocity.magnitude < _rigidbody.velocity.magnitude;
+        bool slowingDown = targetVelocity.magnitude < _rigidbody.velocity.magnitude;
         _rigidbody.velocity =
             Vector3.Lerp(_rigidbody.velocity, targetVelocity,
-                (slowingDown ? Deceleration : Acceleration) * Time.fixedDeltaTime);*/
+                (slowingDown ? Deceleration : Acceleration) * Time.fixedDeltaTime);
 
-        transform.Translate(targetVelocity);
+//        transform.Translate(targetVelocity);
 
         // Turning
         Vector3 glideDir = _rigidbody.velocity;
@@ -163,52 +182,19 @@ public class CuriosityMovementController : MonoBehaviour
         Avatar.transform.Rotate(transform.up, _currentRotationAngle);
 
 
-        /*// Clamping the x and z rotations
-        Vector3 rotationAngles = transform.rotation.eulerAngles;
+        // Clamping the x and z rotations
+        Vector3 rotationAngles = Avatar.transform.rotation.eulerAngles;
 
         rotationAngles.x = HelperUtilities.ClampAngle(rotationAngles.x, -MaxRotation, MaxRotation);
         rotationAngles.z = HelperUtilities.ClampAngle(rotationAngles.z, -MaxRotation, MaxRotation);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotationAngles),
-            Time.fixedDeltaTime * AntiRotationSpeed);*/
+        Avatar.transform.rotation = Quaternion.Lerp(Avatar.transform.rotation, Quaternion.Euler(rotationAngles),
+            Time.fixedDeltaTime * AntiRotationSpeed);
     }
 
     public float GetSpeed()
     {
         return _rigidbody.velocity.magnitude;
-    }
-
-    void AlignWithFloor()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(FloorAlignTarget.position, Vector3.down, out hit))
-        {
-            Vector3 targetUp = hit.normal;
-
-//            transform.up = Vector3.Lerp(transform.up, targetUp, Time.fixedDeltaTime * FloorAlignSpeed);
-//            transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal);
-        }
-    }
-
-    void HugWithFloor()
-    {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit))
-        {
-            Vector3 newPos = transform.position;
-            if (hit.distance > GroundHugMaxDistance)
-            {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y - (hit.distance - GroundHugMaxDistance),
-                    Time.fixedDeltaTime * GroundHugSpeed);
-            }
-            else if (hit.distance < GroundHugMinDistance)
-            {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y + (GroundHugMinDistance - hit.distance),
-                    Time.fixedDeltaTime * GroundHugSpeed);
-            }
-
-            transform.position = newPos;
-        }
     }
 
     void StayWithWheels()
@@ -222,5 +208,41 @@ public class CuriosityMovementController : MonoBehaviour
         wheelsSuperPosition /= wheels.Count;
 
         Body.transform.position = wheelsSuperPosition + bodyOffset;
+
+
+        Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
+            FrontRightWheelSetup.wheel.transform.position);
+
+        Vector3 middleNormal = Vector3.Cross(MiddleLeftWheelSetup.wheel.transform.position,
+            MiddleRightWheelSetup.wheel.transform.position);
+
+        Vector3 backNormal = Vector3.Cross(BackLeftWheelSetup.wheel.transform.position,
+            BackRightWheelSetup.wheel.transform.position);
+
+        Vector3 normalToPlane = (frontNormal + middleNormal + backNormal) / 3;
+//        normalToPlane.Normalize();
+
+//        Debug.Log(Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up));
+        float turnAngle = Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up) % 360;
+        if (turnAngle > 180)
+        {
+            turnAngle = turnAngle - 360;
+        }
+
+        if (turnAngle < -37 || turnAngle > 143)
+        {
+            Quaternion newLocalRotation = Body.transform.localRotation;
+//            Debug.Log("Correcting from " + newLocalRotation.z);
+            normalToPlane *= -1;
+//            Debug.Log("Correcting to " + newLocalRotation.z);
+        }
+
+        if (normalToPlane.y < -1)
+        {
+            normalToPlane *= -1;
+        }
+
+        Quaternion newRotation = Quaternion.LookRotation(Body.transform.forward, normalToPlane);
+        Body.transform.rotation = newRotation;
     }
 }

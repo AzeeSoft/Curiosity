@@ -14,11 +14,13 @@ public class UIControl : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
+        
         master = GameObject.Find("UI");
         mainMenu = GameObject.Find("MMenu");
         credsMenu = GameObject.Find("CMenu");
         optMenu = GameObject.Find("OMenu");
-        sceneName = "MainScene";
+        sceneName = "Into Cinematic";
 
         mainMenu.SetActive(true);
         credsMenu.SetActive(false);

@@ -7,6 +7,10 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
+    public GameObject HUD;
+    public GameObject WinScreen;
+    public GameObject LoseScreen;
+    
     public event Action<bool> OnGameOver;
     public event Action OnAllTerminalsExplored;
     public bool GameOver { get; private set; }
@@ -34,6 +38,8 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
 
+        Time.timeScale = 0;
+        
         _curiosityModel = FindObjectOfType<CuriosityModel>();
         _sun = GetComponent<Sun>();
         _sun.OnSunStateChanged += newSunState =>
@@ -87,6 +93,9 @@ public class LevelManager : MonoBehaviour
 
         Debug.Log("You Lost");
         OnGameOver?.Invoke(false);
+
+        Time.timeScale = 0;
+        LoseScreen.SetActive(true);
     }
 
     public void FinalBaseReached()
@@ -94,8 +103,14 @@ public class LevelManager : MonoBehaviour
         GameWon();
     }
 
-    void GameWon()
+    async void GameWon()
     {
-        // TODO: Show Win Screens
+        GameOver = true;
+        
+        Debug.Log("You Won");
+        OnGameOver?.Invoke(true);
+        
+        Time.timeScale = 0;
+        WinScreen.SetActive(true);
     }
 }

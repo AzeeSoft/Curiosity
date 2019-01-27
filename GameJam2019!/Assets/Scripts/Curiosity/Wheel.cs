@@ -19,10 +19,10 @@ public class Wheel : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Wheel");
 //        Destroy(GetComponent<MeshCollider>());
         wheelHolder = new GameObject("WheelHolder");
-        
+
         wheelHolder.transform.SetParent(transform);
         wheelHolder.transform.localPosition = Vector3.zero;
-        
+
         foreach (MeshFilter meshFilter in transform.GetComponentsInChildren<MeshFilter>())
         {
 //                Debug.Log("Child");
@@ -33,10 +33,10 @@ public class Wheel : MonoBehaviour
 //                    child.transform.localPosition = Vector3.zero;
             }
         }
-        
+
 //        GenerateMeshColliders();
     }
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,10 +46,10 @@ public class Wheel : MonoBehaviour
     void FixedUpdate()
     {
 //        Debug.Log("Children " + transform.childCount);
-        
+
         AlignWithFloor();
         HugTheGround();
-//        Spin();
+        Spin();
     }
 
     private void OnDrawGizmos()
@@ -57,7 +57,7 @@ public class Wheel : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, transform.position - (transform.up * radius));
     }
-    
+
     public void GenerateMeshColliders()
     {
         MeshFilter[] meshFilters = GetComponentsInChildren<MeshFilter>();
@@ -81,6 +81,7 @@ public class Wheel : MonoBehaviour
         {
             angle = -angle;
         }
+
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         transform.Rotate(transform.up, angle);
     }
@@ -92,21 +93,30 @@ public class Wheel : MonoBehaviour
 
     void Spin()
     {
-        wheelHolder.transform.localRotation = Quaternion.Euler(0, 0, 0);
-        wheelHolder.transform.Rotate(wheelHolder.transform.right, spinSpeed * 10);
+//        wheelHolder.transform.localRotation = Quaternion.Euler(0, 0, 0);
+//        wheelHolder.transform.Rotate(wheelHolder.transform.right, spinSpeed * 10);
+        Quaternion newRotation = wheelHolder.transform.localRotation;
+        newRotation = Quaternion.Euler(newRotation.eulerAngles.x+spinSpeed, newRotation.eulerAngles.y, newRotation.eulerAngles.z);
+        /*newRotation.x += spinSpeed;
+        if (newRotation.x > 360)
+        {
+            newRotation.x -= 360;
+        }*/
+
+        wheelHolder.transform.localRotation = newRotation;
     }
-    
+
     void AlignWithFloor()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit))
         {
             Vector3 targetUp = hit.normal;
-            
+
 //            transform.up = Vector3.Lerp(transform.up, targetUp, Time.fixedDeltaTime * 2);
             transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal);
         }
-        
+
         /*if (Physics.Raycast(transform.position, transform.forward, out hit))
         {
             Vector3 targetNormal = hit.normal;
@@ -126,14 +136,17 @@ public class Wheel : MonoBehaviour
             Vector3 newPos = transform.position;
             if (hit.distance > radius)
             {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y - (hit.distance - radius), Time.fixedDeltaTime * groundHugSpeed);
+                newPos.y = Mathf.Lerp(newPos.y, newPos.y - (hit.distance - radius),
+                    Time.fixedDeltaTime * groundHugSpeed);
 //                newPos.y = newPos.y - (hit.distance - radius);
             }
             else
             {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y + (radius - hit.distance), Time.fixedDeltaTime * groundHugSpeed);
+                newPos.y = Mathf.Lerp(newPos.y, newPos.y + (radius - hit.distance),
+                    Time.fixedDeltaTime * groundHugSpeed);
 //                newPos.y = newPos.y + (radius - hit.distance);
             }
+
             transform.position = newPos;
         }
     }

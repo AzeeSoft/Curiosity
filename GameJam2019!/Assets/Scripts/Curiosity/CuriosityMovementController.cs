@@ -221,9 +221,12 @@ public class CuriosityMovementController : MonoBehaviour
 
     void UpdateWheelSpinning()
     {
+        bool reverse = Vector3.SignedAngle(transform.forward, _rigidbody.velocity, transform.up) > 90;
+
         foreach (Wheel wheel in wheels)
         {
-            wheel.UpdateSpinSpeed(HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, MaxWheelSpinSpeed));
+            wheel.UpdateSpinSpeed(HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, MaxWheelSpinSpeed) *
+                                  (reverse ? -1 : 1));
         }
     }
 

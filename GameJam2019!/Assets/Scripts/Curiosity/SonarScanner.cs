@@ -16,6 +16,8 @@ public class SonarScanner : MonoBehaviour
     private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;
     private SonarEffect _sonarEffect;
+    
+    private bool _isScanning = false;
 
 
     private void Awake()
@@ -48,7 +50,7 @@ public class SonarScanner : MonoBehaviour
     {
         CuriosityInputController.CuriosityInput input = _curiosityInputController.GetPlayerInput();
 
-        if (input.Scan)
+        if (input.Scan && !_isScanning)
         {
             ScanEnvironment();
         }
@@ -57,6 +59,8 @@ public class SonarScanner : MonoBehaviour
     async void ScanEnvironment()
     {
         Debug.Log("Scanning environment");
+
+        _isScanning = true;
 
         int updateFrequency = 60;
 
@@ -76,6 +80,8 @@ public class SonarScanner : MonoBehaviour
         }
 
         _curScanRadius = 0;
+
+        _isScanning = false;
     }
 
     public float getCurrentScanRadius()

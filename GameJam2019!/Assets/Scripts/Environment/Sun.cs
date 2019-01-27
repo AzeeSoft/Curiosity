@@ -19,6 +19,11 @@ public class Sun : MonoBehaviour
     public float sunSetIntensity;
     public float sunSetLerpRate;
 
+    public int sunSetStart = 7;
+    public int sunSetEnd = 12;
+    public int sunRiseStart = 1;
+    public int sunRiseEnd = 6;
+
     public event SunStateChangeCallback OnSunStateChanged;
     public event SunStateDetectionCallback OnDayStateDetected;
     public event SunStateDetectionCallback OnNightStateDetected;
@@ -90,12 +95,12 @@ public class Sun : MonoBehaviour
             OnNightStateDetected?.Invoke();
         }
 
-        if (_hourOfDay >= 7 && _hourOfDay < 12)
+        if (_hourOfDay >= sunSetStart && _hourOfDay < sunSetEnd)
         {
             // Sunset
             _sunLight.color = Color.Lerp(_sunLight.color, sunSetColor, Time.deltaTime * sunSetLerpRate);
             _sunLight.intensity = Mathf.Lerp(_sunLight.intensity, sunSetIntensity, Time.deltaTime * sunSetLerpRate);
-        } else if (_hourOfDay >= 1 && _hourOfDay < 6)
+        } else if (_hourOfDay >= sunRiseStart && _hourOfDay < sunRiseEnd)
         {
             // Sunrise
             _sunLight.color = Color.Lerp(_sunLight.color, originalSunColor, Time.deltaTime * sunSetLerpRate);

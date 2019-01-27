@@ -88,4 +88,14 @@ public class LevelManager : MonoBehaviour
         Debug.Log("You Lost");
         OnGameOver?.Invoke(false);
     }
+
+    public void FinalBaseReached()
+    {
+        GameWon();
+    }
+
+    void GameWon()
+    {
+        // TODO: Show Win Screens
+    }
 }

@@ -15,6 +15,22 @@ public class CuriosityModel : MonoBehaviour
 
     public Transform CamTarget;
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
+    public GameObject spotLightObject;
+
+    void Awake()
+    {
+        LevelManager.Instance.GetSun().OnSunStateChanged += newState =>
+        {
+            if (newState == Sun.SunState.Day)
+            {
+                spotLightObject.SetActive(false);
+            }
+            else
+            {
+                spotLightObject.SetActive(true);
+            }
+        };
+    }
 
     // Start is called before the first frame update
     void Start()

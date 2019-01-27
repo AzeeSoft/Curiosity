@@ -172,6 +172,7 @@ MonoBehaviour:
   solarChargeMode: 0
   CamTarget: {fileID: 1357323182259850606}
   thirdPersonPlayerCamera: {fileID: 0}
+  spotLightObject: {fileID: 531632870}
 --- !u!114 &462240520341299749
 MonoBehaviour:
   m_ObjectHideFlags: 0

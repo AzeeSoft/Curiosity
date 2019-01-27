@@ -47,6 +47,11 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public Sun GetSun()
+    {
+        return _sun;
+    }
+
     void GameLost()
     {
         Debug.Log("You Lost");

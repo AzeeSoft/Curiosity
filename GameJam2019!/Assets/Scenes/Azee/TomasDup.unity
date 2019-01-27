@@ -295,12 +295,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425532414}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &803972490 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8227012176966701137, guid: d81907f7e6c60394ab972e69243eb741,
-    type: 3}
-  m_PrefabInstance: {fileID: 8018878468212717573}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &829438957 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 462240520341299750, guid: ad8b08f4c4c89db43b4fefe6b8697bc9,
@@ -340,37 +334,37 @@ PrefabInstance:
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.65
+      value: -25.646542
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.22299327
+      value: 3.2076263
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.07509226
+      value: -14.31501
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.155333
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.021035736
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0.0033074277
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9876327
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
@@ -772,20 +766,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300020, guid: 37d1deded79fb5d49a5221f679976204, type: 3}
---- !u!64 &4920956294872695232
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 803972490}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300116, guid: 6d632101225bc80418410da7994f7b7e, type: 3}
 --- !u!1001 &5116472777864166003
 PrefabInstance:
   m_ObjectHideFlags: 0

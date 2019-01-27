@@ -29,6 +29,7 @@ public class CuriosityMovementController : MonoBehaviour
     public WheelSetup BackRightWheelSetup;
     public GameObject Avatar;
     public GameObject Body;
+    public ParticleSystem[] DustParticleSystems;
 
     [Header("Forward/Backward Movement")] public float MaxSpeed = 25;
     public float MaxReverseThreshold = 0.8f;
@@ -96,6 +97,7 @@ public class CuriosityMovementController : MonoBehaviour
         StayWithWheels();
         UpdateWheelSpinning();
         UpdateAudioSources();
+        UpdateDustParticles();
     }
 
     void OnDrawGizmos()
@@ -217,6 +219,16 @@ public class CuriosityMovementController : MonoBehaviour
         foreach (Wheel wheel in wheels)
         {
             wheel.UpdateSpinSpeed(HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, MaxWheelSpinSpeed));
+        }
+    }
+
+    void UpdateDustParticles()
+    {
+        foreach (ParticleSystem dustParticleSystem in DustParticleSystems)
+        {
+            ParticleSystem.MainModule mainModule = dustParticleSystem.main;
+            int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 5);
+            dustParticleSystem.Emit(emitParticles);
         }
     }
 

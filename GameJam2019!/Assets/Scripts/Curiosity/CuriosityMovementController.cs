@@ -40,11 +40,14 @@ public class CuriosityMovementController : MonoBehaviour
     public float TurnDeceleration = 5;
     public float WheelTurnModifier = 60;
 
+    [Header("TiltLimits")] public float MaxZTilt = 60f;
+
     [Header("Others")] public float MaxRotation = 2f;
     public float AntiRotationSpeed = 3f;
     public Transform FloorAlignTarget;
     public float GroundHugMaxDistance = 3f;
     public float GroundHugMinDistance = 2f;
+    public float MaxWheelSpinSpeed = 30f;
     public AudioSource roverAudioSource;
     public AudioSource gravelAudioSource;
 
@@ -91,6 +94,7 @@ public class CuriosityMovementController : MonoBehaviour
 //        AlignWithFloor();
 //        HugWithFloor();
         StayWithWheels();
+        UpdateWheelSpinning();
         UpdateAudioSources();
     }
 
@@ -208,6 +212,14 @@ public class CuriosityMovementController : MonoBehaviour
         gravelAudioSource.volume = audioVolume;
     }
 
+    void UpdateWheelSpinning()
+    {
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.UpdateSpinSpeed(HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, MaxWheelSpinSpeed));
+        }
+    }
+
     void StayWithWheels()
     {
         Vector3 wheelsSuperPosition = Vector3.zero;
@@ -240,20 +252,24 @@ public class CuriosityMovementController : MonoBehaviour
             turnAngle = turnAngle - 360;
         }
 
+//        Debug.Log("Turn Angle: " + turnAngle);
         if (turnAngle < -37 || turnAngle > 143)
         {
-            Quaternion newLocalRotation = Body.transform.localRotation;
 //            Debug.Log("Correcting from " + newLocalRotation.z);
             normalToPlane *= -1;
 //            Debug.Log("Correcting to " + newLocalRotation.z);
         }
 
-        if (normalToPlane.y < -1)
+        if (normalToPlane.y < 0)
         {
             normalToPlane *= -1;
         }
 
         Quaternion newRotation = Quaternion.LookRotation(Body.transform.forward, normalToPlane);
         Body.transform.rotation = newRotation;
+        
+        Quaternion newLocalRotation = Body.transform.localRotation;
+        newLocalRotation.y = 0;
+        Body.transform.localRotation = newLocalRotation;
     }
 }

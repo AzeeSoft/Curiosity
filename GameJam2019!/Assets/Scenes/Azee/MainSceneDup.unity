@@ -4310,6 +4310,9 @@ MonoBehaviour:
   dayCycleSpeed: 0.2
   sun: {fileID: 575673255}
   moon: {fileID: 1696606724}
+  sunSetColor: {r: 0, g: 0, b: 0, a: 0}
+  sunSetIntensity: 0
+  sunSetLerpRate: 0
   _hourOfDay: 0
   _sunState: 0
 --- !u!4 &712051474

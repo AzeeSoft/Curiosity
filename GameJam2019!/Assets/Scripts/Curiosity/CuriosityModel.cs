@@ -8,7 +8,7 @@ public class CuriosityModel : MonoBehaviour
 
     public float Battery = 100f;
 
-    public float SolarChargeRate = 5f;
+    [ReadOnly] public float SolarChargeRate = 5f;
     public float BatteryDepletionRate = 5f;
 
     public bool solarChargeMode = false;

@@ -56,6 +56,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44129c125b51fc4dacd6dd468e963f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayCycleSpeed: 30
+  dayCycleSpeed: 5
   sun: {fileID: 0}
   moon: {fileID: 0}
+  _hourOfDay: 0
+  _sunState: 0

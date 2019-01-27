@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class CuriosityMovementController : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class CuriosityMovementController : MonoBehaviour
     public Transform FloorAlignTarget;
     public float GroundHugMaxDistance = 3f;
     public float GroundHugMinDistance = 2f;
+    public AudioSource roverAudioSource;
+    public AudioSource gravelAudioSource;
 
     public Vector3 bodyOffset;
 
@@ -88,6 +91,7 @@ public class CuriosityMovementController : MonoBehaviour
 //        AlignWithFloor();
 //        HugWithFloor();
         StayWithWheels();
+        UpdateAudioSources();
     }
 
     void OnDrawGizmos()
@@ -195,6 +199,13 @@ public class CuriosityMovementController : MonoBehaviour
     public float GetSpeed()
     {
         return _rigidbody.velocity.magnitude;
+    }
+
+    void UpdateAudioSources()
+    {
+        float audioVolume = HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 1);
+        roverAudioSource.volume = audioVolume;
+        gravelAudioSource.volume = audioVolume;
     }
 
     void StayWithWheels()

@@ -11,8 +11,10 @@ public class LevelManager : MonoBehaviour
     public GameObject HUD;
     public GameObject WinScreen;
     public GameObject LoseScreen;
+    public GameObject FadeOut;
 
     public string MainMenuSceneName = "MainMenu";
+    public string EndGameCreditsSceneName = "EndCredits";
 
     public event Action<bool> OnGameOver;
     public event Action OnAllTerminalsExplored;
@@ -63,7 +65,7 @@ public class LevelManager : MonoBehaviour
         {
             if (curiosityModel.Battery <= 0)
             {
-                GameLost();
+                StartCoroutine(GameLost());
             }
         }
     }
@@ -90,7 +92,7 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void GameLost()
+    IEnumerator GameLost()
     {
         GameOver = true;
 
@@ -98,15 +100,21 @@ public class LevelManager : MonoBehaviour
         OnGameOver?.Invoke(false);
 
         Time.timeScale = 0;
+        FadeOut.SetActive(true);
+        
+        yield return new WaitForSecondsRealtime(1);
+
+        HelperUtilities.UpdateCursorLock(false);
         LoseScreen.SetActive(true);
+        FadeOut.SetActive(false);
     }
 
     public void FinalBaseReached()
     {
-        GameWon();
+        StartCoroutine(GameWon());
     }
 
-    void GameWon()
+    IEnumerator GameWon()
     {
         GameOver = true;
 
@@ -114,7 +122,11 @@ public class LevelManager : MonoBehaviour
         OnGameOver?.Invoke(true);
 
         Time.timeScale = 0;
-        WinScreen.SetActive(true);
+        FadeOut.SetActive(true);
+        
+        yield return new WaitForSecondsRealtime(1);
+        
+        SceneManager.LoadScene(EndGameCreditsSceneName);
     }
 
     public void Restart()

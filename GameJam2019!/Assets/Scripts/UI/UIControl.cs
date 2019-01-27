@@ -18,7 +18,7 @@ public class UIControl : MonoBehaviour
         mainMenu = GameObject.Find("MMenu");
         credsMenu = GameObject.Find("CMenu");
         optMenu = GameObject.Find("OMenu");
-        sceneName = "TestGame";
+        sceneName = "MainScene";
 
         mainMenu.SetActive(true);
         credsMenu.SetActive(false);

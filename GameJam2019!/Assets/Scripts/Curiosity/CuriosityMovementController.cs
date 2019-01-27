@@ -245,8 +245,9 @@ public class CuriosityMovementController : MonoBehaviour
         Transform thirdPersonCameraTransform = _curiosityModel.thirdPersonPlayerCamera.camera.transform;
 
 //        HeadRotY.transform.rotation = Quaternion.Euler(0,thirdPersonCameraTransform.rotation.eulerAngles.y,0);
-        HeadRotX.transform.rotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
+        Quaternion targetRotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
             thirdPersonCameraTransform.rotation.eulerAngles.y, 0);
+        HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, Time.deltaTime);
     }
 
     void StayWithWheels()

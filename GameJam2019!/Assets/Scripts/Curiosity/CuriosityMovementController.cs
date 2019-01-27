@@ -163,14 +163,14 @@ public class CuriosityMovementController : MonoBehaviour
         Avatar.transform.Rotate(transform.up, _currentRotationAngle);
 
 
-        /*// Clamping the x and z rotations
-        Vector3 rotationAngles = transform.rotation.eulerAngles;
+        // Clamping the x and z rotations
+        Vector3 rotationAngles = Avatar.transform.rotation.eulerAngles;
 
         rotationAngles.x = HelperUtilities.ClampAngle(rotationAngles.x, -MaxRotation, MaxRotation);
         rotationAngles.z = HelperUtilities.ClampAngle(rotationAngles.z, -MaxRotation, MaxRotation);
 
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(rotationAngles),
-            Time.fixedDeltaTime * AntiRotationSpeed);*/
+        Avatar.transform.rotation = Quaternion.Lerp(Avatar.transform.rotation, Quaternion.Euler(rotationAngles),
+            Time.fixedDeltaTime * AntiRotationSpeed);
     }
 
     public float GetSpeed()
@@ -222,5 +222,21 @@ public class CuriosityMovementController : MonoBehaviour
         wheelsSuperPosition /= wheels.Count;
 
         Body.transform.position = wheelsSuperPosition + bodyOffset;
+
+
+        Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
+            FrontRightWheelSetup.wheel.transform.position);
+        
+        Vector3 middleNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
+            FrontRightWheelSetup.wheel.transform.position);
+        
+        Vector3 backNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
+            FrontRightWheelSetup.wheel.transform.position);
+        
+        Vector3 normalToPlane = (frontNormal + middleNormal + backNormal) / 3;
+        normalToPlane.y = Mathf.Abs(normalToPlane.y);
+//        normalToPlane.Normalize();
+
+        Body.transform.rotation = Quaternion.LookRotation(Body.transform.forward, normalToPlane);
     }
 }

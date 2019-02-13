@@ -37,6 +37,7 @@ public class CuriosityMovementController : MonoBehaviour
     public float MaxReverseThreshold = 0.8f;
     public float Acceleration = 3;
     public float Deceleration = 1;
+    public float BoostFactor = 2f;
 
     [Header("Turning")] public float TurnSpeed = 0.1f;
     public float TurnAcceleration = 8;
@@ -156,6 +157,10 @@ public class CuriosityMovementController : MonoBehaviour
 //        yLessForward.y = 0;
 
         Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
+        if (curiosityInput.Boost)
+        {
+            targetVelocity *= BoostFactor;
+        }
 
         bool slowingDown = targetVelocity.magnitude < _rigidbody.velocity.magnitude;
         _rigidbody.velocity =

@@ -17,6 +17,7 @@ public class CuriosityInputController : MonoBehaviour
         public float Turn;
         public bool Boost;
         public bool Scan;
+        public bool Respawn;
     }
 
     [SerializeField] private CuriosityInputSettings _curiosityInputSettings = new CuriosityInputSettings();
@@ -38,5 +39,6 @@ public class CuriosityInputController : MonoBehaviour
         _curiosityInput.Forward = Input.GetAxis("Vertical");
         _curiosityInput.Boost = Input.GetButton("Boost");
         _curiosityInput.Scan = Input.GetButtonDown("Scan");
+        _curiosityInput.Respawn = Input.GetButtonDown("Respawn");
     }
 }

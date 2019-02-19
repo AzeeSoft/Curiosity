@@ -12,25 +12,16 @@ public class CuriosityModel : MonoBehaviour
     public float BatteryDepletionRate = 5f;
     public float ChargePadRechargeAmount = 100f;
 
-    [ReadOnly] public bool solarChargeMode = false;
-
     public Transform CamTarget;
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
     public GameObject spotLightObject;
 
+    private CuriosityInputController _curiosityInputController;
+    private Sun _sun;
+
     void Awake()
     {
-        LevelManager.Instance.GetSun().OnSunStateChanged += newState =>
-        {
-            if (newState == Sun.SunState.Day)
-            {
-                spotLightObject.SetActive(false);
-            }
-            else
-            {
-                spotLightObject.SetActive(true);
-            }
-        };
+        _curiosityInputController = GetComponent<CuriosityInputController>();
     }
 
     // Start is called before the first frame update
@@ -38,20 +29,24 @@ public class CuriosityModel : MonoBehaviour
     {
         AvatarColliderGenerator avatarColliderGenerator = GetComponentInChildren<AvatarColliderGenerator>();
 //        avatarColliderGenerator.GenerateMeshColliders();
+        _sun = LevelManager.Instance.GetSun();
+
+        _sun.OnSunStateChanged += newState => { UpdateSpotLight(); };
+        UpdateSpotLight();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Forced Respawn
-        if (Input.GetButtonDown("Respawn"))
-        {
-            Respawn();
-        }
-        
         if (Battery > 0)
         {
-            if (solarChargeMode)
+            CuriosityInputController.CuriosityInput input = _curiosityInputController.GetPlayerInput();
+            if (input.Respawn)
+            {
+                Respawn();
+            }
+
+            if (_sun.GetSunState() == Sun.SunState.Day)
             {
                 RechargeBattery(SolarChargeRate * Time.deltaTime);
             }
@@ -86,6 +81,12 @@ public class CuriosityModel : MonoBehaviour
         targetPos.y += 10f;
 
         transform.position = targetPos;
+    }
+
+    void UpdateSpotLight()
+    {
+        Sun.SunState curSunState = _sun.GetSunState();
+        spotLightObject.SetActive(curSunState != Sun.SunState.Day);
     }
 
     private void OnTriggerEnter(Collider other)

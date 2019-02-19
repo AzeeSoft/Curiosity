@@ -44,7 +44,7 @@ public class Sun : MonoBehaviour
         originalSunColor = _sunLight.color;
         originalSunIntensity = _sunLight.intensity;
         
-        UpdateSunState();
+//        UpdateSunState();
     }
 
     // Update is called once per frame
@@ -57,6 +57,11 @@ public class Sun : MonoBehaviour
 //        moon.transform.LookAt(Vector3.zero);
 
         UpdateSunState();
+    }
+
+    public SunState GetSunState()
+    {
+        return _sunState;
     }
 
     int GetHourOfTheDay()

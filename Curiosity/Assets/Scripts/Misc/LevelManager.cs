@@ -47,10 +47,6 @@ public class LevelManager : MonoBehaviour
 
         curiosityModel = FindObjectOfType<CuriosityModel>();
         _sun = GetComponent<Sun>();
-        _sun.OnSunStateChanged += newSunState =>
-        {
-            curiosityModel.solarChargeMode = (newSunState == Sun.SunState.Day);
-        };
     }
 
     // Start is called before the first frame update

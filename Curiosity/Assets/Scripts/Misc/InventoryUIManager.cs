@@ -6,6 +6,9 @@ public class InventoryUIManager : MonoBehaviour
 {
     public Transform itemsParent;
 
+    public GameObject invPanel;
+    public bool invActive = false;
+
     InventoryManager inventory;
 
     InventorySlot[] slots;
@@ -20,6 +23,30 @@ public class InventoryUIManager : MonoBehaviour
 
         UpdateUI();
 
+    }
+
+    private void Update()
+    {
+        if(Input.GetButtonUp("Inventory"))
+        {
+            if (!invActive)
+            {
+                invActive = true;
+            }
+            else
+            {
+                invActive = false;
+            }
+        }
+
+        if (invActive)
+        {
+            invPanel.SetActive(true);
+        }
+        else
+        {
+            invPanel.SetActive(false);
+        }
     }
 
     void UpdateUI()

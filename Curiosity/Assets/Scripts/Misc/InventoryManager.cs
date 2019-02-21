@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public Dictionary<string, Dictionary<string, InventoryObject>> Inventory;
-    public Dictionary<string, InventoryObject> collectables, upgrades, misc;
+    public delegate void OnInvChanged();
+    public OnInvChanged onInvChangedCallback;
+
+    public int miscSpace = 15;
+    public int collectableSpace = 15;
+
+    // public List<Dictionary<string, InventoryObject>> Inventory;
+    public Dictionary<string, InventoryObject> collectables = new Dictionary<string, InventoryObject>();
+    public Dictionary<string, InventoryObject> misc = new Dictionary<string, InventoryObject>();
+    public Dictionary<string, InventoryObject> upgrades = new Dictionary<string, InventoryObject>();
 
     //Singelton region
     #region Instancing
@@ -31,6 +39,7 @@ public class InventoryManager : MonoBehaviour
             return;
         }
         m_instance = this;
+
     }
 
     void OnDestroy()
@@ -47,9 +56,9 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         //replace later with loading inventory from save data **ADD SAVING AND LOADING**
-        Inventory.Add("collectables", collectables);
-        Inventory.Add("upgrades", upgrades);
-        Inventory.Add("misc", misc);
+        //Inventory.Add(collectables);
+        //Inventory.Add(upgrades);
+        //Inventory.Add(misc);
     }
 
     public void AddObjectToInventory(InventoryObject _object)
@@ -57,14 +66,29 @@ public class InventoryManager : MonoBehaviour
         switch (_object.pickUpType)
         {
             case InventoryObject.Type.Collectable:
+                if(collectables.Count > collectableSpace)
+                {
+                    Debug.LogWarning("Not enough room in collectables.");
+                    return;
+                }
                 collectables.Add(_object.name, _object);
                 break;
             case InventoryObject.Type.Misc:
+                if (misc.Count > miscSpace)
+                {
+                    Debug.LogWarning("Not enough room in misc.");
+                    return;
+                }
                 misc.Add(_object.name, _object);
                 break;
             case InventoryObject.Type.Upgrade:
                 upgrades.Add(_object.name, _object);
                 break;
+        }
+
+        if (onInvChangedCallback != null)
+        {
+            onInvChangedCallback.Invoke();
         }
     }
 
@@ -102,6 +126,10 @@ public class InventoryManager : MonoBehaviour
                     Debug.LogError(_object.name + " NOT FOUND IN UPGRADES!!");
                 }
                 break;
+        }
+        if (onInvChangedCallback != null)
+        {
+            onInvChangedCallback.Invoke();
         }
     }
 

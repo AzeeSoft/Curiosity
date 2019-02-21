@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
     {
         if (!GameOver)
         {
-            if (curiosityModel.Battery <= 0)
+            if (!curiosityModel.IsAlive())
             {
                 StartCoroutine(GameLost());
             }

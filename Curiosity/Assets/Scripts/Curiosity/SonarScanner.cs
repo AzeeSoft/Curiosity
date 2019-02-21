@@ -55,7 +55,7 @@ public class SonarScanner : MonoBehaviour
 
         if (input.Scan && _canScan && CooldownLevel <= 0)
         {
-            if (_curiosityModel.Battery > 0)
+            if (_curiosityModel.IsAlive())
             {
                 ScanEnvironment();
             }

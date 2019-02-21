@@ -99,7 +99,7 @@ public class CuriosityMovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_curiosityModel.Battery > 0)
+        if (_curiosityModel.IsAlive())
         {
             Move(_curiosityInputController.GetPlayerInput());
         }

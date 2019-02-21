@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Experimental.UIElements.StyleEnums;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class Wheel : MonoBehaviour
 {
@@ -47,8 +50,8 @@ public class Wheel : MonoBehaviour
     {
 //        Debug.Log("Children " + transform.childCount);
 
-        AlignWithFloor();
         HugTheGround();
+        AlignWithFloor();
         Spin();
     }
 
@@ -96,7 +99,8 @@ public class Wheel : MonoBehaviour
 //        wheelHolder.transform.localRotation = Quaternion.Euler(0, 0, 0);
 //        wheelHolder.transform.Rotate(wheelHolder.transform.right, spinSpeed * 10);
         Quaternion newRotation = wheelHolder.transform.localRotation;
-        newRotation = Quaternion.Euler(newRotation.eulerAngles.x+spinSpeed, newRotation.eulerAngles.y, newRotation.eulerAngles.z);
+        newRotation = Quaternion.Euler(newRotation.eulerAngles.x + spinSpeed, newRotation.eulerAngles.y,
+            newRotation.eulerAngles.z);
         /*newRotation.x += spinSpeed;
         if (newRotation.x > 360)
         {
@@ -130,22 +134,64 @@ public class Wheel : MonoBehaviour
 
     void HugTheGround()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, LayerMask.GetMask("Wheel", "Curiosity")))
+        RaycastHit upHit;
+        RaycastHit downHit;
+
+        float upHitDistance = 0;
+
+        bool upFound = Physics.Raycast(transform.position + (Vector3.up * radius * 2), Vector3.down, out upHit,
+            LayerMask.GetMask("Wheel", "Curiosity"));
+        bool downFound = Physics.Raycast(transform.position, Vector3.down, out downHit,
+            LayerMask.GetMask("Wheel", "Curiosity"));
+
+        if (upFound)
+        {
+            if (upHit.point.y > transform.position.y)
+            {
+                upHitDistance = Vector3.Distance(upHit.point, transform.position);
+//                Debug.Log("Up: " + upHitDistance);
+            }
+            else
+            {
+                upFound = false;
+            }
+        }
+
+        if (upFound && downFound)
+        {
+            if (downHit.distance <= upHitDistance)
+            {
+                upFound = false;
+            }
+            else
+            {
+                downFound = false;
+            }
+        }
+
+        if (downFound)
         {
             Vector3 newPos = transform.position;
-            if (hit.distance > radius)
+            if (downHit.distance > radius)
             {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y - (hit.distance - radius),
+                newPos.y = Mathf.Lerp(newPos.y, newPos.y - (downHit.distance - radius),
                     Time.fixedDeltaTime * groundHugSpeed);
 //                newPos.y = newPos.y - (hit.distance - radius);
             }
             else
             {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y + (radius - hit.distance),
+                newPos.y = Mathf.Lerp(newPos.y, newPos.y + (radius - downHit.distance),
                     Time.fixedDeltaTime * groundHugSpeed);
 //                newPos.y = newPos.y + (radius - hit.distance);
             }
+
+            transform.position = newPos;
+        }
+        else if (upFound)
+        {
+            Vector3 newPos = transform.position;
+            newPos.y = Mathf.Lerp(newPos.y, newPos.y + (upHitDistance + radius),
+                Time.fixedDeltaTime * groundHugSpeed);
 
             transform.position = newPos;
         }

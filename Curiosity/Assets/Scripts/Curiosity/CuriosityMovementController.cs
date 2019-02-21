@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Audio;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class CuriosityMovementController : MonoBehaviour
 {
@@ -19,6 +22,18 @@ public class CuriosityMovementController : MonoBehaviour
             wheel = WheelObject.AddComponent<Wheel>();
             wheel.radius = radius;
         }
+    }
+
+    [Serializable]
+    private class GizmosData
+    {
+        public Vector3 wheelsSuperPosition = Vector3.zero;
+        public Vector3 wheelsPlaneNormal = Vector3.up;
+
+        public Vector3 frontWheelsNormal = Vector3.up;
+        public Vector3 backWheelsNormal = Vector3.up;
+
+        public Vector3 bodyForward = Vector3.forward;
     }
 
     [Header("Required Objects")] public WheelSetup FrontLeftWheelSetup;
@@ -65,6 +80,8 @@ public class CuriosityMovementController : MonoBehaviour
     private float _currentRotationAngle = 0;
     private bool _invertTurn = false;
 
+    private GizmosData _gizmosData = new GizmosData();
+
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -104,48 +121,44 @@ public class CuriosityMovementController : MonoBehaviour
             Move(_curiosityInputController.GetPlayerInput());
         }
 
-//        AlignWithFloor();
-//        HugWithFloor();
         StayWithWheels();
         UpdateWheelSpinning();
     }
 
-    void OnDrawGizmos()
+    private void LateUpdate()
     {
-        /*Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
-            FrontRightWheelSetup.wheel.transform.position);
-
-        Vector3 middleNormal = Vector3.Cross(MiddleLeftWheelSetup.wheel.transform.position,
-            MiddleRightWheelSetup.wheel.transform.position);
-
-        Vector3 backNormal = Vector3.Cross(BackLeftWheelSetup.wheel.transform.position,
-            BackRightWheelSetup.wheel.transform.position);
-
-        Gizmos.color = Color.blue;
-
-        Vector3 frontStart = (FrontLeftWheelSetup.wheel.transform.position +
-                              FrontRightWheelSetup.wheel.transform.position) / 2;
-        Vector3 middleStart = (MiddleLeftWheelSetup.wheel.transform.position +
-                               MiddleRightWheelSetup.wheel.transform.position) / 2;
-        Vector3 backStart = (BackLeftWheelSetup.wheel.transform.position +
-                             BackRightWheelSetup.wheel.transform.position) / 2;
-
-        Gizmos.DrawRay(frontStart, frontStart + frontNormal);
-        Gizmos.DrawRay(middleStart, middleStart + middleNormal);
-        Gizmos.DrawRay(backStart, backStart + backNormal);*/
+        ClampAngles();
     }
 
-    /*public void Move(CuriosityInputController.CuriosityInput curiosityInput)
+    void OnDrawGizmos()
     {
-        // Forward/Backward Movement
-        // Clamping negative value to slow down backward movement
-        float forward = Mathf.Clamp(curiosityInput.Forward, -MaxReverseThreshold, 1f);
+        try
+        {
+            Gizmos.color = Color.green;
 
-        Vector3 yLessForward = transform.forward;
-        Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
-        
-        _rigidbody.AddForce(targetVelocity);
-    }*/
+            Vector3 frontStart = (FrontLeftWheelSetup.wheel.transform.position +
+                                  FrontRightWheelSetup.wheel.transform.position) / 2;
+            Vector3 middleStart = (MiddleLeftWheelSetup.wheel.transform.position +
+                                   MiddleRightWheelSetup.wheel.transform.position) / 2;
+            Vector3 backStart = (BackLeftWheelSetup.wheel.transform.position +
+                                 BackRightWheelSetup.wheel.transform.position) / 2;
+
+            Gizmos.DrawRay(frontStart, _gizmosData.frontWheelsNormal);
+            Gizmos.DrawRay(backStart, _gizmosData.backWheelsNormal);
+
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawRay(_gizmosData.wheelsSuperPosition,
+                _gizmosData.wheelsPlaneNormal);
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawRay(Body.transform.position,
+                _gizmosData.bodyForward * 3);
+        }
+        catch (Exception e)
+        {
+        }
+    }
 
     public void Move(CuriosityInputController.CuriosityInput curiosityInput)
     {
@@ -153,10 +166,10 @@ public class CuriosityMovementController : MonoBehaviour
         // Clamping negative value to slow down backward movement
         float forward = Mathf.Clamp(curiosityInput.Forward, -MaxReverseThreshold, 1f);
 
-        Vector3 yLessForward = Avatar.transform.forward;
-//        yLessForward.y = 0;
+        Vector3 yLessAvatarForward = Avatar.transform.forward;
+        yLessAvatarForward.y = 0;
 
-        Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
+        Vector3 targetVelocity = yLessAvatarForward * forward * MaxSpeed;
         if (curiosityInput.Boost)
         {
             targetVelocity *= BoostFactor;
@@ -197,15 +210,21 @@ public class CuriosityMovementController : MonoBehaviour
             targetAngle *= -1;
         }
 
-        bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle) - Mathf.Sign(_currentRotationAngle)) < 0.0001) &&
-                               Mathf.Abs(targetAngle) < Mathf.Abs(_currentRotationAngle);
+        // TODO (Azee): Decide whether this turn slowing down is even needed
+        /*bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle - _currentRotationAngle)) > 0) &&
+                               Mathf.Abs(targetAngle) < Mathf.Abs(_currentRotationAngle);*/
+
+//        bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle - _currentRotationAngle)) < 15f);
+        bool slowingDownTurn = false;
 
         _currentRotationAngle = Mathf.LerpAngle(_currentRotationAngle, targetAngle,
             (slowingDownTurn ? TurnDeceleration : TurnAcceleration) * Time.fixedDeltaTime);
 
         Avatar.transform.Rotate(transform.up, _currentRotationAngle);
+    }
 
-
+    private void ClampAngles()
+    {
         // Clamping the x and z rotations
         Vector3 rotationAngles = Avatar.transform.rotation.eulerAngles;
 
@@ -253,7 +272,6 @@ public class CuriosityMovementController : MonoBehaviour
     {
         Transform thirdPersonCameraTransform = _curiosityModel.thirdPersonPlayerCamera.camera.transform;
 
-//        HeadRotY.transform.rotation = Quaternion.Euler(0,thirdPersonCameraTransform.rotation.eulerAngles.y,0);
         Quaternion targetRotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
             thirdPersonCameraTransform.rotation.eulerAngles.y, 0);
         HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, Time.deltaTime);
@@ -261,6 +279,8 @@ public class CuriosityMovementController : MonoBehaviour
 
     void StayWithWheels()
     {
+        /* Adjusting Body Offset */
+
         Vector3 wheelsSuperPosition = Vector3.zero;
         foreach (Wheel wheel in wheels)
         {
@@ -269,23 +289,46 @@ public class CuriosityMovementController : MonoBehaviour
 
         wheelsSuperPosition /= wheels.Count;
 
-        Body.transform.position = wheelsSuperPosition + bodyOffset;
+        Body.transform.position = wheelsSuperPosition;
+        Body.transform.localPosition += bodyOffset;
 
 
-        Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
-            FrontRightWheelSetup.wheel.transform.position);
+        /* Calculating forward for body */
 
-        Vector3 middleNormal = Vector3.Cross(MiddleLeftWheelSetup.wheel.transform.position,
-            MiddleRightWheelSetup.wheel.transform.position);
+        Vector3 frontSuperPos = (FrontLeftWheelSetup.wheel.transform.position +
+                                 FrontRightWheelSetup.wheel.transform.position) / 2;
 
-        Vector3 backNormal = Vector3.Cross(BackLeftWheelSetup.wheel.transform.position,
-            BackRightWheelSetup.wheel.transform.position);
+        Vector3 backSuperPos = (BackLeftWheelSetup.wheel.transform.position +
+                                BackRightWheelSetup.wheel.transform.position) / 2;
 
-        Vector3 normalToPlane = (frontNormal + middleNormal + backNormal) / 3;
-//        normalToPlane.Normalize();
 
-//        Debug.Log(Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up));
-        float turnAngle = Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up) % 360;
+        Vector3 bodyForward = (frontSuperPos - backSuperPos).normalized;
+
+
+        /* Calculating Normal to Wheels Plane */
+
+        Vector3 frontDir = (FrontLeftWheelSetup.wheel.transform.position -
+                            FrontRightWheelSetup.wheel.transform.position).normalized;
+
+        Vector3 backDir = (BackLeftWheelSetup.wheel.transform.position -
+                           BackRightWheelSetup.wheel.transform.position).normalized;
+
+        Vector3 frontNormal = Vector3.Cross(frontDir, bodyForward).normalized;
+        Vector3 backNormal = Vector3.Cross(backDir, bodyForward).normalized;
+
+        if (frontNormal.y < 0)
+        {
+            frontNormal *= -1;
+        }
+
+        if (backNormal.y < 0)
+        {
+            backNormal *= -1;
+        }
+
+        Vector3 normalToPlane = (frontNormal + backNormal).normalized;
+
+        /*float turnAngle = Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up) % 360;
         if (turnAngle > 180)
         {
             turnAngle = turnAngle - 360;
@@ -294,21 +337,32 @@ public class CuriosityMovementController : MonoBehaviour
 //        Debug.Log("Turn Angle: " + turnAngle);
         if (turnAngle < -37 || turnAngle > 143)
         {
-//            Debug.Log("Correcting from " + newLocalRotation.z);
             normalToPlane *= -1;
-//            Debug.Log("Correcting to " + newLocalRotation.z);
         }
 
         if (normalToPlane.y < 0)
         {
             normalToPlane *= -1;
-        }
+        }*/
 
-        Quaternion newRotation = Quaternion.LookRotation(Body.transform.forward, normalToPlane);
+
+        /* Assigning Body Rotation */
+
+        Quaternion newRotation = Quaternion.LookRotation(bodyForward, normalToPlane);
         Body.transform.rotation = newRotation;
 
-        Quaternion newLocalRotation = Body.transform.localRotation;
-        newLocalRotation.y = 0;
+        Vector3 eulerAngles = Body.transform.localRotation.eulerAngles;
+        eulerAngles.y = 0;
+        Quaternion newLocalRotation = Quaternion.Euler(eulerAngles);
         Body.transform.localRotation = newLocalRotation;
+
+
+        /* Preparing data for Gizmos */
+
+        _gizmosData.wheelsSuperPosition = wheelsSuperPosition;
+        _gizmosData.wheelsPlaneNormal = normalToPlane;
+        _gizmosData.frontWheelsNormal = frontNormal;
+        _gizmosData.backWheelsNormal = backNormal;
+        _gizmosData.bodyForward = bodyForward;
     }
 }

@@ -17,10 +17,15 @@ public class CuriosityMovementController : MonoBehaviour
 
         [HideInInspector] public Wheel wheel;
 
-        public void SetupWheel()
+        public void SetupWheel(GameObject trailPrefab = null)
         {
             wheel = WheelObject.AddComponent<Wheel>();
             wheel.radius = radius;
+
+            if (trailPrefab)
+            {
+                Instantiate(trailPrefab, WheelObject.transform);
+            }
         }
     }
 
@@ -42,6 +47,7 @@ public class CuriosityMovementController : MonoBehaviour
     public WheelSetup FrontRightWheelSetup;
     public WheelSetup MiddleRightWheelSetup;
     public WheelSetup BackRightWheelSetup;
+    public GameObject WheelTrailPrefab;
     public GameObject Avatar;
     public GameObject Body;
     public GameObject HeadRotY;
@@ -90,10 +96,10 @@ public class CuriosityMovementController : MonoBehaviour
 
         FrontLeftWheelSetup.SetupWheel();
         MiddleLeftWheelSetup.SetupWheel();
-        BackLeftWheelSetup.SetupWheel();
+        BackLeftWheelSetup.SetupWheel(WheelTrailPrefab);
         FrontRightWheelSetup.SetupWheel();
         MiddleRightWheelSetup.SetupWheel();
-        BackRightWheelSetup.SetupWheel();
+        BackRightWheelSetup.SetupWheel(WheelTrailPrefab);
 
         wheels.Add(FrontLeftWheelSetup.wheel);
         wheels.Add(MiddleLeftWheelSetup.wheel);

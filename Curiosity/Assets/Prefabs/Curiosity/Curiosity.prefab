@@ -233,6 +233,8 @@ MonoBehaviour:
     WheelObject: {fileID: 1357323182260342972}
     radius: 0.3
     wheel: {fileID: 0}
+  WheelTrailPrefab: {fileID: 6202701597513996283, guid: bdb31bd1d7a3a0449b1cc0019073a759,
+    type: 3}
   Avatar: {fileID: 462240520768547546}
   Body: {fileID: 1357323182260343054}
   HeadRotY: {fileID: 1357323182260343060}
@@ -259,7 +261,7 @@ MonoBehaviour:
   MaxWheelSpinSpeed: 30
   roverAudioSource: {fileID: 1003311859719391706}
   gravelAudioSource: {fileID: 4271338886372116178}
-  bodyOffset: {x: 0, y: 0.75, z: 0}
+  bodyOffset: {x: 0, y: 25, z: 0}
 --- !u!114 &2726949152520061088
 MonoBehaviour:
   m_ObjectHideFlags: 0

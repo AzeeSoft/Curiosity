@@ -259,7 +259,7 @@ MonoBehaviour:
   MaxWheelSpinSpeed: 30
   roverAudioSource: {fileID: 1003311859719391706}
   gravelAudioSource: {fileID: 4271338886372116178}
-  bodyOffset: {x: 0, y: 0.75, z: 0}
+  bodyOffset: {x: 0, y: 25, z: 0}
 --- !u!114 &2726949152520061088
 MonoBehaviour:
   m_ObjectHideFlags: 0

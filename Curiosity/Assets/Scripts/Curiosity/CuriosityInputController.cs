@@ -16,6 +16,7 @@ public class CuriosityInputController : MonoBehaviour
         public float Forward;
         public float Turn;
         public bool Boost;
+        public bool Jump;
         public bool Scan;
         public bool Respawn;
     }
@@ -38,6 +39,7 @@ public class CuriosityInputController : MonoBehaviour
         _curiosityInput.Turn = Input.GetAxis("Horizontal");
         _curiosityInput.Forward = Input.GetAxis("Vertical");
         _curiosityInput.Boost = Input.GetButton("Boost");
+        _curiosityInput.Jump = Input.GetButton("Jump");
         _curiosityInput.Scan = Input.GetButtonDown("Scan");
         _curiosityInput.Respawn = Input.GetButtonDown("Respawn");
     }

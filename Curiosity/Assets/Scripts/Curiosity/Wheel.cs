@@ -10,12 +10,16 @@ public class Wheel : MonoBehaviour
 {
     public bool inverted = false;
     public float radius;
-    public float groundHugSpeed = 30;
 
     public float spinSpeed = 0;
+    public bool onGround { get; private set; } = false;
 
     private GameObject wheelHolder;
     private bool initialized = false;
+    private float groundHugSpeed => _curiosityMovementController.GroundHugSpeed;
+
+    private TrailRenderer _trailRenderer;
+    private CuriosityMovementController _curiosityMovementController;
 
     void Awake()
     {
@@ -38,6 +42,9 @@ public class Wheel : MonoBehaviour
         }
 
 //        GenerateMeshColliders();
+
+        _trailRenderer = GetComponentInChildren<TrailRenderer>();
+        _curiosityMovementController = GetComponentInParent<CuriosityMovementController>();
     }
 
     // Start is called before the first frame update
@@ -45,7 +52,11 @@ public class Wheel : MonoBehaviour
     {
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        UpdateTrailRendererState();
+    }
+
     void FixedUpdate()
     {
 //        Debug.Log("Children " + transform.childCount);
@@ -75,6 +86,14 @@ public class Wheel : MonoBehaviour
 
             meshCollider.convex = true;
             meshCollider.sharedMesh = meshFilter.sharedMesh;
+        }
+    }
+
+    void UpdateTrailRendererState()
+    {
+        if (_trailRenderer)
+        {
+            _trailRenderer.emitting = onGround;
         }
     }
 
@@ -157,6 +176,14 @@ public class Wheel : MonoBehaviour
             }
         }
 
+        if (downFound)
+        {
+            if (downHit.distance > _curiosityMovementController.GroundHugMaxDistance)
+            {
+                downFound = false;
+            }
+        }
+
         if (upFound && downFound)
         {
             if (downHit.distance <= upHitDistance)
@@ -169,9 +196,11 @@ public class Wheel : MonoBehaviour
             }
         }
 
+        onGround = true;
+        Vector3 newPos = transform.position;
+
         if (downFound)
         {
-            Vector3 newPos = transform.position;
             if (downHit.distance > radius)
             {
                 newPos.y = Mathf.Lerp(newPos.y, newPos.y - (downHit.distance - radius),
@@ -184,16 +213,21 @@ public class Wheel : MonoBehaviour
                     Time.fixedDeltaTime * groundHugSpeed);
 //                newPos.y = newPos.y + (radius - hit.distance);
             }
-
-            transform.position = newPos;
         }
         else if (upFound)
         {
-            Vector3 newPos = transform.position;
             newPos.y = Mathf.Lerp(newPos.y, newPos.y + (upHitDistance + radius),
                 Time.fixedDeltaTime * groundHugSpeed);
-
-            transform.position = newPos;
         }
+        else
+        {
+            onGround = false;
+
+            // Applying Normal Gravity   
+            newPos.y = Mathf.Lerp(newPos.y, newPos.y - _curiosityMovementController.Gravity,
+                Time.fixedDeltaTime);
+        }
+
+        transform.position = newPos;
     }
 }

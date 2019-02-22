@@ -19,13 +19,13 @@ public class CuriosityMovementController : MonoBehaviour
 
         public void SetupWheel(GameObject trailPrefab = null)
         {
-            wheel = WheelObject.AddComponent<Wheel>();
-            wheel.radius = radius;
-
             if (trailPrefab)
             {
                 Instantiate(trailPrefab, WheelObject.transform);
             }
+
+            wheel = WheelObject.AddComponent<Wheel>();
+            wheel.radius = radius;
         }
     }
 
@@ -67,12 +67,13 @@ public class CuriosityMovementController : MonoBehaviour
 
     [Header("TiltLimits")] public float MaxZTilt = 60f;
 
+    [Header("Wheel Data")] public float GroundHugMaxDistance = 3f;
+    public float GroundHugSpeed = 30f;
+    public float Gravity = 10f;
+    public float MaxWheelSpinSpeed = 30f;
+
     [Header("Others")] public float MaxRotation = 2f;
     public float AntiRotationSpeed = 3f;
-    public Transform FloorAlignTarget;
-    public float GroundHugMaxDistance = 3f;
-    public float GroundHugMinDistance = 2f;
-    public float MaxWheelSpinSpeed = 30f;
     public AudioSource roverAudioSource;
     public AudioSource gravelAudioSource;
 
@@ -81,6 +82,7 @@ public class CuriosityMovementController : MonoBehaviour
     private Rigidbody _rigidbody;
     private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;
+    private ThrusterController _thrusterController;
     private List<Wheel> wheels = new List<Wheel>();
 
     private float _currentRotationAngle = 0;
@@ -93,6 +95,7 @@ public class CuriosityMovementController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _curiosityModel = GetComponent<CuriosityModel>();
         _curiosityInputController = GetComponent<CuriosityInputController>();
+        _thrusterController = GetComponent<ThrusterController>();
 
         FrontLeftWheelSetup.SetupWheel();
         MiddleLeftWheelSetup.SetupWheel();
@@ -246,6 +249,11 @@ public class CuriosityMovementController : MonoBehaviour
         return _rigidbody.velocity.magnitude;
     }
 
+    public bool AreWheelsOnGround()
+    {
+        return wheels.TrueForAll((wheel) => wheel.onGround);
+    }
+
     void UpdateAudioSources()
     {
         float audioVolume = HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 1);
@@ -266,11 +274,14 @@ public class CuriosityMovementController : MonoBehaviour
 
     void UpdateDustParticles()
     {
-        foreach (ParticleSystem dustParticleSystem in DustParticleSystems)
+        if (AreWheelsOnGround())
         {
-            ParticleSystem.MainModule mainModule = dustParticleSystem.main;
-            int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 5);
-            dustParticleSystem.Emit(emitParticles);
+            foreach (ParticleSystem dustParticleSystem in DustParticleSystems)
+            {
+                ParticleSystem.MainModule mainModule = dustParticleSystem.main;
+                int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 5);
+                dustParticleSystem.Emit(emitParticles);
+            }
         }
     }
 

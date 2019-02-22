@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curiosityModel: {fileID: 0}
-  followSpeed: 2
+  followSpeed: 3
   rotationSpeed: 30
   minAngle: 5
   maxAngle: 60

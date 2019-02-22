@@ -110,6 +110,9 @@ public class CuriosityMovementController : MonoBehaviour
         wheels.Add(FrontRightWheelSetup.wheel);
         wheels.Add(MiddleRightWheelSetup.wheel);
         wheels.Add(BackRightWheelSetup.wheel);
+
+        roverAudioSource.volume = 0;
+        gravelAudioSource.volume = 0;
     }
 
     void Start()

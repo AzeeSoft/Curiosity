@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class SonarScanner : MonoBehaviour
 {
+    public bool showGizmos = false;
+    
     public float maxScanRadius = 100f;
     public float scanRadiusGrowthRate = 10f;
     public float scanStayTime = 5f;
@@ -38,6 +40,11 @@ public class SonarScanner : MonoBehaviour
 
     private void OnDrawGizmos()
     {
+        if (!showGizmos)
+        {
+            return;
+        }
+
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, maxScanRadius);
 

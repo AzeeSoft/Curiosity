@@ -257,8 +257,16 @@ public class CuriosityMovementController : MonoBehaviour
     void UpdateAudioSources()
     {
         float audioVolume = HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 1);
-        roverAudioSource.volume = audioVolume;
-        gravelAudioSource.volume = audioVolume;
+        
+        if (!AreWheelsOnGround())
+        {
+            audioVolume = 0;
+        }
+
+        float audioFadeSpeed = 7;
+        
+        roverAudioSource.volume = Mathf.Lerp(roverAudioSource.volume, audioVolume, Time.deltaTime * audioFadeSpeed);
+        gravelAudioSource.volume = Mathf.Lerp(gravelAudioSource.volume, audioVolume, Time.deltaTime * audioFadeSpeed);
     }
 
     void UpdateWheelSpinning()
@@ -279,7 +287,7 @@ public class CuriosityMovementController : MonoBehaviour
             foreach (ParticleSystem dustParticleSystem in DustParticleSystems)
             {
                 ParticleSystem.MainModule mainModule = dustParticleSystem.main;
-                int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 5);
+                int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 25);
                 dustParticleSystem.Emit(emitParticles);
             }
         }

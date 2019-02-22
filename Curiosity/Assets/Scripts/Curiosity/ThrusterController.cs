@@ -22,7 +22,7 @@ public class ThrusterController : MonoBehaviour
         _curiosityMovementController = GetComponent<CuriosityMovementController>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         CuriosityInputController.CuriosityInput input = _inputController.GetPlayerInput();
 

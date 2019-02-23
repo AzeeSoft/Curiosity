@@ -12,23 +12,16 @@ public class Scannable : MonoBehaviour
 
     [SerializeField] [ReadOnly] private bool scannableMode = false;
 
+
     void Awake()
     {
         _sonarScanner = FindObjectOfType<SonarScanner>();
-
-        foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
-        {
-            originalMaterials[renderer] = new List<Material>();
-            foreach (Material material in renderer.sharedMaterials)
-            {
-                originalMaterials[renderer].Add(material);
-            }
-        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        UpdateOriginalMaterials();
     }
 
     // Update is called once per frame
@@ -47,6 +40,18 @@ public class Scannable : MonoBehaviour
             if (scannableMode)
             {
                 SwitchToOriginalMaterial();
+            }
+        }
+    }
+
+    public void UpdateOriginalMaterials()
+    {
+        foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
+        {
+            originalMaterials[renderer] = new List<Material>();
+            foreach (Material material in renderer.sharedMaterials)
+            {
+                originalMaterials[renderer].Add(material);
             }
         }
     }

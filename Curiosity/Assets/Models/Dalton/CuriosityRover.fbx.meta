@@ -136,6 +136,10 @@ ModelImporter:
     100260: Wire_4
     100262: Wire_Main
     100264: Wires
+    100266: Body 1
+    100268: Wheel_ML
+    100270: Wheel_MR
+    100272: Wheels
     400000: AntennaThingy
     400002: Arm
     400004: Arm_1
@@ -269,12 +273,19 @@ ModelImporter:
     400260: Wire_4
     400262: Wire_Main
     400264: Wires
+    400266: Body 1
+    400268: Wheel_ML
+    400270: Wheel_MR
+    400272: Wheels
     2100000: lambert1
     2100002: LegsAndWheels
     2100004: equipment
     2100006: Body1
     2100008: NeckAndHead
     2100010: SolarPanels
+    2100012: Equipment1
+    2100014: HeadAndNeck
+    2100016: WheelsAndLegs
     2300000: AntennaThingy
     2300002: Arm_1
     2300004: Arm_2
@@ -354,6 +365,7 @@ ModelImporter:
     2300152: Wire_3
     2300154: Wire_4
     2300156: Wire_Main
+    2300158: Body 1
     3300000: AntennaThingy
     3300002: Arm_1
     3300004: Arm_2
@@ -433,6 +445,7 @@ ModelImporter:
     3300152: Wire_3
     3300154: Wire_4
     3300156: Wire_Main
+    3300158: Body 1
     4300000: Tread_5
     4300002: Sproket_5
     4300004: LittleLeg_LM1
@@ -523,6 +536,16 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Equipment1
+    second: {fileID: 2100000, guid: b5f3bb40e1ffa6e479b1036005f03d93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: HeadAndNeck
+    second: {fileID: 2100000, guid: 3093ca2d34a2ca84991aa93d1dcbbab8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: LegsAndWheels
     second: {fileID: 2100000, guid: 21557c25cb2cedf4497a3c5d8617d3f9, type: 2}
   - first:
@@ -535,6 +558,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: SolarPanels
     second: {fileID: 2100000, guid: cc5af0b85f59d5a40b13cb446d2047f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WheelsAndLegs
+    second: {fileID: 2100000, guid: 21557c25cb2cedf4497a3c5d8617d3f9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

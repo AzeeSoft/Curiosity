@@ -270,6 +270,11 @@ ModelImporter:
     400262: Wire_Main
     400264: Wires
     2100000: lambert1
+    2100002: LegsAndWheels
+    2100004: equipment
+    2100006: Body1
+    2100008: NeckAndHead
+    2100010: SolarPanels
     2300000: AntennaThingy
     2300002: Arm_1
     2300004: Arm_2
@@ -509,7 +514,37 @@ ModelImporter:
     4300156: SolarPanelCarrier
     7400000: Take 001
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body1
+    second: {fileID: 2100000, guid: 53b6505d33a93f54f88a58ee52d3c9e4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LegsAndWheels
+    second: {fileID: 2100000, guid: 21557c25cb2cedf4497a3c5d8617d3f9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NeckAndHead
+    second: {fileID: 2100000, guid: 3093ca2d34a2ca84991aa93d1dcbbab8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SolarPanels
+    second: {fileID: 2100000, guid: cc5af0b85f59d5a40b13cb446d2047f6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: equipment
+    second: {fileID: 2100000, guid: b5f3bb40e1ffa6e479b1036005f03d93, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: edb756ce3402b764e9b9fa24672418dc, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

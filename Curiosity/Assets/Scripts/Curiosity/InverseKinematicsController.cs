@@ -67,8 +67,7 @@ public class InverseKinematicsController : MonoBehaviour
             //Vector3 p21ToP1 = (p21 - Parent.transform.position).normalize;
             // Vector3 p11 = (p21ToP1 * length1);
             Vector3 p11 = LerpByDistance(p21, Parent.transform.position, length2);
-
-
+            
             //FORWARDS
             //11 suffix stands for prime prime || no suffix is original point
             Vector3 p011 = Parent.transform.position;

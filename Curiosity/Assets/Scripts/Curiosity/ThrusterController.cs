@@ -47,7 +47,7 @@ public class ThrusterController : MonoBehaviour
 
     void UseThrusters()
     {
-        Debug.Log("Using Thrusters");
+//        Debug.Log("Using Thrusters");
 
         _rigidbody.AddForce(Vector3.up * GetThrusterForceToUse());
 

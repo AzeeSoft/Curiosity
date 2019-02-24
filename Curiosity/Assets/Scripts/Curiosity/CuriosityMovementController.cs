@@ -12,7 +12,8 @@ public class CuriosityMovementController : MonoBehaviour
     [Serializable]
     public class WheelSetup
     {
-        public GameObject WheelObject;
+        public GameObject WheelRoot;
+        public GameObject WheelHolder;
         public float radius;
 
         [HideInInspector] public Wheel wheel;
@@ -21,11 +22,12 @@ public class CuriosityMovementController : MonoBehaviour
         {
             if (trailPrefab)
             {
-                Instantiate(trailPrefab, WheelObject.transform);
+                Instantiate(trailPrefab, WheelRoot.transform);
             }
 
-            wheel = WheelObject.AddComponent<Wheel>();
+            wheel = WheelRoot.AddComponent<Wheel>();
             wheel.radius = radius;
+            wheel.WheelHolder = WheelHolder;
         }
     }
 
@@ -75,8 +77,6 @@ public class CuriosityMovementController : MonoBehaviour
 
     [Header("Others")] public float MaxRotation = 2f;
     public float AntiRotationSpeed = 3f;
-    public AudioSource roverAudioSource;
-    public AudioSource gravelAudioSource;
 
     public Vector3 bodyOffset;
 
@@ -85,6 +85,9 @@ public class CuriosityMovementController : MonoBehaviour
     private CuriosityInputController _curiosityInputController;
     private ThrusterController _thrusterController;
     private List<Wheel> wheels = new List<Wheel>();
+
+    private AudioSource roverAudioSource => _curiosityModel.curiosityAudio.roverAudioSource;
+    private AudioSource gravelAudioSource => _curiosityModel.curiosityAudio.gravelAudioSource;
 
     private float _currentRotationAngle = 0;
     private bool _invertTurn = false;
@@ -111,9 +114,6 @@ public class CuriosityMovementController : MonoBehaviour
         wheels.Add(FrontRightWheelSetup.wheel);
         wheels.Add(MiddleRightWheelSetup.wheel);
         wheels.Add(BackRightWheelSetup.wheel);
-
-        roverAudioSource.volume = 0;
-        gravelAudioSource.volume = 0;
     }
 
     void Start()
@@ -213,8 +213,8 @@ public class CuriosityMovementController : MonoBehaviour
 
         float wheelAngle = curiosityInput.Turn * WheelTurnModifier;
 
-        FrontLeftWheelSetup.wheel.RotateWheel(wheelAngle);
-        FrontRightWheelSetup.wheel.RotateWheel(wheelAngle);
+        FrontLeftWheelSetup.wheel.TurnWheel(wheelAngle);
+        FrontRightWheelSetup.wheel.TurnWheel(wheelAngle);
 
         float targetAngle = curiosityInput.Turn * TurnSpeed * targetVelocity.magnitude;
 
@@ -261,14 +261,14 @@ public class CuriosityMovementController : MonoBehaviour
     void UpdateAudioSources()
     {
         float audioVolume = HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 1);
-        
+
         if (!AreWheelsOnGround())
         {
             audioVolume = 0;
         }
 
         float audioFadeSpeed = 7;
-        
+
         roverAudioSource.volume = Mathf.Lerp(roverAudioSource.volume, audioVolume, Time.deltaTime * audioFadeSpeed);
         gravelAudioSource.volume = Mathf.Lerp(gravelAudioSource.volume, audioVolume, Time.deltaTime * audioFadeSpeed);
     }

@@ -8,9 +8,19 @@ public class CuriosityModel : MonoBehaviour
     public float BatteryDepletionRate = 5f;
     public float ChargePadRechargeAmount = 100f;
 
-    public Transform CamTarget;
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
-    public GameObject spotLightObject;
+    [HideInInspector] public Transform CamTarget => Body;
+
+    [Header("Required References")] public GameObject Lens;
+    public Transform Body;
+
+    [Header("Required Prefabs")] public GameObject SpotLightPrefab;
+    public GameObject CuriosityColliderPrefab;
+    public GameObject CuriosityAudioSourcePrefab;
+
+    [HideInInspector] public CuriosityAudio curiosityAudio;
+
+    private GameObject _spotLightObject;
 
     private CuriosityInputController _curiosityInputController;
     private Sun _sun;
@@ -18,6 +28,13 @@ public class CuriosityModel : MonoBehaviour
     void Awake()
     {
         _curiosityInputController = GetComponent<CuriosityInputController>();
+        _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
+        
+        Instantiate(CuriosityColliderPrefab, Body);
+        
+        curiosityAudio = Instantiate(CuriosityAudioSourcePrefab, Body).GetComponent<CuriosityAudio>();
+        curiosityAudio.roverAudioSource.volume = 0;
+        curiosityAudio.gravelAudioSource.volume = 0;
     }
 
     // Start is called before the first frame update
@@ -25,6 +42,8 @@ public class CuriosityModel : MonoBehaviour
     {
         AvatarColliderGenerator avatarColliderGenerator = GetComponentInChildren<AvatarColliderGenerator>();
 //        avatarColliderGenerator.GenerateMeshColliders();
+
+
         _sun = LevelManager.Instance.GetSun();
 
         _sun.OnSunStateChanged += newState => { UpdateSpotLight(); };
@@ -52,7 +71,7 @@ public class CuriosityModel : MonoBehaviour
     void UpdateSpotLight()
     {
         Sun.SunState curSunState = _sun.GetSunState();
-        spotLightObject.SetActive(curSunState != Sun.SunState.Day);
+        _spotLightObject.SetActive(curSunState != Sun.SunState.Day);
     }
 
     public bool IsAlive()

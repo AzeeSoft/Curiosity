@@ -72,8 +72,8 @@ public class Wheel : MonoBehaviour
     {
 //        Debug.Log("Children " + transform.childCount);
 
-        AlignWithFloor();
         Reposition();
+        AlignWithFloor();
         Spin();
     }
 
@@ -142,9 +142,11 @@ public class Wheel : MonoBehaviour
 
     void AlignWithFloor()
     {
-        if (onGround)
+        if (!onGround)
         {
-            
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.LookRotation(transform.forward, Vector3.up), Time.fixedDeltaTime);
+            return;
         }
         
         RaycastHit hit;
@@ -157,7 +159,7 @@ public class Wheel : MonoBehaviour
 //            transform.up = Vector3.Lerp(transform.up, targetUp, Time.fixedDeltaTime * 2);
 //            transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal);
             transform.rotation = Quaternion.Lerp(transform.rotation,
-                Quaternion.LookRotation(transform.forward, hit.normal), Time.fixedDeltaTime);
+                Quaternion.LookRotation(transform.forward, hit.normal), Time.fixedDeltaTime * groundHugSpeed);
         }
 
         /*if (Physics.Raycast(transform.position, transform.forward, out hit))

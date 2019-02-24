@@ -313,7 +313,7 @@ public class CuriosityMovementController : MonoBehaviour
         Vector3 wheelsSuperPosition = Vector3.zero;
         foreach (Wheel wheel in wheels)
         {
-            wheelsSuperPosition += wheel.transform.position;
+            wheelsSuperPosition += wheel.WheelHolder.transform.position;
         }
 
         wheelsSuperPosition /= wheels.Count;

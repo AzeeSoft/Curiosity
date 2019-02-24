@@ -70,6 +70,7 @@ public class CuriosityMovementController : MonoBehaviour
     [Header("Wheel Data")] public float GroundHugMaxDistance = 3f;
     public float GroundHugSpeed = 30f;
     public float Gravity = 10f;
+    public float GravityModifier = 0.75f;
     public float MaxWheelSpinSpeed = 30f;
 
     [Header("Others")] public float MaxRotation = 2f;

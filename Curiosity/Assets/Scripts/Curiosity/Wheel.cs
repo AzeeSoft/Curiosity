@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class Wheel : MonoBehaviour
 
     private TrailRenderer _trailRenderer;
     private CuriosityMovementController _curiosityMovementController;
+    private ThrusterController _thrusterController;
 
     void Awake()
     {
@@ -45,6 +47,7 @@ public class Wheel : MonoBehaviour
 
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
         _curiosityMovementController = GetComponentInParent<CuriosityMovementController>();
+        _thrusterController = GetComponentInParent<ThrusterController>();
     }
 
     // Start is called before the first frame update
@@ -61,7 +64,7 @@ public class Wheel : MonoBehaviour
     {
 //        Debug.Log("Children " + transform.childCount);
 
-        HugTheGround();
+        Reposition();
         AlignWithFloor();
         Spin();
     }
@@ -151,7 +154,7 @@ public class Wheel : MonoBehaviour
         }*/
     }
 
-    void HugTheGround()
+    void Reposition()
     {
         RaycastHit upHit;
         RaycastHit downHit;
@@ -162,6 +165,7 @@ public class Wheel : MonoBehaviour
             LayerMask.GetMask("Wheel", "Curiosity"));
         bool downFound = Physics.Raycast(transform.position, Vector3.down, out downHit,
             LayerMask.GetMask("Wheel", "Curiosity"));
+        bool isHuggingTheGround = true;
 
         if (upFound)
         {
@@ -173,14 +177,6 @@ public class Wheel : MonoBehaviour
             else
             {
                 upFound = false;
-            }
-        }
-
-        if (downFound)
-        {
-            if (downHit.distance > _curiosityMovementController.GroundHugMaxDistance)
-            {
-                downFound = false;
             }
         }
 
@@ -196,38 +192,56 @@ public class Wheel : MonoBehaviour
             }
         }
 
-        onGround = true;
-        Vector3 newPos = transform.position;
 
-        if (downFound)
+        Vector3 newPos = transform.position;
+        onGround = false;
+
+        if (upFound)
         {
+            newPos.y = Mathf.Lerp(newPos.y, newPos.y + (upHitDistance + radius),
+                Time.fixedDeltaTime * groundHugSpeed);
+        }
+        else if (downFound)
+        {
+            if (downHit.distance > _curiosityMovementController.GroundHugMaxDistance)
+            {
+                isHuggingTheGround = false;
+            }
+
             if (downHit.distance > radius)
             {
                 newPos.y = Mathf.Lerp(newPos.y, newPos.y - (downHit.distance - radius),
-                    Time.fixedDeltaTime * groundHugSpeed);
-//                newPos.y = newPos.y - (hit.distance - radius);
+                    Time.fixedDeltaTime * groundHugSpeed * GetGravityFactor(downHit.distance));
+                // newPos.y = newPos.y - (hit.distance - radius);
             }
             else
             {
                 newPos.y = Mathf.Lerp(newPos.y, newPos.y + (radius - downHit.distance),
                     Time.fixedDeltaTime * groundHugSpeed);
-//                newPos.y = newPos.y + (radius - hit.distance);
+                // newPos.y = newPos.y + (radius - hit.distance);
             }
-        }
-        else if (upFound)
-        {
-            newPos.y = Mathf.Lerp(newPos.y, newPos.y + (upHitDistance + radius),
-                Time.fixedDeltaTime * groundHugSpeed);
         }
         else
         {
-            onGround = false;
-
-            // Applying Normal Gravity   
-            newPos.y = Mathf.Lerp(newPos.y, newPos.y - _curiosityMovementController.Gravity,
-                Time.fixedDeltaTime);
+            isHuggingTheGround = false;
         }
 
+        onGround = isHuggingTheGround;
+
         transform.position = newPos;
+    }
+
+    float GetGravityFactor(float groundDistance)
+    {
+        if (groundDistance < radius)
+        {
+            return 1;
+        }
+
+        float gravityFactor = (float) (_curiosityMovementController.Gravity /
+                                       Math.Pow(groundDistance, _curiosityMovementController.GravityModifier));
+        gravityFactor = Mathf.Clamp01(gravityFactor);
+
+        return gravityFactor;
     }
 }

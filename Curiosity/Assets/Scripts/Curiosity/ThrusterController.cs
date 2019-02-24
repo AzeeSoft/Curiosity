@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ThrusterController : MonoBehaviour
 {
-    public float ThrusterForce;
+    public float MaxThrusterForce;
     public float ThrusterDepletionRate = 100f;
     public float ThrusterCooldownTime = 3f;
     public bool IsThrusterActive { get; private set; } = false;
@@ -49,10 +49,24 @@ public class ThrusterController : MonoBehaviour
     {
         Debug.Log("Using Thrusters");
 
-        _rigidbody.AddForce(Vector3.up * ThrusterForce);
+        _rigidbody.AddForce(Vector3.up * GetThrusterForceToUse());
 
         _thrusterCharge -= ThrusterDepletionRate * Time.deltaTime;
         _lastUsedTime = Time.time;
+    }
+
+    float GetThrusterForceToUse()
+    {
+        //NOTE: Maybe use a quadratic function or something to return the force.
+        
+        /*RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit))
+        {
+                
+        }*/
+        
+        return MaxThrusterForce;
     }
 
     void RechargeThruster()

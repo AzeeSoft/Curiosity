@@ -46,7 +46,7 @@ public class FootstepTrail : MonoBehaviour
 
             transform.position = newPos;
 
-            transform.LookAt(transform.position + (transform.forward * 5), downHit.normal);
+            transform.rotation = Quaternion.LookRotation(transform.forward, downHit.normal);
         }
     }
 

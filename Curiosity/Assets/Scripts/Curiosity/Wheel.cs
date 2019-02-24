@@ -9,20 +9,27 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Wheel : MonoBehaviour
 {
+    public class GizmosData
+    {
+        public Vector3 normalToPlane = Vector3.up;
+    }
+
     public bool inverted = false;
     public float radius;
 
     public float spinSpeed = 0;
     public bool onGround { get; private set; } = false;
-    
+
     public GameObject WheelHolder;
-    
+
     private bool initialized = false;
     private float groundHugSpeed => _curiosityMovementController.GroundHugSpeed;
 
     private TrailRenderer _trailRenderer;
     private CuriosityMovementController _curiosityMovementController;
     private ThrusterController _thrusterController;
+
+    private GizmosData _gizmosData = new GizmosData();
 
     void Awake()
     {
@@ -73,7 +80,7 @@ public class Wheel : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawLine(WheelHolder.transform.position, WheelHolder.transform.position - (transform.up * radius));
+        Gizmos.DrawRay(transform.position, _gizmosData.normalToPlane * 5);
     }
 
     public void GenerateMeshColliders()
@@ -135,13 +142,24 @@ public class Wheel : MonoBehaviour
 
     void AlignWithFloor()
     {
+        if (!onGround)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.LookRotation(transform.forward, Vector3.up), Time.fixedDeltaTime);
+            return;
+        }
+        
         RaycastHit hit;
         if (Physics.Raycast(WheelHolder.transform.position, Vector3.down, out hit))
         {
             Vector3 targetUp = hit.normal;
 
+            _gizmosData.normalToPlane = hit.normal;
+            
 //            transform.up = Vector3.Lerp(transform.up, targetUp, Time.fixedDeltaTime * 2);
-            transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal);
+//            transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal);
+            transform.rotation = Quaternion.Lerp(transform.rotation,
+                Quaternion.LookRotation(transform.forward, hit.normal), Time.fixedDeltaTime * groundHugSpeed);
         }
 
         /*if (Physics.Raycast(transform.position, transform.forward, out hit))
@@ -162,7 +180,8 @@ public class Wheel : MonoBehaviour
 
         float upHitDistance = 0;
 
-        bool upFound = Physics.Raycast(WheelHolder.transform.position + (Vector3.up * radius * 2), Vector3.down, out upHit,
+        bool upFound = Physics.Raycast(WheelHolder.transform.position + (Vector3.up * radius * 2), Vector3.down,
+            out upHit,
             LayerMask.GetMask("Wheel", "Curiosity"));
         bool downFound = Physics.Raycast(WheelHolder.transform.position, Vector3.down, out downHit,
             LayerMask.GetMask("Wheel", "Curiosity"));

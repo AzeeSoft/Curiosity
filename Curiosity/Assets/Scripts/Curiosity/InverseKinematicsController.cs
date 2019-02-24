@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InverseKinematicsController : MonoBehaviour
 {
-    public GameObject IKHandle, Parent, Mid, Child, PoleVector, ParentHandle;
+    public GameObject IKHandle, Parent, Mid, Child, ParentHandle;
 
     private Vector3 midPoint;
     private Vector3 startParent;
-    public float scaleFactor; 
+    //public float scaleFactor; 
 
     private float length1, length2, maxLength;
 
@@ -54,7 +54,7 @@ public class InverseKinematicsController : MonoBehaviour
         //float midToChild = (Mid.transform.position - Child.transform.position).magnitude;
         //if distance greater than length, plot points along line
 
-        if(!(distanceToGoal > maxLength))
+        if(true)
         {
 
             Parent.transform.position = ParentHandle.transform.position;

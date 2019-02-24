@@ -33,8 +33,13 @@ public class CuriosityIKController : MonoBehaviour
     {
         R_BIKJoint.LookAt(R_IKParent, Vector3.up);
         R_FIKJoint.LookAt(R_IKChild, Vector3.up);
-        L_BIKJoint.LookAt(L_IKMid, Vector3.up);
-        L_FIKJoint.LookAt(L_IKMid, Vector3.up);
+        R_FIKJoint.transform.position = R_IKMid.transform.position;
+        R_BIKJoint.transform.position = R_IKMid.transform.position;
+        L_BIKJoint.LookAt(L_IKParent, Vector3.up);
+        L_FIKJoint.LookAt(L_IKChild, Vector3.up);
+        L_FIKJoint.transform.position = L_IKMid.transform.position;
+        L_BIKJoint.transform.position = L_IKMid.transform.position;
+        // L_FIKJoint.transform.position = L_IKMid.position;
     }
     
 }

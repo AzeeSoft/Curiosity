@@ -3229,6 +3229,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
+      propertyPath: sun
+      value: 
+      objectReference: {fileID: 555353285}
+    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
+      propertyPath: moon
+      value: 
+      objectReference: {fileID: 555353284}
+    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
+      propertyPath: dayCycleSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 3048913784855485258, guid: 271ad5dffe8c64043bbda94fb1cf67f9,
         type: 3}
       propertyPath: HUD
@@ -3249,18 +3261,6 @@ PrefabInstance:
       propertyPath: FadeOut
       value: 
       objectReference: {fileID: 32906378}
-    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
-      propertyPath: sun
-      value: 
-      objectReference: {fileID: 555353285}
-    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
-      propertyPath: moon
-      value: 
-      objectReference: {fileID: 555353284}
-    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
-      propertyPath: dayCycleSpeed
-      value: 0.6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
 --- !u!1 &424798870 stripped
@@ -4552,27 +4552,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SunAndMoon
       objectReference: {fileID: 0}
-    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
-        type: 3}
-      propertyPath: m_Flare
-      value: 
-      objectReference: {fileID: 12100000, guid: 44ea104fd575d05429855c46baaf0200,
-        type: 2}
-    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
-        type: 3}
-      propertyPath: m_DrawHalo
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
-        type: 3}
-      propertyPath: m_BounceIntensity
-      value: 3.38
-      objectReference: {fileID: 0}
     - target: {fileID: 4667884479175049196, guid: dd664349644b61740a0e7139a358527c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4627,6 +4606,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_Flare
+      value: 
+      objectReference: {fileID: 12100000, guid: 44ea104fd575d05429855c46baaf0200,
+        type: 2}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_DrawHalo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4630655869271731459, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_BounceIntensity
+      value: 3.38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd664349644b61740a0e7139a358527c, type: 3}

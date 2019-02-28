@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class InverseKinematicsController : MonoBehaviour
 {
-    public GameObject IKHandle, Parent, Mid, Child, ParentHandle;
+    public GameObject IKHandle, Parent, Mid, Child, ParentHandle, staticReference;
 
     private Vector3 midPoint;
-    private Vector3 startParent;
-    //public float scaleFactor; 
+    private Vector3 startParent, startMid;
+    public float minHeightDif = 0.4f;
 
     private float length1, length2, maxLength;
 
     private void Start()
     {
         startParent = Parent.transform.position;
-
-         length1 = (startParent - Mid.transform.position).magnitude;
-         length2 = (Mid.transform.position - IKHandle.transform.position).magnitude;
-         maxLength = length1 + length2;
+        startMid = Mid.transform.localPosition;
+        length1 = (startParent - Mid.transform.position).magnitude;
+        length2 = (Mid.transform.position - IKHandle.transform.position).magnitude;
+        maxLength = length1 + length2;
     }
 
     public Vector3 LerpByDistance(Vector3 A, Vector3 B, float x)
@@ -57,6 +57,12 @@ public class InverseKinematicsController : MonoBehaviour
         if(true)
         {
 
+            if (Input.GetKeyUp(KeyCode.R))
+            {
+                ResetIK();
+                return;
+            }
+
             Parent.transform.position = ParentHandle.transform.position;
             //BACKWARDS
             //1 suffix stands for prime || no suffix is original point 
@@ -80,16 +86,36 @@ public class InverseKinematicsController : MonoBehaviour
 
             //p111 = LerpByDistance(p111, PoleVector.transform.position, maxLength / 2);
 
-            Mid.transform.position = p111;
+            Vector3 newMid = new Vector3(Mid.transform.position.x, p111.y, Mid.transform.position.z);
+
+            Debug.Log(Mid.gameObject.name + " " + staticReference.transform.InverseTransformPoint(newMid));
+
+            if(staticReference.transform.InverseTransformPoint(newMid).y < minHeightDif)
+            {
+                ResetIK();
+                return;
+            }
+
+            Mid.transform.position = newMid;
             Child.transform.position = IKHandle.transform.position;
 
             Debug.DrawLine(Parent.transform.position, IKHandle.transform.position, Color.yellow);
             Debug.DrawLine(Parent.transform.position, Mid.transform.position, Color.red);
             Debug.DrawLine(Mid.transform.position, Child.transform.position, Color.red);
+
+          
         }
         
         #endregion
 
+    }
+
+    void ResetIK()
+    {
+        Debug.Log("Resetting IK");
+        Parent.transform.position = ParentHandle.transform.position;
+        Mid.transform.localPosition = startMid;
+        Child.transform.position = IKHandle.transform.position;
     }
 
 }

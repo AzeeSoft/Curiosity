@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ThrusterController : MonoBehaviour
@@ -14,12 +15,14 @@ public class ThrusterController : MonoBehaviour
     private Rigidbody _rigidbody;
     private CuriosityInputController _inputController;
     private CuriosityMovementController _curiosityMovementController;
+    private Thruster[] _thrusters;
 
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _inputController = GetComponent<CuriosityInputController>();
         _curiosityMovementController = GetComponent<CuriosityMovementController>();
+        _thrusters = GetComponentsInChildren<Thruster>(true);
     }
 
     void FixedUpdate()
@@ -41,7 +44,8 @@ public class ThrusterController : MonoBehaviour
 
             IsThrusterActive = false;
         }
-
+        
+        UpdateThrusterGraphics();
         _thrusterCharge = Mathf.Clamp(_thrusterCharge, 0, 100);
     }
 
@@ -74,6 +78,14 @@ public class ThrusterController : MonoBehaviour
         if (_thrusterCharge < 100f)
         {
             _thrusterCharge = 100f;
+        }
+    }
+
+    void UpdateThrusterGraphics()
+    {
+        foreach (Thruster thruster in _thrusters)
+        {
+            thruster.gameObject.SetActive(IsThrusterActive);
         }
     }
 }

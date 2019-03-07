@@ -23,15 +23,16 @@ public class CuriosityModel : MonoBehaviour
     private GameObject _spotLightObject;
 
     private CuriosityInputController _curiosityInputController;
+    private Animator _animator;
     private Sun _sun;
 
     void Awake()
     {
         _curiosityInputController = GetComponent<CuriosityInputController>();
         _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
-        
+
         Instantiate(CuriosityColliderPrefab, Body);
-        
+
         curiosityAudio = Instantiate(CuriosityAudioSourcePrefab, Body).GetComponent<CuriosityAudio>();
         curiosityAudio.roverAudioSource.volume = 0;
         curiosityAudio.gravelAudioSource.volume = 0;
@@ -43,11 +44,13 @@ public class CuriosityModel : MonoBehaviour
         AvatarColliderGenerator avatarColliderGenerator = GetComponentInChildren<AvatarColliderGenerator>();
 //        avatarColliderGenerator.GenerateMeshColliders();
 
+        _animator = GetComponentInChildren<Animator>();
+
 
         _sun = LevelManager.Instance.GetSun();
 
-        _sun.OnSunStateChanged += newState => { UpdateSpotLight(); };
-        UpdateSpotLight();
+        _sun.OnSunStateChanged += newState => { RefreshSunState(newState); };
+        RefreshSunState();
     }
 
     // Update is called once per frame
@@ -68,11 +71,27 @@ public class CuriosityModel : MonoBehaviour
         transform.position = targetPos;
     }
 
-    void UpdateSpotLight()
+    void RefreshSunState(Sun.SunState? curSunState = null)
     {
-        Sun.SunState curSunState = _sun.GetSunState();
+        if (!curSunState.HasValue)
+        {
+            curSunState = _sun.GetSunState();
+        }
+
+        UpdateSpotLight(curSunState.Value);
+        UpdateSolarPanels(curSunState.Value);
+    }
+
+    void UpdateSpotLight(Sun.SunState curSunState)
+    {
         _spotLightObject.SetActive(curSunState != Sun.SunState.Day);
     }
+
+    void UpdateSolarPanels(Sun.SunState curSunState)
+    {
+        _animator.SetBool("openSolarPanels", curSunState == Sun.SunState.Day);
+    }
+
 
     public bool IsAlive()
     {

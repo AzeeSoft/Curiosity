@@ -21,8 +21,10 @@ public class Wheel : MonoBehaviour
     public bool onGround { get; private set; } = false;
 
     public GameObject WheelHolder;
+    public GameObject WheelParentJoint;
 
     private bool initialized = false;
+    private float _origParentDist;
     private float groundHugSpeed => _curiosityMovementController.GroundHugSpeed;
 
     private TrailRenderer _trailRenderer;
@@ -61,6 +63,9 @@ public class Wheel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Vector3 wheelBottomPos = WheelHolder.transform.position;
+        wheelBottomPos.y -= radius;
+        _origParentDist = Vector3.Distance(transform.position, WheelParentJoint.transform.position);
     }
 
     private void Update()
@@ -148,14 +153,14 @@ public class Wheel : MonoBehaviour
                 Quaternion.LookRotation(transform.forward, Vector3.up), Time.fixedDeltaTime);
             return;
         }
-        
+
         RaycastHit hit;
         if (Physics.Raycast(WheelHolder.transform.position, Vector3.down, out hit))
         {
             Vector3 targetUp = hit.normal;
 
             _gizmosData.normalToPlane = hit.normal;
-            
+
 //            transform.up = Vector3.Lerp(transform.up, targetUp, Time.fixedDeltaTime * 2);
 //            transform.rotation = Quaternion.LookRotation(transform.forward, hit.normal);
             transform.rotation = Quaternion.Lerp(transform.rotation,
@@ -172,6 +177,13 @@ public class Wheel : MonoBehaviour
             }
         }*/
     }
+
+    /*void Reposition()
+    {
+        Vector3 wheelBottomPos = WheelHolder.transform.position;
+        wheelBottomPos.y -= radius;
+        
+    }*/
 
     void Reposition()
     {
@@ -248,7 +260,17 @@ public class Wheel : MonoBehaviour
 
         onGround = isHuggingTheGround;
 
+        float oldLocalX = transform.localPosition.x;
+
+        /*Vector3 parentDir = newPos - WheelParentJoint.transform.position;
+        if (Mathf.Abs(parentDir.magnitude - _origParentDist) < 1)
+        {
+        }*/
         transform.position = newPos;
+
+        Vector3 newLocalPos = transform.localPosition;
+        newLocalPos.x = oldLocalX;
+        transform.localPosition = newLocalPos;
     }
 
     float GetGravityFactor(float groundDistance)

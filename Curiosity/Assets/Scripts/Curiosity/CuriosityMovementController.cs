@@ -14,6 +14,7 @@ public class CuriosityMovementController : MonoBehaviour
     {
         public GameObject WheelRoot;
         public GameObject WheelHolder;
+        public GameObject WheelParentJoint;
         public float radius;
 
         [HideInInspector] public Wheel wheel;
@@ -28,6 +29,7 @@ public class CuriosityMovementController : MonoBehaviour
             wheel = WheelRoot.AddComponent<Wheel>();
             wheel.radius = radius;
             wheel.WheelHolder = WheelHolder;
+            wheel.WheelParentJoint = WheelParentJoint;
         }
     }
 

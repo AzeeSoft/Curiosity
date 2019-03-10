@@ -63,6 +63,8 @@ public class InventoryManager : MonoBehaviour
 
     public void AddObjectToInventory(InventoryObject _object)
     {
+        Debug.Log("Adding " + _object.name + " to inventory");
+
         switch (_object.pickUpType)
         {
             case InventoryObject.Type.Collectable:

@@ -177,14 +177,22 @@ public class CuriosityMovementController : MonoBehaviour
 
     public void Move(CuriosityInputController.CuriosityInput curiosityInput)
     {
+        bool inFirstPersonMode = CinemachineCameraManager.Instance.CurrentState ==
+                                 CinemachineCameraManager.CinemachineCameraState.FirstPerson;
+
         // Forward/Backward Movement
         // Clamping negative value to slow down backward movement
         float forward = Mathf.Clamp(curiosityInput.Forward, -MaxReverseThreshold, 1f);
 
-        Vector3 yLessAvatarForward = Avatar.transform.forward;
-        yLessAvatarForward.y = 0;
+        Vector3 yLessMoveForward = Avatar.transform.forward;
+        /*if (inFirstPersonMode)
+        {
+            yLessMoveForward = CinemachineCameraManager.Instance.CurrentStatefulCinemachineCamera.transform.forward;
+        }*/
 
-        Vector3 targetVelocity = yLessAvatarForward * forward * MaxSpeed;
+        yLessMoveForward.y = 0;
+
+        Vector3 targetVelocity = yLessMoveForward * forward * MaxSpeed;
         if (curiosityInput.Boost)
         {
             targetVelocity *= BoostFactor;
@@ -306,11 +314,21 @@ public class CuriosityMovementController : MonoBehaviour
             return;
         }
 
-        Transform thirdPersonCameraTransform = Camera.current.transform;
+        Transform currentCameraTransform = Camera.current.transform;
 
-        Quaternion targetRotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
-            thirdPersonCameraTransform.rotation.eulerAngles.y, 0);
-        HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, Time.deltaTime);
+        float xCorrection = 30;
+        float lerpValue = Time.deltaTime;
+
+        if (CinemachineCameraManager.Instance.CurrentState ==
+            CinemachineCameraManager.CinemachineCameraState.FirstPerson)
+        {
+            xCorrection = 0;
+            lerpValue = 1;
+        }
+
+        Quaternion targetRotation = Quaternion.Euler(currentCameraTransform.rotation.eulerAngles.x - xCorrection,
+            currentCameraTransform.rotation.eulerAngles.y, 0);
+        HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, lerpValue);
     }
 
     void StayWithWheels()

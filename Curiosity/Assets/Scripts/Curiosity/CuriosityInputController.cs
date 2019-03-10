@@ -7,7 +7,9 @@ public class CuriosityInputController : MonoBehaviour
 {
     public class CuriosityInputSettings
     {
-        
+        public float lookXSensitivity = 3.0f;
+        public float lookYSensitivity = 3.0f;
+        public bool invertLookY = false;
     }
 
     [Serializable]

@@ -60,7 +60,7 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
         targetRotationAngle.x = HelperUtilities.ClampAngle(targetRotationAngle.x, minAngle, maxAngle);
         targetRotationAngle.y = Mathf.Repeat(targetRotationAngle.y, 360f);
 
-        transform.rotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(targetRotationAngle),
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(targetRotationAngle),
             Time.fixedDeltaTime * rotationSpeed);
 
 //        transform.Rotate(playerInput.camVertical, playerInput.camHorizontal, 0);

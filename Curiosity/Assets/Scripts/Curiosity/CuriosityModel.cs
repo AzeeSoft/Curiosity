@@ -21,6 +21,7 @@ public class CuriosityModel : MonoBehaviour
     [HideInInspector] public CuriosityAudio curiosityAudio;
 
     public CuriosityInputController curiosityInputController { get; private set; }
+    public CuriosityMovementController curiosityMovementController { get; private set; }
 
     private GameObject _spotLightObject;
 
@@ -30,6 +31,7 @@ public class CuriosityModel : MonoBehaviour
     void Awake()
     {
         curiosityInputController = GetComponent<CuriosityInputController>();
+        curiosityMovementController = GetComponent<CuriosityMovementController>();
         _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
 
         Instantiate(CuriosityColliderPrefab, Body);
@@ -55,6 +57,7 @@ public class CuriosityModel : MonoBehaviour
         {
             switch (state)
             {
+                case CinemachineCameraManager.CinemachineCameraState.FirstPerson:
                 case CinemachineCameraManager.CinemachineCameraState.ThirdPerson:
                 case CinemachineCameraManager.CinemachineCameraState.OverTheShoulder:
                     UpdatePlayerInputState(true);

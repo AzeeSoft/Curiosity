@@ -19,10 +19,29 @@ public class CinemachineCameraManager : MonoBehaviour
         None,
         ThirdPerson,
         OverTheShoulder,
-        EventLock
+        EventLock,
+        FirstPerson
     }
 
     public static CinemachineCameraManager Instance;
+
+    public CinemachineCameraState CurrentState => _currentState;
+
+    public StatefulCinemachineCamera CurrentStatefulCinemachineCamera
+    {
+        get
+        {
+            foreach (StatefulCinemachineCamera statefulCinemachineCamera in _statefulCinemachineCameras)
+            {
+                if (statefulCinemachineCamera.cinemachineCameraState == CurrentState)
+                {
+                    return statefulCinemachineCamera;
+                }
+            }
+
+            return null;
+        }
+    }
 
     [SerializeField] private CinemachineCameraState _currentState = CinemachineCameraState.ThirdPerson;
     [SerializeField] private CinemachineCameraState _prevState = CinemachineCameraState.None;
@@ -115,7 +134,7 @@ public class CinemachineCameraManager : MonoBehaviour
     {
         SwitchCameraState(_prevState);
     }
-    
+
     public void OnCameraCut(CinemachineBrain cinemachineBrain)
     {
         Debug.Log("Camera Cut");

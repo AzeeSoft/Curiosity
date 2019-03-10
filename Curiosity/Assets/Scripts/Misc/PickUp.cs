@@ -8,8 +8,11 @@ public class PickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Collided with " + other.gameObject.name);
+
         if(other.gameObject.tag == "Player")
         {
+            Debug.Log("Player Call");
             InventoryManager.Instance.AddObjectToInventory(pickUp);
         }
     }

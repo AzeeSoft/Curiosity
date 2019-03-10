@@ -49,6 +49,7 @@ MonoBehaviour:
   LoseScreen: {fileID: 0}
   FadeOut: {fileID: 0}
   MainMenuSceneName: MainMenu
+  EndGameCreditsSceneName: EndCredits
   curiosityModel: {fileID: 0}
 --- !u!114 &108870352
 MonoBehaviour:
@@ -68,8 +69,8 @@ MonoBehaviour:
   sunSetColor: {r: 0.1548149, g: 0.31714177, b: 0.46226418, a: 0.69411767}
   sunSetIntensity: 0.3
   sunSetLerpRate: 0.4
-  sunSetStart: 10
-  sunSetEnd: 12
+  sunSetStart: 8
+  sunSetEnd: 10
   sunRiseStart: 3
   sunRiseEnd: 5
   _hourOfDay: 12

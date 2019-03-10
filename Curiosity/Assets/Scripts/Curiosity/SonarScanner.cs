@@ -7,7 +7,7 @@ using UnityEngine;
 public class SonarScanner : MonoBehaviour
 {
     public bool showGizmos = false;
-    
+
     public float maxScanRadius = 100f;
     public float scanRadiusGrowthRate = 10f;
     public float scanStayTime = 5f;
@@ -34,7 +34,7 @@ public class SonarScanner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _sonarEffect = _curiosityModel.thirdPersonPlayerCamera.GetComponentInChildren<SonarEffect>();
+        _sonarEffect = Camera.main.GetComponent<SonarEffect>();
         _sonarEffect.sonarScanner = this;
     }
 

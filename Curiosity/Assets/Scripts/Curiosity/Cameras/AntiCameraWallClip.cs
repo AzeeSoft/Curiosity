@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AntiCameraWallClip : MonoBehaviour
 {
+    public Transform CamTransform; // the transform of the camera
     public float
         clipMoveTime = 0.05f; // time taken to move when avoiding cliping (low value = fast, which it should be)
 
@@ -23,7 +24,6 @@ public class AntiCameraWallClip : MonoBehaviour
         dontClipTag =
             "Player"; // don't clip against objects with this tag (useful for not clipping against the targeted object)
 
-    private Transform m_Cam; // the transform of the camera
     private Transform m_Pivot; // the point at which the camera pivots around
     private float m_OriginalDist; // the original distance to the camera before any modification are made
     private float m_MoveVelocity; // the velocity at which the camera moved
@@ -35,10 +35,8 @@ public class AntiCameraWallClip : MonoBehaviour
 
     private void Start()
     {
-        // find the camera in the object hierarchy
-        m_Cam = GetComponentInChildren<Camera>().transform;
-        m_Pivot = m_Cam.parent;
-        m_OriginalDist = m_Cam.localPosition.magnitude;
+        m_Pivot = CamTransform.parent;
+        m_OriginalDist = CamTransform.localPosition.magnitude;
         m_CurrentDist = m_OriginalDist;
 
         // create a new RayHitComparer
@@ -124,7 +122,7 @@ public class AntiCameraWallClip : MonoBehaviour
         m_CurrentDist = Mathf.SmoothDamp(m_CurrentDist, targetDist, ref m_MoveVelocity,
             m_CurrentDist > targetDist ? clipMoveTime : returnTime);
         m_CurrentDist = Mathf.Clamp(m_CurrentDist, closestDistance, m_OriginalDist);
-        m_Cam.localPosition = -Vector3.forward * m_CurrentDist;
+        CamTransform.localPosition = -Vector3.forward * m_CurrentDist;
     }
 
 

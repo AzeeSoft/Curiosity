@@ -1,39 +1,35 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class ThirdPersonPlayerCamera : MonoBehaviour
 {
-    public CuriosityModel curiosityModel;
+    public Transform ThirdPersonVirtualCamera;
     public float followSpeed = 3f;
     public float rotationSpeed = 3f;
 
     public float minAngle = -60f;
     public float maxAngle = 60f;
 
+    private CuriosityModel curiosityModel;
+    
     #region Accessors
-
-    public new Camera camera
-    {
-        get { return _camera; }
-    }
 
     #endregion
 
-    private Camera _camera;
     private CameraInputController _cameraInputController;
 
     void Awake()
     {
-        _camera = GetComponentInChildren<Camera>();
         _cameraInputController = GetComponentInChildren<CameraInputController>();
-        
-        curiosityModel.thirdPersonPlayerCamera = this;
     }
 
     // Use this for initialization
     void Start()
     {
+        curiosityModel = LevelManager.Instance.CuriosityModel;
+        curiosityModel.thirdPersonPlayerCamera = this;
         HelperUtilities.UpdateCursorLock(true);
     }
 
@@ -66,6 +62,6 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
 
 //        transform.Rotate(playerInput.camVertical, playerInput.camHorizontal, 0);
 
-        _camera.transform.LookAt(curiosityModel.CamTarget.position);
+        ThirdPersonVirtualCamera.transform.LookAt(curiosityModel.CamTarget.position);
     }
 }

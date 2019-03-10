@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager Instance { get; private set; }
 
+    public CuriosityModel CuriosityModel;
     public GameObject HUD;
     public GameObject WinScreen;
     public GameObject LoseScreen;
@@ -20,7 +21,6 @@ public class LevelManager : MonoBehaviour
     public event Action OnAllTerminalsExplored;
     public bool GameOver { get; private set; }
 
-    [HideInInspector] public CuriosityModel curiosityModel;
     private Sun _sun;
 
     private Dictionary<TerminalTrigger.State, bool> terminalExplorationStates =
@@ -45,7 +45,6 @@ public class LevelManager : MonoBehaviour
             Instance = this;
         }
 
-        curiosityModel = FindObjectOfType<CuriosityModel>();
         _sun = GetComponent<Sun>();
     }
 
@@ -59,7 +58,7 @@ public class LevelManager : MonoBehaviour
     {
         if (!GameOver)
         {
-            if (!curiosityModel.IsAlive())
+            if (!CuriosityModel.IsAlive())
             {
                 StartCoroutine(GameLost());
             }

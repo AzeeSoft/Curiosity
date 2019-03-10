@@ -301,7 +301,7 @@ public class CuriosityMovementController : MonoBehaviour
 
     void UpdateHeadRotation()
     {
-        Transform thirdPersonCameraTransform = _curiosityModel.thirdPersonPlayerCamera.camera.transform;
+        Transform thirdPersonCameraTransform = _curiosityModel.thirdPersonPlayerCamera.ThirdPersonVirtualCamera;
 
         Quaternion targetRotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
             thirdPersonCameraTransform.rotation.eulerAngles.y, 0);

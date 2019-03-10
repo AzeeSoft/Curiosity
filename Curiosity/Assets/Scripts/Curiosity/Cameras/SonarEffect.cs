@@ -8,23 +8,16 @@ public class SonarEffect : MonoBehaviour
     [ReadOnly] public Transform ScannerOrigin;
     [ReadOnly] public SonarScanner sonarScanner;
 
-    private ThirdPersonPlayerCamera _thirdPersonPlayerCamera;
-
     private Camera _camera;
-
-//    Scannable[] _scannables;
 
     private void Awake()
     {
         sonarScanner = GetComponentInParent<SonarScanner>();
-        _thirdPersonPlayerCamera = GetComponentInParent<ThirdPersonPlayerCamera>();
-        ScannerOrigin = _thirdPersonPlayerCamera.curiosityModel.GetComponent<CuriosityMovementController>().Body
-            .transform;
     }
 
     void Start()
     {
-//        _scannables = FindObjectsOfType<Scannable>();
+        ScannerOrigin = LevelManager.Instance.CuriosityModel.GetComponent<CuriosityMovementController>().Body.transform;
     }
 
     void Update()

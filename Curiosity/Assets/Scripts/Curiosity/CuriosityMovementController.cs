@@ -1,24 +1,48 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.Audio;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 public class CuriosityMovementController : MonoBehaviour
 {
     [Serializable]
     public class WheelSetup
     {
-        public GameObject WheelObject;
+        public GameObject WheelRoot;
+        public GameObject WheelHolder;
+        public GameObject WheelParentJoint;
         public float radius;
 
         [HideInInspector] public Wheel wheel;
 
-        public void SetupWheel()
+        public void SetupWheel(GameObject trailPrefab = null)
         {
-            wheel = WheelObject.AddComponent<Wheel>();
+            if (trailPrefab)
+            {
+                Instantiate(trailPrefab, WheelRoot.transform);
+            }
+
+            wheel = WheelRoot.AddComponent<Wheel>();
             wheel.radius = radius;
+            wheel.WheelHolder = WheelHolder;
+            wheel.WheelParentJoint = WheelParentJoint;
         }
+    }
+
+    [Serializable]
+    private class GizmosData
+    {
+        public Vector3 wheelsSuperPosition = Vector3.zero;
+        public Vector3 wheelsPlaneNormal = Vector3.up;
+
+        public Vector3 frontWheelsNormal = Vector3.up;
+        public Vector3 backWheelsNormal = Vector3.up;
+
+        public Vector3 bodyForward = Vector3.forward;
     }
 
     [Header("Required Objects")] public WheelSetup FrontLeftWheelSetup;
@@ -27,6 +51,7 @@ public class CuriosityMovementController : MonoBehaviour
     public WheelSetup FrontRightWheelSetup;
     public WheelSetup MiddleRightWheelSetup;
     public WheelSetup BackRightWheelSetup;
+    public GameObject WheelTrailPrefab;
     public GameObject Avatar;
     public GameObject Body;
     public GameObject HeadRotY;
@@ -46,37 +71,44 @@ public class CuriosityMovementController : MonoBehaviour
 
     [Header("TiltLimits")] public float MaxZTilt = 60f;
 
+    [Header("Wheel Data")] public float GroundHugMaxDistance = 3f;
+    public float GroundHugSpeed = 30f;
+    public float Gravity = 10f;
+    public float GravityModifier = 0.75f;
+    public float MaxWheelSpinSpeed = 30f;
+
     [Header("Others")] public float MaxRotation = 2f;
     public float AntiRotationSpeed = 3f;
-    public Transform FloorAlignTarget;
-    public float GroundHugMaxDistance = 3f;
-    public float GroundHugMinDistance = 2f;
-    public float MaxWheelSpinSpeed = 30f;
-    public AudioSource roverAudioSource;
-    public AudioSource gravelAudioSource;
 
     public Vector3 bodyOffset;
 
     private Rigidbody _rigidbody;
     private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;
+    private ThrusterController _thrusterController;
     private List<Wheel> wheels = new List<Wheel>();
+
+    private AudioSource roverAudioSource => _curiosityModel.curiosityAudio.roverAudioSource;
+    private AudioSource gravelAudioSource => _curiosityModel.curiosityAudio.gravelAudioSource;
 
     private float _currentRotationAngle = 0;
     private bool _invertTurn = false;
+
+    private GizmosData _gizmosData = new GizmosData();
 
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _curiosityModel = GetComponent<CuriosityModel>();
         _curiosityInputController = GetComponent<CuriosityInputController>();
+        _thrusterController = GetComponent<ThrusterController>();
 
         FrontLeftWheelSetup.SetupWheel();
         MiddleLeftWheelSetup.SetupWheel();
-        BackLeftWheelSetup.SetupWheel();
+        BackLeftWheelSetup.SetupWheel(WheelTrailPrefab);
         FrontRightWheelSetup.SetupWheel();
         MiddleRightWheelSetup.SetupWheel();
-        BackRightWheelSetup.SetupWheel();
+        BackRightWheelSetup.SetupWheel(WheelTrailPrefab);
 
         wheels.Add(FrontLeftWheelSetup.wheel);
         wheels.Add(MiddleLeftWheelSetup.wheel);
@@ -99,53 +131,49 @@ public class CuriosityMovementController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (_curiosityModel.Battery > 0)
+        if (_curiosityModel.IsAlive())
         {
             Move(_curiosityInputController.GetPlayerInput());
         }
 
-//        AlignWithFloor();
-//        HugWithFloor();
         StayWithWheels();
         UpdateWheelSpinning();
     }
 
-    void OnDrawGizmos()
+    private void LateUpdate()
     {
-        /*Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
-            FrontRightWheelSetup.wheel.transform.position);
-
-        Vector3 middleNormal = Vector3.Cross(MiddleLeftWheelSetup.wheel.transform.position,
-            MiddleRightWheelSetup.wheel.transform.position);
-
-        Vector3 backNormal = Vector3.Cross(BackLeftWheelSetup.wheel.transform.position,
-            BackRightWheelSetup.wheel.transform.position);
-
-        Gizmos.color = Color.blue;
-
-        Vector3 frontStart = (FrontLeftWheelSetup.wheel.transform.position +
-                              FrontRightWheelSetup.wheel.transform.position) / 2;
-        Vector3 middleStart = (MiddleLeftWheelSetup.wheel.transform.position +
-                               MiddleRightWheelSetup.wheel.transform.position) / 2;
-        Vector3 backStart = (BackLeftWheelSetup.wheel.transform.position +
-                             BackRightWheelSetup.wheel.transform.position) / 2;
-
-        Gizmos.DrawRay(frontStart, frontStart + frontNormal);
-        Gizmos.DrawRay(middleStart, middleStart + middleNormal);
-        Gizmos.DrawRay(backStart, backStart + backNormal);*/
+        ClampAngles();
     }
 
-    /*public void Move(CuriosityInputController.CuriosityInput curiosityInput)
+    void OnDrawGizmos()
     {
-        // Forward/Backward Movement
-        // Clamping negative value to slow down backward movement
-        float forward = Mathf.Clamp(curiosityInput.Forward, -MaxReverseThreshold, 1f);
+        try
+        {
+            Gizmos.color = Color.green;
 
-        Vector3 yLessForward = transform.forward;
-        Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
-        
-        _rigidbody.AddForce(targetVelocity);
-    }*/
+            Vector3 frontStart = (FrontLeftWheelSetup.wheel.transform.position +
+                                  FrontRightWheelSetup.wheel.transform.position) / 2;
+            Vector3 middleStart = (MiddleLeftWheelSetup.wheel.transform.position +
+                                   MiddleRightWheelSetup.wheel.transform.position) / 2;
+            Vector3 backStart = (BackLeftWheelSetup.wheel.transform.position +
+                                 BackRightWheelSetup.wheel.transform.position) / 2;
+
+            Gizmos.DrawRay(frontStart, _gizmosData.frontWheelsNormal);
+            Gizmos.DrawRay(backStart, _gizmosData.backWheelsNormal);
+
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawRay(_gizmosData.wheelsSuperPosition,
+                _gizmosData.wheelsPlaneNormal);
+
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawRay(Body.transform.position,
+                _gizmosData.bodyForward * 3);
+        }
+        catch (Exception e)
+        {
+        }
+    }
 
     public void Move(CuriosityInputController.CuriosityInput curiosityInput)
     {
@@ -153,10 +181,10 @@ public class CuriosityMovementController : MonoBehaviour
         // Clamping negative value to slow down backward movement
         float forward = Mathf.Clamp(curiosityInput.Forward, -MaxReverseThreshold, 1f);
 
-        Vector3 yLessForward = Avatar.transform.forward;
-//        yLessForward.y = 0;
+        Vector3 yLessAvatarForward = Avatar.transform.forward;
+        yLessAvatarForward.y = 0;
 
-        Vector3 targetVelocity = yLessForward * forward * MaxSpeed;
+        Vector3 targetVelocity = yLessAvatarForward * forward * MaxSpeed;
         if (curiosityInput.Boost)
         {
             targetVelocity *= BoostFactor;
@@ -187,8 +215,8 @@ public class CuriosityMovementController : MonoBehaviour
 
         float wheelAngle = curiosityInput.Turn * WheelTurnModifier;
 
-        FrontLeftWheelSetup.wheel.RotateWheel(wheelAngle);
-        FrontRightWheelSetup.wheel.RotateWheel(wheelAngle);
+        FrontLeftWheelSetup.wheel.TurnWheel(wheelAngle);
+        FrontRightWheelSetup.wheel.TurnWheel(wheelAngle);
 
         float targetAngle = curiosityInput.Turn * TurnSpeed * targetVelocity.magnitude;
 
@@ -197,15 +225,21 @@ public class CuriosityMovementController : MonoBehaviour
             targetAngle *= -1;
         }
 
-        bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle) - Mathf.Sign(_currentRotationAngle)) < 0.0001) &&
-                               Mathf.Abs(targetAngle) < Mathf.Abs(_currentRotationAngle);
+        // TODO (Azee): Decide whether this turn slowing down is even needed
+        /*bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle - _currentRotationAngle)) > 0) &&
+                               Mathf.Abs(targetAngle) < Mathf.Abs(_currentRotationAngle);*/
+
+//        bool slowingDownTurn = (Math.Abs(Mathf.Sign(targetAngle - _currentRotationAngle)) < 15f);
+        bool slowingDownTurn = false;
 
         _currentRotationAngle = Mathf.LerpAngle(_currentRotationAngle, targetAngle,
             (slowingDownTurn ? TurnDeceleration : TurnAcceleration) * Time.fixedDeltaTime);
 
         Avatar.transform.Rotate(transform.up, _currentRotationAngle);
+    }
 
-
+    private void ClampAngles()
+    {
         // Clamping the x and z rotations
         Vector3 rotationAngles = Avatar.transform.rotation.eulerAngles;
 
@@ -221,11 +255,24 @@ public class CuriosityMovementController : MonoBehaviour
         return _rigidbody.velocity.magnitude;
     }
 
+    public bool AreWheelsOnGround()
+    {
+        return wheels.TrueForAll((wheel) => wheel.onGround);
+    }
+
     void UpdateAudioSources()
     {
         float audioVolume = HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 1);
-        roverAudioSource.volume = audioVolume;
-        gravelAudioSource.volume = audioVolume;
+
+        if (!AreWheelsOnGround())
+        {
+            audioVolume = 0;
+        }
+
+        float audioFadeSpeed = 7;
+
+        roverAudioSource.volume = Mathf.Lerp(roverAudioSource.volume, audioVolume, Time.deltaTime * audioFadeSpeed);
+        gravelAudioSource.volume = Mathf.Lerp(gravelAudioSource.volume, audioVolume, Time.deltaTime * audioFadeSpeed);
     }
 
     void UpdateWheelSpinning()
@@ -241,11 +288,14 @@ public class CuriosityMovementController : MonoBehaviour
 
     void UpdateDustParticles()
     {
-        foreach (ParticleSystem dustParticleSystem in DustParticleSystems)
+        if (AreWheelsOnGround())
         {
-            ParticleSystem.MainModule mainModule = dustParticleSystem.main;
-            int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 5);
-            dustParticleSystem.Emit(emitParticles);
+            foreach (ParticleSystem dustParticleSystem in DustParticleSystems)
+            {
+                ParticleSystem.MainModule mainModule = dustParticleSystem.main;
+                int emitParticles = (int) HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 25);
+                dustParticleSystem.Emit(emitParticles);
+            }
         }
     }
 
@@ -253,7 +303,6 @@ public class CuriosityMovementController : MonoBehaviour
     {
         Transform thirdPersonCameraTransform = _curiosityModel.thirdPersonPlayerCamera.camera.transform;
 
-//        HeadRotY.transform.rotation = Quaternion.Euler(0,thirdPersonCameraTransform.rotation.eulerAngles.y,0);
         Quaternion targetRotation = Quaternion.Euler(thirdPersonCameraTransform.rotation.eulerAngles.x - 30,
             thirdPersonCameraTransform.rotation.eulerAngles.y, 0);
         HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, Time.deltaTime);
@@ -261,31 +310,56 @@ public class CuriosityMovementController : MonoBehaviour
 
     void StayWithWheels()
     {
+        /* Adjusting Body Offset */
+
         Vector3 wheelsSuperPosition = Vector3.zero;
         foreach (Wheel wheel in wheels)
         {
-            wheelsSuperPosition += wheel.transform.position;
+            wheelsSuperPosition += wheel.WheelHolder.transform.position;
         }
 
         wheelsSuperPosition /= wheels.Count;
 
-        Body.transform.position = wheelsSuperPosition + bodyOffset;
+        Body.transform.position = wheelsSuperPosition;
+        Body.transform.localPosition += bodyOffset;
 
 
-        Vector3 frontNormal = Vector3.Cross(FrontLeftWheelSetup.wheel.transform.position,
-            FrontRightWheelSetup.wheel.transform.position);
+        /* Calculating forward for body */
 
-        Vector3 middleNormal = Vector3.Cross(MiddleLeftWheelSetup.wheel.transform.position,
-            MiddleRightWheelSetup.wheel.transform.position);
+        Vector3 frontSuperPos = (FrontLeftWheelSetup.wheel.transform.position +
+                                 FrontRightWheelSetup.wheel.transform.position) / 2;
 
-        Vector3 backNormal = Vector3.Cross(BackLeftWheelSetup.wheel.transform.position,
-            BackRightWheelSetup.wheel.transform.position);
+        Vector3 backSuperPos = (BackLeftWheelSetup.wheel.transform.position +
+                                BackRightWheelSetup.wheel.transform.position) / 2;
 
-        Vector3 normalToPlane = (frontNormal + middleNormal + backNormal) / 3;
-//        normalToPlane.Normalize();
 
-//        Debug.Log(Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up));
-        float turnAngle = Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up) % 360;
+        Vector3 bodyForward = (frontSuperPos - backSuperPos).normalized;
+
+
+        /* Calculating Normal to Wheels Plane */
+
+        Vector3 frontDir = (FrontLeftWheelSetup.wheel.transform.position -
+                            FrontRightWheelSetup.wheel.transform.position).normalized;
+
+        Vector3 backDir = (BackLeftWheelSetup.wheel.transform.position -
+                           BackRightWheelSetup.wheel.transform.position).normalized;
+
+        Vector3 frontNormal = Vector3.Cross(frontDir, bodyForward).normalized;
+        Vector3 backNormal = Vector3.Cross(backDir, bodyForward).normalized;
+
+        if (frontNormal.y < 0)
+        {
+            frontNormal *= -1;
+        }
+
+        if (backNormal.y < 0)
+        {
+            backNormal *= -1;
+        }
+
+        Vector3 normalToPlane = (frontNormal + backNormal).normalized;
+
+        /*float turnAngle = Vector3.SignedAngle(Vector3.forward, Avatar.transform.forward, Vector3.up) % 360;
         if (turnAngle > 180)
         {
             turnAngle = turnAngle - 360;
@@ -294,21 +368,32 @@ public class CuriosityMovementController : MonoBehaviour
 //        Debug.Log("Turn Angle: " + turnAngle);
         if (turnAngle < -37 || turnAngle > 143)
         {
-//            Debug.Log("Correcting from " + newLocalRotation.z);
             normalToPlane *= -1;
-//            Debug.Log("Correcting to " + newLocalRotation.z);
         }
 
         if (normalToPlane.y < 0)
         {
             normalToPlane *= -1;
-        }
+        }*/
 
-        Quaternion newRotation = Quaternion.LookRotation(Body.transform.forward, normalToPlane);
+
+        /* Assigning Body Rotation */
+
+        Quaternion newRotation = Quaternion.LookRotation(bodyForward, normalToPlane);
         Body.transform.rotation = newRotation;
 
-        Quaternion newLocalRotation = Body.transform.localRotation;
-        newLocalRotation.y = 0;
+        Vector3 eulerAngles = Body.transform.localRotation.eulerAngles;
+        eulerAngles.y = 0;
+        Quaternion newLocalRotation = Quaternion.Euler(eulerAngles);
         Body.transform.localRotation = newLocalRotation;
+
+
+        /* Preparing data for Gizmos */
+
+        _gizmosData.wheelsSuperPosition = wheelsSuperPosition;
+        _gizmosData.wheelsPlaneNormal = normalToPlane;
+        _gizmosData.frontWheelsNormal = frontNormal;
+        _gizmosData.backWheelsNormal = backNormal;
+        _gizmosData.bodyForward = bodyForward;
     }
 }

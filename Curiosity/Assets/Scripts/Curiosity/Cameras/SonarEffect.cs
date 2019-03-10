@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SonarEffect : MonoBehaviour
 {
-    [ReadOnly] public Transform ScannerOrigin;
     public Material EffectMaterial;
-    public SonarScanner sonarScanner;
+    [ReadOnly] public Transform ScannerOrigin;
+    [ReadOnly] public SonarScanner sonarScanner;
 
     private ThirdPersonPlayerCamera _thirdPersonPlayerCamera;
 

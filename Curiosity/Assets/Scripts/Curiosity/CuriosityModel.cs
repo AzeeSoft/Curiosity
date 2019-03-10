@@ -4,24 +4,38 @@ using UnityEngine;
 
 public class CuriosityModel : MonoBehaviour
 {
-    const float MaxBattery = 100f;
-
-    public float Battery = 100f;
-
     public float SolarChargeRate = 5f;
     public float BatteryDepletionRate = 5f;
     public float ChargePadRechargeAmount = 100f;
 
-    public Transform CamTarget;
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
-    public GameObject spotLightObject;
+    [HideInInspector] public Transform CamTarget => Body;
+
+    [Header("Required References")] public GameObject Lens;
+    public Transform Body;
+
+    [Header("Required Prefabs")] public GameObject SpotLightPrefab;
+    public GameObject CuriosityColliderPrefab;
+    public GameObject CuriosityAudioSourcePrefab;
+
+    [HideInInspector] public CuriosityAudio curiosityAudio;
+
+    private GameObject _spotLightObject;
 
     private CuriosityInputController _curiosityInputController;
+    private Animator _animator;
     private Sun _sun;
 
     void Awake()
     {
         _curiosityInputController = GetComponent<CuriosityInputController>();
+        _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
+
+        Instantiate(CuriosityColliderPrefab, Body);
+
+        curiosityAudio = Instantiate(CuriosityAudioSourcePrefab, Body).GetComponent<CuriosityAudio>();
+        curiosityAudio.roverAudioSource.volume = 0;
+        curiosityAudio.gravelAudioSource.volume = 0;
     }
 
     // Start is called before the first frame update
@@ -29,49 +43,23 @@ public class CuriosityModel : MonoBehaviour
     {
         AvatarColliderGenerator avatarColliderGenerator = GetComponentInChildren<AvatarColliderGenerator>();
 //        avatarColliderGenerator.GenerateMeshColliders();
+
+        _animator = GetComponentInChildren<Animator>();
+
+
         _sun = LevelManager.Instance.GetSun();
 
-        _sun.OnSunStateChanged += newState => { UpdateSpotLight(); };
-        UpdateSpotLight();
+        _sun.OnSunStateChanged += newState => { RefreshSunState(newState); };
+        RefreshSunState();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Battery > 0)
+        CuriosityInputController.CuriosityInput input = _curiosityInputController.GetPlayerInput();
+        if (input.Respawn)
         {
-            CuriosityInputController.CuriosityInput input = _curiosityInputController.GetPlayerInput();
-            if (input.Respawn)
-            {
-                Respawn();
-            }
-
-            if (_sun.GetSunState() == Sun.SunState.Day)
-            {
-                RechargeBattery(SolarChargeRate * Time.deltaTime);
-            }
-            else
-            {
-                DepleteBattery(BatteryDepletionRate * Time.deltaTime);
-            }
-        }
-    }
-
-    void DepleteBattery(float value)
-    {
-        Battery -= value;
-        if (Battery < 0)
-        {
-            Battery = 0;
-        }
-    }
-
-    void RechargeBattery(float value)
-    {
-        Battery += value;
-        if (Battery > MaxBattery)
-        {
-            Battery = MaxBattery;
+            Respawn();
         }
     }
 
@@ -83,18 +71,40 @@ public class CuriosityModel : MonoBehaviour
         transform.position = targetPos;
     }
 
-    void UpdateSpotLight()
+    void RefreshSunState(Sun.SunState? curSunState = null)
     {
-        Sun.SunState curSunState = _sun.GetSunState();
-        spotLightObject.SetActive(curSunState != Sun.SunState.Day);
+        if (!curSunState.HasValue)
+        {
+            curSunState = _sun.GetSunState();
+        }
+
+        UpdateSpotLight(curSunState.Value);
+        UpdateSolarPanels(curSunState.Value);
+    }
+
+    void UpdateSpotLight(Sun.SunState curSunState)
+    {
+        _spotLightObject.SetActive(curSunState != Sun.SunState.Day);
+    }
+
+    void UpdateSolarPanels(Sun.SunState curSunState)
+    {
+        _animator.SetBool("openSolarPanels", curSunState == Sun.SunState.Day);
+    }
+
+
+    public bool IsAlive()
+    {
+        // TODO (Azee): Implement a life system.
+        return true;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("ChargePad"))
+        // No use of charge pad anymore
+        /*if (other.CompareTag("ChargePad"))
         {
-            RechargeBattery(ChargePadRechargeAmount);
             other.GetComponentInParent<AudioSource>().Play();
-        }
+        }*/
     }
 }

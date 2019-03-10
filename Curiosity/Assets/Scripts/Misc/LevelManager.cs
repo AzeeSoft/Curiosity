@@ -59,7 +59,7 @@ public class LevelManager : MonoBehaviour
     {
         if (!GameOver)
         {
-            if (curiosityModel.Battery <= 0)
+            if (!curiosityModel.IsAlive())
             {
                 StartCoroutine(GameLost());
             }
@@ -97,7 +97,7 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 0;
         FadeOut.SetActive(true);
-        
+
         yield return new WaitForSecondsRealtime(1);
 
         HelperUtilities.UpdateCursorLock(false);
@@ -119,9 +119,9 @@ public class LevelManager : MonoBehaviour
 
         Time.timeScale = 0;
         FadeOut.SetActive(true);
-        
+
         yield return new WaitForSecondsRealtime(1);
-        
+
         SceneManager.LoadScene(EndGameCreditsSceneName);
     }
 

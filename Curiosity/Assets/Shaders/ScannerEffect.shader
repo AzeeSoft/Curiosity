@@ -6,8 +6,10 @@ Shader "Hidden/ScannerEffect"
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_DetailTex("Texture", 2D) = "white" {}
+		_ScanStartDistance("Scan Start Distance", float) = 0
 		_ScanDistance("Scan Distance", float) = 0
 		_ScanWidth("Scan Width", float) = 10
+		_InnerEdgeFadeWidth("Inner Edge Fading Width", float) = 4
 		_LeadSharp("Leading Edge Sharpness", float) = 10
 		_LeadColor("Leading Edge Color", Color) = (1, 1, 1, 0)
 		_MidColor("Mid Color", Color) = (1, 1, 1, 0)
@@ -66,8 +68,10 @@ Shader "Hidden/ScannerEffect"
 			sampler2D _DetailTex;
 			sampler2D_float _CameraDepthTexture;
 			float4 _WorldSpaceScannerPos;
+			float _ScanStartDistance;
 			float _ScanDistance;
 			float _ScanWidth;
+			float _InnerEdgeFadeWidth;
 			float _LeadSharp;
 			float4 _LeadColor;
 			float4 _MidColor;
@@ -96,12 +100,19 @@ Shader "Hidden/ScannerEffect"
 
 				float dist = distance(wsPos, _WorldSpaceScannerPos);
 
-				if (dist < _ScanDistance && dist > _ScanDistance - _ScanWidth && linearDepth < 1)
+				if (dist < _ScanDistance && dist > _ScanStartDistance && dist > _ScanDistance - _ScanWidth && linearDepth < 1)
 				{
 					float diff = 1 - (_ScanDistance - dist) / (_ScanWidth);
+					
 					half4 edge = lerp(_MidColor, _LeadColor, pow(diff, _LeadSharp));
 					scannerCol = lerp(_TrailColor, edge, diff) + horizBars(i.uv) * _HBarColor;
 					scannerCol *= diff;
+					
+					float alpha = lerp(0, 1, (dist - _ScanStartDistance) / _InnerEdgeFadeWidth);			
+					if (alpha > 1) {
+					    alpha = 1;
+					}	
+					scannerCol *= alpha;
 				}
 
 				return col + scannerCol;

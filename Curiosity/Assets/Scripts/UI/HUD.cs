@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class HUD : MonoBehaviour
 {
-    public Slider batterySlider;
-    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +14,6 @@ public class HUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        batterySlider.value = LevelManager.Instance.curiosityModel.Battery;
+        
     }
 }

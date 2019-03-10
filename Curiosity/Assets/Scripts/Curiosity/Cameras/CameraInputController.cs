@@ -31,6 +31,12 @@ public class CameraInputController : MonoBehaviour
     {
         return _cameraInput;
     }
+    
+    private void OnDisable()
+    {
+        _cameraInput = new CameraInput();
+    }
+    
 
     void UpdateCameraInput()
     {

@@ -12,8 +12,9 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
     public float minAngle = -60f;
     public float maxAngle = 60f;
 
+    private StatefulCinemachineCamera _statefulCinemachineCamera;
     private CuriosityModel curiosityModel;
-    
+
     #region Accessors
 
     #endregion
@@ -23,6 +24,7 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
     void Awake()
     {
         _cameraInputController = GetComponentInChildren<CameraInputController>();
+        _statefulCinemachineCamera = GetComponentInChildren<StatefulCinemachineCamera>();
     }
 
     // Use this for initialization
@@ -30,6 +32,7 @@ public class ThirdPersonPlayerCamera : MonoBehaviour
     {
         curiosityModel = LevelManager.Instance.CuriosityModel;
         curiosityModel.thirdPersonPlayerCamera = this;
+
         HelperUtilities.UpdateCursorLock(true);
     }
 

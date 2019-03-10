@@ -34,6 +34,11 @@ public class CuriosityInputController : MonoBehaviour
         return _curiosityInput;
     }
 
+    private void OnDisable()
+    {
+        _curiosityInput = new CuriosityInput();
+    }
+
     void UpdateMoveInput()
     {
         _curiosityInput.Turn = Input.GetAxis("Horizontal");

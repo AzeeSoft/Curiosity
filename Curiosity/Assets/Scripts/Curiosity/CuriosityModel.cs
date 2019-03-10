@@ -20,15 +20,16 @@ public class CuriosityModel : MonoBehaviour
 
     [HideInInspector] public CuriosityAudio curiosityAudio;
 
+    public CuriosityInputController curiosityInputController { get; private set; }
+
     private GameObject _spotLightObject;
 
-    private CuriosityInputController _curiosityInputController;
     private Animator _animator;
     private Sun _sun;
 
     void Awake()
     {
-        _curiosityInputController = GetComponent<CuriosityInputController>();
+        curiosityInputController = GetComponent<CuriosityInputController>();
         _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
 
         Instantiate(CuriosityColliderPrefab, Body);
@@ -46,17 +47,29 @@ public class CuriosityModel : MonoBehaviour
 
         _animator = GetComponentInChildren<Animator>();
 
-
         _sun = LevelManager.Instance.GetSun();
-
         _sun.OnSunStateChanged += newState => { RefreshSunState(newState); };
         RefreshSunState();
+
+        CinemachineCameraManager.Instance.onCinemachineCameraStateUpdated.AddListener((state =>
+        {
+            switch (state)
+            {
+                case CinemachineCameraManager.CinemachineCameraState.ThirdPerson:
+                case CinemachineCameraManager.CinemachineCameraState.OverTheShoulder:
+                    UpdatePlayerInputState(true);
+                    break;
+                default:
+                    UpdatePlayerInputState(false);
+                    break;
+            }
+        }));
     }
 
     // Update is called once per frame
     void Update()
     {
-        CuriosityInputController.CuriosityInput input = _curiosityInputController.GetPlayerInput();
+        CuriosityInputController.CuriosityInput input = curiosityInputController.GetPlayerInput();
         if (input.Respawn)
         {
             Respawn();
@@ -97,6 +110,11 @@ public class CuriosityModel : MonoBehaviour
     {
         // TODO (Azee): Implement a life system.
         return true;
+    }
+
+    public void UpdatePlayerInputState(bool enable)
+    {
+        curiosityInputController.enabled = enable;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1,0 +1,436 @@
+fileFormatVersion: 2
+guid: de3f58285ec7ade4bb3b3102f4b20cd9
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Computer_base_37
+    100002: Computer_base_37 1
+    100004: Computer_base_37 2
+    100006: Computer_base_37 3
+    100008: Computer_base_37 4
+    100010: Computer_base_41
+    100012: Computer_base_41 1
+    100014: Computer_base_41 2
+    100016: Computer_base_41 3
+    100018: Computer_base_41 4
+    100020: Computer_base_42
+    100022: Computer_base_42 1
+    100024: Computer_base_42 2
+    100026: Computer_base_42 3
+    100028: Computer_base_42 4
+    100030: Computer_base_43
+    100032: Computer_base_43 1
+    100034: Computer_base_43 2
+    100036: Computer_base_43 3
+    100038: Computer_base_43 4
+    100040: Computer_base_44
+    100042: Computer_base_44 1
+    100044: Computer_base_44 2
+    100046: Computer_base_44 3
+    100048: Computer_base_44 4
+    100050: Computer_base_45
+    100052: Computer_base_45 1
+    100054: Computer_base_45 2
+    100056: Computer_base_45 3
+    100058: Computer_base_45 4
+    100060: Computer_base_46
+    100062: Computer_base_46 1
+    100064: Computer_base_46 2
+    100066: Computer_base_46 3
+    100068: Computer_base_46 4
+    100070: Computer_base_47
+    100072: Computer_base_47 1
+    100074: Computer_base_47 2
+    100076: Computer_base_47 3
+    100078: Computer_base_47 4
+    100080: Floor
+    100082: Floor 1
+    100084: Floor 2
+    100086: Floor 3
+    100088: Floor 4
+    100090: Floor2
+    100092: Floor3
+    100094: Floor3 1
+    100096: Floor3 2
+    100098: Floor3 3
+    100100: Floor4
+    100102: Floor5
+    100104: Floor6
+    100106: group5
+    100108: group6
+    100110: group7
+    100112: group8
+    100114: group9
+    100116: //RootNode
+    100118: Room
+    100120: Row1_WithFloor
+    100122: Row2_WithFloor
+    100124: Row3_WithFloor
+    100126: Row4_WithFloor
+    100128: Row5_WithFloor
+    100130: TV_1
+    100132: TV_10
+    100134: TV_11
+    100136: TV_2
+    100138: TV_3
+    100140: TV_4
+    100142: TV_5
+    100144: TV_6
+    100146: TV_7
+    100148: TV_8
+    100150: TV_9
+    100152: TVs
+    100154: TVs_Center
+    100156: TVs_Left
+    100158: TVs_Right
+    400000: Computer_base_37
+    400002: Computer_base_37 1
+    400004: Computer_base_37 2
+    400006: Computer_base_37 3
+    400008: Computer_base_37 4
+    400010: Computer_base_41
+    400012: Computer_base_41 1
+    400014: Computer_base_41 2
+    400016: Computer_base_41 3
+    400018: Computer_base_41 4
+    400020: Computer_base_42
+    400022: Computer_base_42 1
+    400024: Computer_base_42 2
+    400026: Computer_base_42 3
+    400028: Computer_base_42 4
+    400030: Computer_base_43
+    400032: Computer_base_43 1
+    400034: Computer_base_43 2
+    400036: Computer_base_43 3
+    400038: Computer_base_43 4
+    400040: Computer_base_44
+    400042: Computer_base_44 1
+    400044: Computer_base_44 2
+    400046: Computer_base_44 3
+    400048: Computer_base_44 4
+    400050: Computer_base_45
+    400052: Computer_base_45 1
+    400054: Computer_base_45 2
+    400056: Computer_base_45 3
+    400058: Computer_base_45 4
+    400060: Computer_base_46
+    400062: Computer_base_46 1
+    400064: Computer_base_46 2
+    400066: Computer_base_46 3
+    400068: Computer_base_46 4
+    400070: Computer_base_47
+    400072: Computer_base_47 1
+    400074: Computer_base_47 2
+    400076: Computer_base_47 3
+    400078: Computer_base_47 4
+    400080: Floor
+    400082: Floor 1
+    400084: Floor 2
+    400086: Floor 3
+    400088: Floor 4
+    400090: Floor2
+    400092: Floor3
+    400094: Floor3 1
+    400096: Floor3 2
+    400098: Floor3 3
+    400100: Floor4
+    400102: Floor5
+    400104: Floor6
+    400106: group5
+    400108: group6
+    400110: group7
+    400112: group8
+    400114: group9
+    400116: //RootNode
+    400118: Room
+    400120: Row1_WithFloor
+    400122: Row2_WithFloor
+    400124: Row3_WithFloor
+    400126: Row4_WithFloor
+    400128: Row5_WithFloor
+    400130: TV_1
+    400132: TV_10
+    400134: TV_11
+    400136: TV_2
+    400138: TV_3
+    400140: TV_4
+    400142: TV_5
+    400144: TV_6
+    400146: TV_7
+    400148: TV_8
+    400150: TV_9
+    400152: TVs
+    400154: TVs_Center
+    400156: TVs_Left
+    400158: TVs_Right
+    2100000: EverythingElse
+    2100002: Screens
+    2300000: Computer_base_37
+    2300002: Computer_base_37 1
+    2300004: Computer_base_37 2
+    2300006: Computer_base_37 3
+    2300008: Computer_base_37 4
+    2300010: Computer_base_41
+    2300012: Computer_base_41 1
+    2300014: Computer_base_41 2
+    2300016: Computer_base_41 3
+    2300018: Computer_base_41 4
+    2300020: Computer_base_42
+    2300022: Computer_base_42 1
+    2300024: Computer_base_42 2
+    2300026: Computer_base_42 3
+    2300028: Computer_base_42 4
+    2300030: Computer_base_43
+    2300032: Computer_base_43 1
+    2300034: Computer_base_43 2
+    2300036: Computer_base_43 3
+    2300038: Computer_base_43 4
+    2300040: Computer_base_44
+    2300042: Computer_base_44 1
+    2300044: Computer_base_44 2
+    2300046: Computer_base_44 3
+    2300048: Computer_base_44 4
+    2300050: Computer_base_45
+    2300052: Computer_base_45 1
+    2300054: Computer_base_45 2
+    2300056: Computer_base_45 3
+    2300058: Computer_base_45 4
+    2300060: Computer_base_46
+    2300062: Computer_base_46 1
+    2300064: Computer_base_46 2
+    2300066: Computer_base_46 3
+    2300068: Computer_base_46 4
+    2300070: Computer_base_47
+    2300072: Computer_base_47 1
+    2300074: Computer_base_47 2
+    2300076: Computer_base_47 3
+    2300078: Computer_base_47 4
+    2300080: Floor 1
+    2300082: Floor 2
+    2300084: Floor 3
+    2300086: Floor 4
+    2300088: Floor2
+    2300090: Floor3
+    2300092: Floor3 1
+    2300094: Floor3 2
+    2300096: Floor3 3
+    2300098: Room
+    2300100: TV_1
+    2300102: TV_10
+    2300104: TV_11
+    2300106: TV_2
+    2300108: TV_3
+    2300110: TV_4
+    2300112: TV_5
+    2300114: TV_6
+    2300116: TV_7
+    2300118: TV_8
+    2300120: TV_9
+    3300000: Computer_base_37
+    3300002: Computer_base_37 1
+    3300004: Computer_base_37 2
+    3300006: Computer_base_37 3
+    3300008: Computer_base_37 4
+    3300010: Computer_base_41
+    3300012: Computer_base_41 1
+    3300014: Computer_base_41 2
+    3300016: Computer_base_41 3
+    3300018: Computer_base_41 4
+    3300020: Computer_base_42
+    3300022: Computer_base_42 1
+    3300024: Computer_base_42 2
+    3300026: Computer_base_42 3
+    3300028: Computer_base_42 4
+    3300030: Computer_base_43
+    3300032: Computer_base_43 1
+    3300034: Computer_base_43 2
+    3300036: Computer_base_43 3
+    3300038: Computer_base_43 4
+    3300040: Computer_base_44
+    3300042: Computer_base_44 1
+    3300044: Computer_base_44 2
+    3300046: Computer_base_44 3
+    3300048: Computer_base_44 4
+    3300050: Computer_base_45
+    3300052: Computer_base_45 1
+    3300054: Computer_base_45 2
+    3300056: Computer_base_45 3
+    3300058: Computer_base_45 4
+    3300060: Computer_base_46
+    3300062: Computer_base_46 1
+    3300064: Computer_base_46 2
+    3300066: Computer_base_46 3
+    3300068: Computer_base_46 4
+    3300070: Computer_base_47
+    3300072: Computer_base_47 1
+    3300074: Computer_base_47 2
+    3300076: Computer_base_47 3
+    3300078: Computer_base_47 4
+    3300080: Floor 1
+    3300082: Floor 2
+    3300084: Floor 3
+    3300086: Floor 4
+    3300088: Floor2
+    3300090: Floor3
+    3300092: Floor3 1
+    3300094: Floor3 2
+    3300096: Floor3 3
+    3300098: Room
+    3300100: TV_1
+    3300102: TV_10
+    3300104: TV_11
+    3300106: TV_2
+    3300108: TV_3
+    3300110: TV_4
+    3300112: TV_5
+    3300114: TV_6
+    3300116: TV_7
+    3300118: TV_8
+    3300120: TV_9
+    4300000: Computer_base_41
+    4300002: Computer_base_42
+    4300004: Computer_base_43
+    4300006: Computer_base_37
+    4300008: Computer_base_44
+    4300010: Computer_base_45
+    4300012: Computer_base_46
+    4300014: Computer_base_47
+    4300016: Floor2
+    4300018: Computer_base_41
+    4300020: Computer_base_42
+    4300022: Computer_base_43
+    4300024: Computer_base_37
+    4300026: Computer_base_44
+    4300028: Computer_base_45
+    4300030: Computer_base_46
+    4300032: Computer_base_47
+    4300034: Floor
+    4300036: Floor3
+    4300038: Computer_base_41
+    4300040: Computer_base_42
+    4300042: Computer_base_43
+    4300044: Computer_base_37
+    4300046: Computer_base_44
+    4300048: Computer_base_45
+    4300050: Computer_base_46
+    4300052: Computer_base_47
+    4300054: Floor
+    4300056: Floor3
+    4300058: Computer_base_41
+    4300060: Computer_base_42
+    4300062: Computer_base_43
+    4300064: Computer_base_37
+    4300066: Computer_base_44
+    4300068: Computer_base_45
+    4300070: Computer_base_46
+    4300072: Computer_base_47
+    4300074: Floor
+    4300076: Floor3
+    4300078: Computer_base_41
+    4300080: Computer_base_42
+    4300082: Computer_base_43
+    4300084: Computer_base_37
+    4300086: Computer_base_44
+    4300088: Computer_base_45
+    4300090: Computer_base_46
+    4300092: Computer_base_47
+    4300094: Floor
+    4300096: Floor3
+    4300098: TV_7
+    4300100: TV_6
+    4300102: TV_5
+    4300104: TV_4
+    4300106: TV_8
+    4300108: TV_9
+    4300110: TV_10
+    4300112: TV_11
+    4300114: TV_3
+    4300116: TV_1
+    4300118: TV_2
+    4300120: Room
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

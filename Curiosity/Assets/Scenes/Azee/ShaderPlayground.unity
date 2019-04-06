@@ -944,6 +944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   top: {fileID: 428001852}
   bottom: {fileID: 1830249485}
+  scanAnimationDuration: 3
+  btn_PlayScanEffect: 0
 --- !u!4 &620257379 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 29a83b9a171c48646b95d03b1f96ee23,
@@ -1362,6 +1364,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   top: {fileID: 2111665197}
   bottom: {fileID: 469890734}
+  scanAnimationDuration: 3
+  btn_PlayScanEffect: 0
 --- !u!1001 &1612117887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1716,7 +1720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830249484}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.13, z: 0}
+  m_LocalPosition: {x: 0, y: -0.207, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 620257379}

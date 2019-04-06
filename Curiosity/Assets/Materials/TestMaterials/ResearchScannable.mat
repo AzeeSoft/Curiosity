@@ -73,6 +73,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WireframeBandSize: 0.3
+    - _WireframeVal: 0.03
     - _ZWrite: 1
     m_Colors:
     - _Bottom: {r: 0, g: 0, b: 0, a: 1}
@@ -82,4 +84,5 @@ Material:
     - _ScanlinePos: {r: 1, g: 1, b: 1, a: 1}
     - _ScanlineValue: {r: 1, g: 1, b: 1, a: 1}
     - _Top: {r: 0, g: 0, b: 0, a: 1}
+    - _WireframeColor: {r: 0.89965355, g: 1, b: 0.3443396, a: 1}
     - _XRayColor: {r: 0, g: 0, b: 0, a: 1}

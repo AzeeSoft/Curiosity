@@ -1,17 +1,14 @@
 fileFormatVersion: 2
-guid: 0a146ea81e99fce47bf98eda518b1b29
+guid: 5fdddf596cccb784b8269956e522ef8f
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: lambert1
-    2100002: lambert6
+    2100000: lambert13
     2300000: //RootNode
     3300000: //RootNode
-    4300000: TransmitterPole
-    4300002: Transmitionpole
-    9500000: //RootNode
+    4300000: Crowbar
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -64,8 +61,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.30479997
-    hasPreviousCalculatedGlobalScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -92,7 +89,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

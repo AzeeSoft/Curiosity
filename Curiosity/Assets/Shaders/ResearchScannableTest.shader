@@ -103,7 +103,6 @@
 
             fixed4 frag (g2f i) : SV_Target
             {
-                // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 
                 float3 dDir = normalize(_Bottom - _Top);
@@ -117,7 +116,7 @@
                 {
                     if (posPercent > _ScanlinePos - _ScanlineWidth) 
                     {
-                        return _ScanlineColor;
+                        return lerp(_ScanlineColor, col, (posPercent - (_ScanlinePos - _ScanlineWidth))/(_ScanlineWidth));;
                     }
                     
                     if (posPercent > _ScanlinePos - _WireframeBandSize) 

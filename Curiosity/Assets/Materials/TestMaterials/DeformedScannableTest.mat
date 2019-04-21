@@ -149,7 +149,7 @@ Material:
     - _WaveScale: 0.063
     - _WaveSpeed: 4
     - _WaveStrength: 20
-    - _WireframeVal: 0.001
+    - _WireframeVal: 0.021
     - _ZWrite: 1
     m_Colors:
     - WaveSpeed: {r: 19, g: 9, b: -16, a: -7}

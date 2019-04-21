@@ -67,11 +67,20 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _ScanlinePos: 0
+    - _ScanlineWidth: 2
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WireframeBandSize: 0.05
+    - _WireframeVal: 0.05
     - _ZWrite: 1
     m_Colors:
+    - _Bottom: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _ScanlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Top: {r: 0, g: 0, b: 0, a: 1}
+    - _WireframeColor: {r: 1, g: 1, b: 1, a: 1}
+    - _XRayColor: {r: 0, g: 0, b: 0, a: 1}

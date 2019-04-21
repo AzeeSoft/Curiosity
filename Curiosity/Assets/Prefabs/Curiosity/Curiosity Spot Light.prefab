@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8164201924294718394}
   - component: {fileID: 8014171814343812519}
   - component: {fileID: 8876266850880524560}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Curiosity Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}

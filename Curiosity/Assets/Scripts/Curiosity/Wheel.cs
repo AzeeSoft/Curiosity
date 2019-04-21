@@ -28,6 +28,7 @@ public class Wheel : MonoBehaviour
     private float groundHugSpeed => _curiosityMovementController.GroundHugSpeed;
 
     private TrailRenderer _trailRenderer;
+    private CuriosityModel _curiosityModel;
     private CuriosityMovementController _curiosityMovementController;
     private ThrusterController _thrusterController;
 
@@ -56,6 +57,7 @@ public class Wheel : MonoBehaviour
 //        GenerateMeshColliders();
 
         _trailRenderer = GetComponentInChildren<TrailRenderer>();
+        _curiosityModel = GetComponentInParent<CuriosityModel>();
         _curiosityMovementController = GetComponentInParent<CuriosityMovementController>();
         _thrusterController = GetComponentInParent<ThrusterController>();
     }
@@ -192,10 +194,13 @@ public class Wheel : MonoBehaviour
 
         float upHitDistance = 0;
 
-        bool upFound = Physics.Raycast(WheelHolder.transform.position + (Vector3.up * radius * 2), Vector3.down,
+//        Vector3 upDir = Vector3.up;
+        Vector3 upDir = _curiosityModel.Body.up;
+
+        bool upFound = Physics.Raycast(WheelHolder.transform.position + (upDir * radius * 2), Vector3.down,
             out upHit,
             LayerMask.GetMask("Wheel", "Curiosity"));
-        bool downFound = Physics.Raycast(WheelHolder.transform.position, Vector3.down, out downHit,
+        bool downFound = Physics.Raycast(WheelHolder.transform.position, -upDir, out downHit,
             LayerMask.GetMask("Wheel", "Curiosity"));
         bool isHuggingTheGround = true;
 
@@ -242,7 +247,21 @@ public class Wheel : MonoBehaviour
 
             if (downHit.distance > radius)
             {
-                newPos.y = Mathf.Lerp(newPos.y, newPos.y - (downHit.distance - radius),
+                float targetY = newPos.y - (downHit.distance - radius);
+
+                /*if (WheelParentJoint.transform.position.y - targetY > _curiosityMovementController.MaxDistanceFromBody)
+                {
+                    targetY = WheelParentJoint.transform.position.y - _curiosityMovementController.MaxDistanceFromBody;
+                }*/
+
+                if (_curiosityModel.Body.transform.position.y - targetY >
+                    _curiosityMovementController.MaxDistanceFromBody)
+                {
+                    targetY = _curiosityModel.Body.transform.position.y -
+                              _curiosityMovementController.MaxDistanceFromBody;
+                }
+
+                newPos.y = Mathf.Lerp(newPos.y, targetY,
                     Time.fixedDeltaTime * groundHugSpeed * GetGravityFactor(downHit.distance));
                 // newPos.y = newPos.y - (hit.distance - radius);
             }
@@ -261,6 +280,7 @@ public class Wheel : MonoBehaviour
         onGround = isHuggingTheGround;
 
         float oldLocalX = transform.localPosition.x;
+        float oldLocalZ = transform.localPosition.z;
 
         /*Vector3 parentDir = newPos - WheelParentJoint.transform.position;
         if (Mathf.Abs(parentDir.magnitude - _origParentDist) < 1)
@@ -270,6 +290,7 @@ public class Wheel : MonoBehaviour
 
         Vector3 newLocalPos = transform.localPosition;
         newLocalPos.x = oldLocalX;
+        newLocalPos.z = oldLocalZ;
         transform.localPosition = newLocalPos;
     }
 

@@ -8,7 +8,7 @@ public class ResearchScannableEffect : MonoBehaviour
     public Transform bottom;
 
     public float scanAnimationDuration = 3f;
-    
+
     [Button("Play Scan Effect", "PlayScanEffect")]
     public bool btn_PlayScanEffect;
 
@@ -26,14 +26,17 @@ public class ResearchScannableEffect : MonoBehaviour
         {
             foreach (Material material in renderer.materials)
             {
-                material.SetVector("_Top", top.localPosition);
-                material.SetVector("_Bottom", bottom.localPosition);
+                Vector3 topLocalPositionInModel = renderer.transform.InverseTransformPoint(top.position);
+                Vector3 bottomLocalPositionInModel = renderer.transform.InverseTransformPoint(bottom.position);
+
+                material.SetVector("_Top", topLocalPositionInModel);
+                material.SetVector("_Bottom", bottomLocalPositionInModel);
                 material.SetFloat("_ScanlinePos", curScanPos);
             }
         }
     }
 
-    private void PlayScanEffect()
+    public void PlayScanEffect()
     {
         if (scanEffectCoroutine != null)
         {
@@ -55,6 +58,7 @@ public class ResearchScannableEffect : MonoBehaviour
             {
                 curScanPos = 1f;
             }
+
             yield return new WaitForEndOfFrame();
         }
 

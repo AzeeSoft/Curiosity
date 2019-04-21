@@ -22,6 +22,7 @@ public class CuriosityModel : MonoBehaviour
 
     public CuriosityInputController curiosityInputController { get; private set; }
     public CuriosityMovementController curiosityMovementController { get; private set; }
+    public InteractionController interactionController { get; private set; }
 
     private GameObject _spotLightObject;
 
@@ -32,6 +33,7 @@ public class CuriosityModel : MonoBehaviour
     {
         curiosityInputController = GetComponent<CuriosityInputController>();
         curiosityMovementController = GetComponent<CuriosityMovementController>();
+        interactionController = GetComponent<InteractionController>();
         _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
 
         Instantiate(CuriosityColliderPrefab, Body);

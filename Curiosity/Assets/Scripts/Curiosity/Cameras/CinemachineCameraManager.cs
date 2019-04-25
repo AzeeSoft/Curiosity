@@ -20,7 +20,8 @@ public class CinemachineCameraManager : MonoBehaviour
         ThirdPerson,
         OverTheShoulder,
         EventLock,
-        FirstPerson
+        FirstPerson,
+        Research,
     }
 
     public static CinemachineCameraManager Instance;
@@ -44,7 +45,14 @@ public class CinemachineCameraManager : MonoBehaviour
     }
 
     [SerializeField] private CinemachineCameraState _currentState = CinemachineCameraState.ThirdPerson;
-    [SerializeField] private CinemachineCameraState _prevState = CinemachineCameraState.None;
+    [SerializeField] private CinemachineCameraState _prevReturnableState = CinemachineCameraState.None;
+
+    private Dictionary<CinemachineCameraState, bool> _returnableStates = new Dictionary<CinemachineCameraState, bool>
+    {
+        {CinemachineCameraState.ThirdPerson, true},
+        {CinemachineCameraState.FirstPerson, true},
+        {CinemachineCameraState.OverTheShoulder, true},
+    };
 
     [SerializeField]
     private List<StatefulCinemachineCamera> _statefulCinemachineCameras = new List<StatefulCinemachineCamera>();
@@ -125,14 +133,18 @@ public class CinemachineCameraManager : MonoBehaviour
 
     public void SwitchCameraState(CinemachineCameraState cinemachineCameraState, object stateData = null)
     {
-        _prevState = _currentState;
+        if (_returnableStates.ContainsKey(_currentState) && _returnableStates[_currentState])
+        {
+            _prevReturnableState = _currentState;
+        }
+
         _currentState = cinemachineCameraState;
         CheckAndSwitchCamera(stateData);
     }
 
     public void SwitchToPreviousCameraState()
     {
-        SwitchCameraState(_prevState);
+        SwitchCameraState(_prevReturnableState);
     }
 
     public void OnCameraCut(CinemachineBrain cinemachineBrain)

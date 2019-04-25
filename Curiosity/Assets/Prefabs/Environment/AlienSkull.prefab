@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   top: {fileID: 2145331534}
   bottom: {fileID: 495591371}
-  scanAnimationDuration: 3
+  scanAnimationDuration: 5
   btn_PlayScanEffect: 0
 --- !u!114 &268219704
 MonoBehaviour:
@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2495c18d8b3142f59d810bb0d78f1797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  researchItemData: {fileID: 11400000, guid: bc4baf7b425e21f48955684821aee1c4, type: 2}
 --- !u!114 &1592189715841976196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,8 +165,8 @@ MonoBehaviour:
     onInteractionEvent:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 268219705}
-          m_MethodName: PlayScanEffect
+        - m_Target: {fileID: 268219704}
+          m_MethodName: StartResearch
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

@@ -63,7 +63,7 @@ public class Interactable : MonoBehaviour
         if (LevelManager.Instance && LevelManager.Instance.CuriosityModel)
         {
             float distanceToCuriosity =
-                Vector3.Distance(transform.position, LevelManager.Instance.CuriosityModel.transform.position);
+                Vector3.Distance(transform.position, LevelManager.Instance.CuriosityModel.Body.transform.position);
 
             foreach (Interaction interaction in interactions)
             {

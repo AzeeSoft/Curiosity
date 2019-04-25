@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -96,6 +97,11 @@ public class InteractionController : MonoBehaviour
     void CheckInteractionUsingProximity(out InteractableUI[] interactableUIsToActivate)
     {
         interactableUIsToActivate = new InteractableUI[MaxInteractions];
+
+        if (CinemachineCameraManager.Instance.CurrentState == CinemachineCameraManager.CinemachineCameraState.Research)
+        {
+            return;
+        }
 
         foreach (Interactable.Interaction interaction in _interactionsInProximity)
         {

@@ -254,12 +254,12 @@ public class Wheel : MonoBehaviour
                     targetY = WheelParentJoint.transform.position.y - _curiosityMovementController.MaxDistanceFromBody;
                 }*/
 
-                if (_curiosityModel.Body.transform.position.y - targetY >
+                /*if (_curiosityModel.Body.transform.position.y - targetY >
                     _curiosityMovementController.MaxDistanceFromBody)
                 {
                     targetY = _curiosityModel.Body.transform.position.y -
                               _curiosityMovementController.MaxDistanceFromBody;
-                }
+                }*/
 
                 newPos.y = Mathf.Lerp(newPos.y, targetY,
                     Time.fixedDeltaTime * groundHugSpeed * GetGravityFactor(downHit.distance));

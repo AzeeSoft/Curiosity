@@ -13,6 +13,21 @@ public class InteractableUI : MonoBehaviour
         Hide();
     }
 
+    private void Update()
+    {
+        LookTowardsCamera();
+    }
+
+    void LookTowardsCamera()
+    {
+        Vector3 dirToCam = Camera.main.transform.position - transform.position;
+        dirToCam.Normalize();
+
+        dirToCam = -dirToCam;
+        
+        transform.forward = Vector3.Lerp(transform.forward, dirToCam, Time.deltaTime);
+    }
+
     public void Init(Sprite sprite, string desc)
     {
         icon.sprite = sprite;

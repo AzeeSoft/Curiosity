@@ -8435,7 +8435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxThrusterForce: 80
-  ThrusterDepletionRate: 25
+  ThrusterDepletionRate: 50
   ThrusterCooldownTime: 6
 --- !u!114 &1173383038
 MonoBehaviour:

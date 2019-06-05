@@ -6,6 +6,8 @@ public class InverseKinematicsController : MonoBehaviour
 {
     public GameObject IKHandle, Parent, Mid, Child, ParentHandle, staticReference;
 
+    public float IKfixTime;
+
     private Vector3 midPoint;
     private Vector3 startParent, startMid;
     public float minHeightDif = 0.4f;
@@ -19,6 +21,8 @@ public class InverseKinematicsController : MonoBehaviour
         length1 = (startParent - Mid.transform.position).magnitude;
         length2 = (Mid.transform.position - IKHandle.transform.position).magnitude;
         maxLength = length1 + length2;
+
+        StartCoroutine("IKfixCount");
     }
 
     public Vector3 LerpByDistance(Vector3 A, Vector3 B, float x)
@@ -116,6 +120,16 @@ public class InverseKinematicsController : MonoBehaviour
         Parent.transform.position = ParentHandle.transform.position;
         Mid.transform.localPosition = startMid;
         Child.transform.position = IKHandle.transform.position;
+    }
+
+    private IEnumerator IKfixCount()
+    {
+        yield return new WaitForSeconds(IKfixTime);
+
+        ResetIK();
+
+        StartCoroutine("IKfixCount");
+
     }
 
 }

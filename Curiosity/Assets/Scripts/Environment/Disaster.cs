@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Disaster : MonoBehaviour
 {
     public float DisasterRadius = 50f;
     public float DisasterCameraLockDuration = 3f;
+    public float killTime = 5f;
+    private float currentKillTime = 0;
     public bool DisasterOccured = false;
 
     // Start is called before the first frame update
@@ -56,4 +59,33 @@ public class Disaster : MonoBehaviour
 
         CinemachineCameraManager.Instance.SwitchToPreviousCameraState();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            currentKillTime = 0;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            currentKillTime += Time.deltaTime;
+        }
+        if(currentKillTime >= killTime)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            currentKillTime = 0;
+        }
+    }
+
 }

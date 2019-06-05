@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   top: {fileID: 2145331534}
   bottom: {fileID: 495591371}
-  scanAnimationDuration: 5
+  scanAnimationDuration: 4
   btn_PlayScanEffect: 0
 --- !u!114 &268219704
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
     showGizmo: 1
     gizmoColor: {r: 0, g: 0, b: 1, a: 1}
     description: 
-    maxRange: 10
+    maxRange: 20
     interactableUi: {fileID: 2897693095559474451}
     requiresSpecialActionController: 0
     onInteractionEvent:
@@ -199,26 +199,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8036221076351710801}
     m_Modifications:
-    - target: {fileID: 6194810477649486115, guid: 2aac7779473b2ca4eb53c70386921ebc,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4122297113417150077, guid: 2aac7779473b2ca4eb53c70386921ebc,
-        type: 3}
-      propertyPath: interactableUIPanel
-      value: 
-      objectReference: {fileID: 3249299377776291441}
-    - target: {fileID: 4122297113417150077, guid: 2aac7779473b2ca4eb53c70386921ebc,
-        type: 3}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 2791922546039195240}
-    - target: {fileID: 4122297113417150077, guid: 2aac7779473b2ca4eb53c70386921ebc,
-        type: 3}
-      propertyPath: text
-      value: 
-      objectReference: {fileID: 4970734462667989581}
     - target: {fileID: 591631473608133456, guid: 2aac7779473b2ca4eb53c70386921ebc,
         type: 3}
       propertyPath: m_Name
@@ -328,6 +308,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4122297113417150077, guid: 2aac7779473b2ca4eb53c70386921ebc,
+        type: 3}
+      propertyPath: interactableUIPanel
+      value: 
+      objectReference: {fileID: 3249299377776291441}
+    - target: {fileID: 4122297113417150077, guid: 2aac7779473b2ca4eb53c70386921ebc,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 2791922546039195240}
+    - target: {fileID: 4122297113417150077, guid: 2aac7779473b2ca4eb53c70386921ebc,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 4970734462667989581}
+    - target: {fileID: 6194810477649486115, guid: 2aac7779473b2ca4eb53c70386921ebc,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aac7779473b2ca4eb53c70386921ebc, type: 3}

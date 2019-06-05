@@ -44,13 +44,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a369771192939af4ea8d67e518f7bb5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CuriosityModel: {fileID: 0}
   HUD: {fileID: 0}
   WinScreen: {fileID: 0}
   LoseScreen: {fileID: 0}
   FadeOut: {fileID: 0}
   MainMenuSceneName: MainMenu
   EndGameCreditsSceneName: EndCredits
-  curiosityModel: {fileID: 0}
 --- !u!114 &108870352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,14 +63,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44129c125b51fc4dacd6dd468e963f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayCycleSpeed: 0.2
+  dayCycleSpeed: 0.6
   sun: {fileID: 0}
   moon: {fileID: 0}
   sunSetColor: {r: 0.1548149, g: 0.31714177, b: 0.46226418, a: 0.69411767}
   sunSetIntensity: 0.3
-  sunSetLerpRate: 0.4
-  sunSetStart: 8
-  sunSetEnd: 10
+  sunSetLerpRate: 3
+  sunSetStart: 11
+  sunSetEnd: 14
   sunRiseStart: 3
   sunRiseEnd: 5
   _hourOfDay: 12

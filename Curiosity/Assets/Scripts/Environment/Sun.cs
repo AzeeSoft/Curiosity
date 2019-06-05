@@ -50,10 +50,10 @@ public class Sun : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        sun.transform.RotateAround(Vector3.zero, Vector3.right, dayCycleSpeed * Time.deltaTime);
+        sun.transform.RotateAround(Vector3.zero, Vector3.left, dayCycleSpeed * Time.deltaTime);
 //        sun.transform.LookAt(Vector3.zero);
 
-        moon.transform.RotateAround(Vector3.zero, Vector3.right, dayCycleSpeed * Time.deltaTime);
+        moon.transform.RotateAround(Vector3.zero, Vector3.left, dayCycleSpeed * Time.deltaTime);
 //        moon.transform.LookAt(Vector3.zero);
 
         UpdateSunState();
@@ -66,7 +66,7 @@ public class Sun : MonoBehaviour
 
     int GetHourOfTheDay()
     {
-        float sunAngle = Vector3.SignedAngle(sun.transform.forward, Vector3.forward, Vector3.right);
+        float sunAngle = Vector3.SignedAngle(sun.transform.forward, Vector3.forward, Vector3.left);
 //        Debug.Log("Angle: " + sunAngle);
         if (sunAngle < 0)
         {
@@ -84,7 +84,7 @@ public class Sun : MonoBehaviour
         
         _hourOfDay = GetHourOfTheDay();
 
-        if (_hourOfDay >= 2 && _hourOfDay < 10)
+        if (_hourOfDay >= 14 && _hourOfDay < 21)
         {
             _sunState = SunState.Day;
         }

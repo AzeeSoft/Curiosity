@@ -19,6 +19,7 @@ public class LevelManager : MonoBehaviour
 
     public event Action<bool> OnGameOver;
     public event Action OnAllTerminalsExplored;
+    public event Action OnFirstTerminal;
     public bool GameOver { get; private set; }
 
     private Sun _sun;
@@ -77,9 +78,17 @@ public class LevelManager : MonoBehaviour
                terminalExplorationStates[TerminalTrigger.State.Last];
     }
 
+    public bool HasExploredFirstTerminal()
+    {
+        OnFirstTerminal?.Invoke();
+        return terminalExplorationStates[TerminalTrigger.State.First];
+    }
+
     public void OnTerminalExplored(TerminalTrigger.State terminalState)
     {
         terminalExplorationStates[terminalState] = true;
+
+        OnFirstTerminal?.Invoke();
 
         if (HasExploredAllTerminals())
         {

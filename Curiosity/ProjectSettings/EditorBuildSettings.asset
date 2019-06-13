@@ -5,16 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 6585a605b4b322343aee94811c7c5e25
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainScene.unity
     guid: a2954c701aede654b8cb4c11725ad27d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Jeffrey/Into Cinematic.unity
     guid: 08084d2179d77f04a8efbdd92e111192
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/EndCredits.unity
     guid: 76f8cdd547fdca848b9e021634d78d4c
+  - enabled: 1
+    path: Assets/Scenes/Tomas/TomasNewWhiteBoxTest.unity
+    guid: 8b7e9604dd2f0334d863c63bc6603849
   m_configObjects: {}

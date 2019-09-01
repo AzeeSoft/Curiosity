@@ -8245,6 +8245,7 @@ GameObject:
   - component: {fileID: 1173383039}
   - component: {fileID: 1173383040}
   - component: {fileID: 7549757402577330789}
+  - component: {fileID: 868162637}
   m_Layer: 10
   m_Name: Curiosity
   m_TagString: Player
@@ -8373,8 +8374,8 @@ MonoBehaviour:
   TurnAcceleration: 5
   TurnDeceleration: 5
   WheelTurnModifier: 45
-  MaxZTilt: 60
-  GroundHugMaxDistance: 0.75
+  MaxZTilt: 20
+  GroundHugMaxDistance: 0.6
   GroundHugSpeed: 30
   MaxDistanceFromBody: 3
   Gravity: 0.9
@@ -8429,12 +8430,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462240520341299755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cda60afbbce24702821f2f61e16d0523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxThrusterForce: 80
+  MaxThrusterForce: 60
   ThrusterDepletionRate: 50
   ThrusterCooldownTime: 6
 --- !u!114 &1173383038
@@ -8455,7 +8456,7 @@ MonoBehaviour:
   Child: {fileID: 5541839165279231985}
   ParentHandle: {fileID: 1409990788}
   staticReference: {fileID: 869235812822408131}
-  IKfixTime: 5
+  IKfixTime: 3
   minHeightDif: -0.5
 --- !u!114 &1173383039
 MonoBehaviour:
@@ -8524,6 +8525,25 @@ MonoBehaviour:
   HighlightRadius: 10
   SpecialActionControllerTag: 0
   _maxDistance: 100
+--- !u!95 &868162637
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462240520341299755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &462240520768547546
 GameObject:
   m_ObjectHideFlags: 0

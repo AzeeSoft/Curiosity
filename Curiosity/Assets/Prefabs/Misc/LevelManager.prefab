@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3048913784855485259}
   - component: {fileID: 3048913784855485258}
   - component: {fileID: 108870352}
+  - component: {fileID: 980026212}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -63,15 +64,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44129c125b51fc4dacd6dd468e963f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayCycleSpeed: 0.6
+  dayCycleSpeed: 1
   sun: {fileID: 0}
   moon: {fileID: 0}
   sunSetColor: {r: 0.1548149, g: 0.31714177, b: 0.46226418, a: 0.69411767}
-  sunSetIntensity: 0.3
+  sunSetIntensity: 0.6
   sunSetLerpRate: 3
-  sunSetStart: 11
-  sunSetEnd: 14
+  sunSetStart: 22
+  sunSetEnd: 24
   sunRiseStart: 3
   sunRiseEnd: 5
   _hourOfDay: 12
   _sunState: 2
+--- !u!114 &980026212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3048913784855485253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fd2b148cc5139f4e8a80e06885f8ad3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

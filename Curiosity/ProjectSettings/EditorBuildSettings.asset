@@ -15,18 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Jeffrey/Into Cinematic.unity
     guid: 08084d2179d77f04a8efbdd92e111192
   - enabled: 1
-    path: Assets/Scenes/EndCredits.unity
-    guid: 76f8cdd547fdca848b9e021634d78d4c
+    path: Assets/Scenes/MainMenu.unity
+    guid: 2de9dd00dd61e064b82b7bade0410fb5
   - enabled: 0
     path: Assets/Scenes/Tomas/TomasNewWhiteBoxTest.unity
     guid: 8b7e9604dd2f0334d863c63bc6603849
   - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 4aaa511acd767634f9c5c2fd84562c78
+  - enabled: 1
     path: Assets/Scenes/MainSceneMars.unity
     guid: f3259920ec038bf458741c68849fc38c
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 2de9dd00dd61e064b82b7bade0410fb5
-  - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: 4aaa511acd767634f9c5c2fd84562c78
+    path: Assets/Scenes/EndCredits.unity
+    guid: 76f8cdd547fdca848b9e021634d78d4c
   m_configObjects: {}

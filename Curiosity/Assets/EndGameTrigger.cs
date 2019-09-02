@@ -11,6 +11,8 @@ public class EndGameTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
             SceneManager.LoadScene(SceneToLoad);
         }
     }

@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MainMenuManager : MonoBehaviour
 {
+    public string LevelToLoad;
+
     public GameObject main, settings;
+
+   
 
     public enum State
     {
@@ -16,6 +21,8 @@ public class MainMenuManager : MonoBehaviour
 
     public State currentState;
 
+
+   
     public void Update()
     {
         switch (currentState)
@@ -45,11 +52,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene(LevelToLoad);
     }
 
     public void ExitGame()
     {
         Application.Quit();
     }
+
+
+   
 }

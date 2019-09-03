@@ -8359,8 +8359,7 @@ MonoBehaviour:
     WheelParentJoint: {fileID: 5541839164957604677}
     radius: 0.3
     wheel: {fileID: 0}
-  WheelTrailPrefab: {fileID: 6202701597513996283, guid: bdb31bd1d7a3a0449b1cc0019073a759,
-    type: 3}
+  WheelTrailPrefab: {fileID: 327, guid: bdb31bd1d7a3a0449b1cc0019073a759, type: 3}
   Avatar: {fileID: 462240520768547546}
   Body: {fileID: 246841688}
   HeadRotY: {fileID: 246841614}

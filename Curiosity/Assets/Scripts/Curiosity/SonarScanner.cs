@@ -24,11 +24,17 @@ public class SonarScanner : MonoBehaviour
 
     private bool _canScan = true;
 
+    //Tomas
+    private AudioSource source;
+
 
     private void Awake()
     {
         _curiosityModel = GetComponent<CuriosityModel>();
         _curiosityInputController = GetComponent<CuriosityInputController>();
+
+        //Tomas
+        source = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -79,6 +85,9 @@ public class SonarScanner : MonoBehaviour
 
     async void ScanEnvironment()
     {
+        //Tomas
+        source.Play();
+
         Debug.Log("Scanning environment");
 
         _canScan = false;
@@ -104,6 +113,8 @@ public class SonarScanner : MonoBehaviour
 
         CooldownLevel = 100;
         _canScan = true;
+
+        
     }
 
     public float getCurrentScanRadius()

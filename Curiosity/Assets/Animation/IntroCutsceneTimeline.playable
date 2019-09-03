@@ -25,6 +25,7 @@ MonoBehaviour:
   - {fileID: 114702461293331566}
   - {fileID: 114263340352091938}
   - {fileID: 114905624556393814}
+  - {fileID: 114547057927885814}
   m_FixedDuration: 0
   m_EditorSettings:
     m_Framerate: 60
@@ -537,7 +538,7 @@ MonoBehaviour:
   subtitleData:
     text: "Booting Curiosity OS V1.25 (Property of NASA)\nLast boot recorded on 12-3-2035
       \n**CURRENT DATE UNKNOWN**\nInitializing \"Opportunity Package\" ... \nActivating
-      \"Self Sufficency\" Subroutine...\n<color=red>R.I.P. OPPORITUNITY... CURIOSITY
+      \"Self Sufficency\" Subroutine...\n<color=red>R.I.P. OPPORTUNITY... CURIOSITY
       SAFETY MEASURES ENGAGED</color>"
     delay: 0
     color: {r: 0, g: 0.4056604, b: 0.07526215, a: 1}
@@ -972,10 +973,30 @@ MonoBehaviour:
   subtitleData:
     text: "Booting Curiosity OS V1.25 (Property of NASA)\nLast boot recorded on 12-3-2035
       \n**CURRENT DATE UNKNOWN**\nInitializing \"Opportunity Package\" ... \nActivating
-      \"Self Sufficency\" Subroutine...\n<color=red>R.I.P. OPPORITUNITY... CURIOSITY
+      \"Self Sufficency\" Subroutine...\n<color=red>R.I.P. OPPORTUNITY... CURIOSITY
       SAFETY MEASURES ENGAGED</color>\nActivating Solar Panel Upgrade..."
     delay: 0
     color: {r: 0, g: 0.4056604, b: 0.07526215, a: 1}
+--- !u!114 &114547057927885814
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1544527758, guid: 6a10b2909283487f913b00d94cd3faf5, type: 3}
+  m_Name: Track Group
+  m_EditorClassIdentifier: 
+  m_Locked: 0
+  m_Muted: 0
+  m_CustomPlayableFullTypename: 
+  m_AnimClip: {fileID: 0}
+  m_Parent: {fileID: 11400000}
+  m_Children: []
+  m_Clips: []
+  m_Version: 2
 --- !u!114 &114564989247611922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1322,7 +1343,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1691,7 +1730,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1766,7 +1823,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1848,7 +1923,7 @@ MonoBehaviour:
   subtitleData:
     text: "Booting Curiosity OS V1.25 (Property of NASA)\nLast boot recorded on 12-3-2035
       \n**CURRENT DATE UNKNOWN**\nInitializing \"Opportunity Package\" ... \nActivating
-      \"Self Sufficency\" Subroutine...\n<color=red>R.I.P. OPPORITUNITY... CURIOSITY
+      \"Self Sufficency\" Subroutine...\n<color=red>R.I.P. OPPORTUNITY... CURIOSITY
       SAFETY MEASURES ENGAGED</color>\nActivating Solar Panel Upgrade...\nThruster
       Status: <color=red> INACTIVE</color> REQUIRES REPAIR"
     delay: 0

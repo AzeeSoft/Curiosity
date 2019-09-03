@@ -26,7 +26,7 @@ public class CuriosityModel : MonoBehaviour
 
     private GameObject _spotLightObject;
 
-    private Animator _animator;
+    public Animator _animator;
     private Sun _sun;
 
     void Awake()
@@ -49,7 +49,7 @@ public class CuriosityModel : MonoBehaviour
         AvatarColliderGenerator avatarColliderGenerator = GetComponentInChildren<AvatarColliderGenerator>();
 //        avatarColliderGenerator.GenerateMeshColliders();
 
-        _animator = GetComponentInChildren<Animator>();
+        //_animator = GetComponentInChildren<Animator>();
 
         _sun = LevelManager.Instance.GetSun();
         _sun.OnSunStateChanged += newState => { RefreshSunState(newState); };
@@ -107,6 +107,7 @@ public class CuriosityModel : MonoBehaviour
 
     void UpdateSolarPanels(Sun.SunState curSunState)
     {
+        Debug.Log("Opening Panels");
         _animator.SetBool("openSolarPanels", curSunState == Sun.SunState.Day);
     }
 

@@ -9,7 +9,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public string LevelToLoad;
 
-    public GameObject main, settings;
+    public GameObject main, settings, objToDisable;
 
    
 
@@ -30,10 +30,12 @@ public class MainMenuManager : MonoBehaviour
             case State.Main:
                 settings.SetActive(false);
                 main.SetActive(true);
+                objToDisable.SetActive(true);
                 break;
             case State.Settings:
                 settings.SetActive(true);
                 main.SetActive(false);
+                objToDisable.SetActive(false);
                 break;
         }
     }

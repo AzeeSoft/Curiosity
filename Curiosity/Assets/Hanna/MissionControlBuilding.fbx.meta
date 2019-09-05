@@ -1,0 +1,391 @@
+fileFormatVersion: 2
+guid: 0bd481acec987f842949f80b90a6c100
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Computer_base_37
+    100002: Computer_base_37 1
+    100004: Computer_base_37 2
+    100006: Computer_base_37 3
+    100008: Computer_base_37 4
+    100010: Computer_base_41
+    100012: Computer_base_41 1
+    100014: Computer_base_41 2
+    100016: Computer_base_41 3
+    100018: Computer_base_41 4
+    100020: Computer_base_42
+    100022: Computer_base_42 1
+    100024: Computer_base_42 2
+    100026: Computer_base_42 3
+    100028: Computer_base_42 4
+    100030: Computer_base_43
+    100032: Computer_base_43 1
+    100034: Computer_base_43 2
+    100036: Computer_base_43 3
+    100038: Computer_base_43 4
+    100040: Computer_base_44
+    100042: Computer_base_44 1
+    100044: Computer_base_44 2
+    100046: Computer_base_44 3
+    100048: Computer_base_44 4
+    100050: Computer_base_45
+    100052: Computer_base_45 1
+    100054: Computer_base_45 2
+    100056: Computer_base_45 3
+    100058: Computer_base_45 4
+    100060: Computer_base_46
+    100062: Computer_base_46 1
+    100064: Computer_base_46 2
+    100066: Computer_base_46 3
+    100068: Computer_base_46 4
+    100070: Computer_base_47
+    100072: Computer_base_47 1
+    100074: Computer_base_47 2
+    100076: Computer_base_47 3
+    100078: Computer_base_47 4
+    100080: MissionControl
+    100082: //RootNode
+    100084: MissionControlExterior
+    100086: MissionControlInterior
+    100088: row1_Group
+    100090: Row1_WithFloor
+    100092: Row2_Group
+    100094: Row2_WithFloor
+    100096: Row3_Group
+    100098: Row3_WithFloor
+    100100: Row4_Group
+    100102: Row4_WithFloor
+    100104: Row5_Group
+    100106: Row5_WithFloor
+    100108: TV_1
+    100110: TV_10
+    100112: TV_11
+    100114: TV_2
+    100116: TV_3
+    100118: TV_4
+    100120: TV_5
+    100122: TV_6
+    100124: TV_7
+    100126: TV_8
+    100128: TV_9
+    100130: TVs
+    100132: TVs_Center
+    100134: TVs_Left
+    100136: TVs_Right
+    400000: Computer_base_37
+    400002: Computer_base_37 1
+    400004: Computer_base_37 2
+    400006: Computer_base_37 3
+    400008: Computer_base_37 4
+    400010: Computer_base_41
+    400012: Computer_base_41 1
+    400014: Computer_base_41 2
+    400016: Computer_base_41 3
+    400018: Computer_base_41 4
+    400020: Computer_base_42
+    400022: Computer_base_42 1
+    400024: Computer_base_42 2
+    400026: Computer_base_42 3
+    400028: Computer_base_42 4
+    400030: Computer_base_43
+    400032: Computer_base_43 1
+    400034: Computer_base_43 2
+    400036: Computer_base_43 3
+    400038: Computer_base_43 4
+    400040: Computer_base_44
+    400042: Computer_base_44 1
+    400044: Computer_base_44 2
+    400046: Computer_base_44 3
+    400048: Computer_base_44 4
+    400050: Computer_base_45
+    400052: Computer_base_45 1
+    400054: Computer_base_45 2
+    400056: Computer_base_45 3
+    400058: Computer_base_45 4
+    400060: Computer_base_46
+    400062: Computer_base_46 1
+    400064: Computer_base_46 2
+    400066: Computer_base_46 3
+    400068: Computer_base_46 4
+    400070: Computer_base_47
+    400072: Computer_base_47 1
+    400074: Computer_base_47 2
+    400076: Computer_base_47 3
+    400078: Computer_base_47 4
+    400080: MissionControl
+    400082: //RootNode
+    400084: MissionControlExterior
+    400086: MissionControlInterior
+    400088: row1_Group
+    400090: Row1_WithFloor
+    400092: Row2_Group
+    400094: Row2_WithFloor
+    400096: Row3_Group
+    400098: Row3_WithFloor
+    400100: Row4_Group
+    400102: Row4_WithFloor
+    400104: Row5_Group
+    400106: Row5_WithFloor
+    400108: TV_1
+    400110: TV_10
+    400112: TV_11
+    400114: TV_2
+    400116: TV_3
+    400118: TV_4
+    400120: TV_5
+    400122: TV_6
+    400124: TV_7
+    400126: TV_8
+    400128: TV_9
+    400130: TVs
+    400132: TVs_Center
+    400134: TVs_Left
+    400136: TVs_Right
+    2100000: MissionControlExteriorMat
+    2100002: MissioncontrolBuildingInteriorMat
+    2100004: MissIonComputerMat
+    2300000: Computer_base_37
+    2300002: Computer_base_37 1
+    2300004: Computer_base_37 2
+    2300006: Computer_base_37 3
+    2300008: Computer_base_37 4
+    2300010: Computer_base_41
+    2300012: Computer_base_41 1
+    2300014: Computer_base_41 2
+    2300016: Computer_base_41 3
+    2300018: Computer_base_41 4
+    2300020: Computer_base_42
+    2300022: Computer_base_42 1
+    2300024: Computer_base_42 2
+    2300026: Computer_base_42 3
+    2300028: Computer_base_42 4
+    2300030: Computer_base_43
+    2300032: Computer_base_43 1
+    2300034: Computer_base_43 2
+    2300036: Computer_base_43 3
+    2300038: Computer_base_43 4
+    2300040: Computer_base_44
+    2300042: Computer_base_44 1
+    2300044: Computer_base_44 2
+    2300046: Computer_base_44 3
+    2300048: Computer_base_44 4
+    2300050: Computer_base_45
+    2300052: Computer_base_45 1
+    2300054: Computer_base_45 2
+    2300056: Computer_base_45 3
+    2300058: Computer_base_45 4
+    2300060: Computer_base_46
+    2300062: Computer_base_46 1
+    2300064: Computer_base_46 2
+    2300066: Computer_base_46 3
+    2300068: Computer_base_46 4
+    2300070: Computer_base_47
+    2300072: Computer_base_47 1
+    2300074: Computer_base_47 2
+    2300076: Computer_base_47 3
+    2300078: Computer_base_47 4
+    2300080: MissionControlExterior
+    2300082: MissionControlInterior
+    2300084: TV_1
+    2300086: TV_10
+    2300088: TV_11
+    2300090: TV_2
+    2300092: TV_3
+    2300094: TV_4
+    2300096: TV_5
+    2300098: TV_6
+    2300100: TV_7
+    2300102: TV_8
+    2300104: TV_9
+    3300000: Computer_base_37
+    3300002: Computer_base_37 1
+    3300004: Computer_base_37 2
+    3300006: Computer_base_37 3
+    3300008: Computer_base_37 4
+    3300010: Computer_base_41
+    3300012: Computer_base_41 1
+    3300014: Computer_base_41 2
+    3300016: Computer_base_41 3
+    3300018: Computer_base_41 4
+    3300020: Computer_base_42
+    3300022: Computer_base_42 1
+    3300024: Computer_base_42 2
+    3300026: Computer_base_42 3
+    3300028: Computer_base_42 4
+    3300030: Computer_base_43
+    3300032: Computer_base_43 1
+    3300034: Computer_base_43 2
+    3300036: Computer_base_43 3
+    3300038: Computer_base_43 4
+    3300040: Computer_base_44
+    3300042: Computer_base_44 1
+    3300044: Computer_base_44 2
+    3300046: Computer_base_44 3
+    3300048: Computer_base_44 4
+    3300050: Computer_base_45
+    3300052: Computer_base_45 1
+    3300054: Computer_base_45 2
+    3300056: Computer_base_45 3
+    3300058: Computer_base_45 4
+    3300060: Computer_base_46
+    3300062: Computer_base_46 1
+    3300064: Computer_base_46 2
+    3300066: Computer_base_46 3
+    3300068: Computer_base_46 4
+    3300070: Computer_base_47
+    3300072: Computer_base_47 1
+    3300074: Computer_base_47 2
+    3300076: Computer_base_47 3
+    3300078: Computer_base_47 4
+    3300080: MissionControlExterior
+    3300082: MissionControlInterior
+    3300084: TV_1
+    3300086: TV_10
+    3300088: TV_11
+    3300090: TV_2
+    3300092: TV_3
+    3300094: TV_4
+    3300096: TV_5
+    3300098: TV_6
+    3300100: TV_7
+    3300102: TV_8
+    3300104: TV_9
+    4300000: MissionControlExterior
+    4300002: MissionControlInterior
+    4300004: Computer_base_41
+    4300006: Computer_base_42
+    4300008: Computer_base_43
+    4300010: Computer_base_37
+    4300012: Computer_base_44
+    4300014: Computer_base_45
+    4300016: Computer_base_46
+    4300018: Computer_base_47
+    4300020: Computer_base_41
+    4300022: Computer_base_42
+    4300024: Computer_base_43
+    4300026: Computer_base_37
+    4300028: Computer_base_44
+    4300030: Computer_base_45
+    4300032: Computer_base_46
+    4300034: Computer_base_47
+    4300036: Computer_base_41
+    4300038: Computer_base_42
+    4300040: Computer_base_43
+    4300042: Computer_base_37
+    4300044: Computer_base_44
+    4300046: Computer_base_45
+    4300048: Computer_base_46
+    4300050: Computer_base_47
+    4300052: Computer_base_41
+    4300054: Computer_base_42
+    4300056: Computer_base_43
+    4300058: Computer_base_37
+    4300060: Computer_base_44
+    4300062: Computer_base_45
+    4300064: Computer_base_46
+    4300066: Computer_base_47
+    4300068: Computer_base_41
+    4300070: Computer_base_42
+    4300072: Computer_base_43
+    4300074: Computer_base_37
+    4300076: Computer_base_44
+    4300078: Computer_base_45
+    4300080: Computer_base_46
+    4300082: Computer_base_47
+    4300084: TV_7
+    4300086: TV_6
+    4300088: TV_5
+    4300090: TV_4
+    4300092: TV_8
+    4300094: TV_9
+    4300096: TV_10
+    4300098: TV_11
+    4300100: TV_3
+    4300102: TV_1
+    4300104: TV_2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

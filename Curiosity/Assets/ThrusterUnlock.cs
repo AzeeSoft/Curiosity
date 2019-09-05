@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class ThrusterUnlock : MonoBehaviour
 {
+    public PlayableDirector play;
     public Color startingColor;
     private AudioSource source;
     public Light light;
@@ -25,6 +27,7 @@ public class ThrusterUnlock : MonoBehaviour
                 this.GetComponentInChildren<MeshRenderer>().sharedMaterial.SetColor("_EmissionColor", Color.black);
                 source.Play();
                 light.enabled = false;
+                play.Play();
             }
            
         }

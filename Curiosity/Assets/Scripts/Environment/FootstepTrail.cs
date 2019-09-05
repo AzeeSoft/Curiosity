@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FootstepTrail : MonoBehaviour
 {
+    public float yOffset = 0.01f;
     public bool AutoAlign = true;
     public bool AutoHideFootstep = true;
 
@@ -42,7 +43,7 @@ public class FootstepTrail : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out downHit))
         {
             Vector3 newPos = downHit.point;
-            newPos.y += 0.01f;
+            newPos.y += yOffset;
 
             transform.position = newPos;
 

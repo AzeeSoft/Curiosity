@@ -9,6 +9,7 @@ public class Scannable : MonoBehaviour
 
     private Dictionary<Renderer, List<Material>> originalMaterials = new Dictionary<Renderer, List<Material>>();
     private SonarScanner _sonarScanner;
+    private CuriosityModel _curiosityModel;
 
     [SerializeField] [ReadOnly] private bool scannableMode = false;
 
@@ -16,6 +17,7 @@ public class Scannable : MonoBehaviour
     void Awake()
     {
         _sonarScanner = FindObjectOfType<SonarScanner>();
+        _curiosityModel = _sonarScanner.GetComponent<CuriosityModel>();
     }
 
     // Start is called before the first frame update
@@ -27,7 +29,7 @@ public class Scannable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Vector3.Distance(transform.position, _sonarScanner.transform.position) <=
+        if (Vector3.Distance(transform.position, _curiosityModel.Body.transform.position) <=
             _sonarScanner.getCurrentScanRadius())
         {
             if (!scannableMode)

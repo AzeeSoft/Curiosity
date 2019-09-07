@@ -269,6 +269,11 @@ public class CuriosityMovementController : MonoBehaviour
         return wheels.TrueForAll((wheel) => wheel.onGround);
     }
 
+    public void ResetWheels()
+    {
+        wheels.ForEach(wheel => wheel.ResetWheel());
+    }
+
     void UpdateAudioSources()
     {
         float audioVolume = HelperUtilities.Remap(GetSpeed(), 0, MaxSpeed, 0, 1);

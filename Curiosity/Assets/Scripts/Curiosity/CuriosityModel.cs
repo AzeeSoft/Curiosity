@@ -7,6 +7,7 @@ public class CuriosityModel : MonoBehaviour
     public float SolarChargeRate = 5f;
     public float BatteryDepletionRate = 5f;
     public float ChargePadRechargeAmount = 100f;
+    public float MaxResetDistanceFromGround = 10f;
     public List<CinemachineCameraManager.CinemachineCameraState> cyclableCameraStates = new List<CinemachineCameraManager.CinemachineCameraState>();
 
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
@@ -19,11 +20,14 @@ public class CuriosityModel : MonoBehaviour
     public GameObject CuriosityColliderPrefab;
     public GameObject CuriosityAudioSourcePrefab;
 
+    [Header("Debug")] public bool wheelsReposition = true;
+
     [HideInInspector] public CuriosityAudio curiosityAudio;
 
     public CuriosityInputController curiosityInputController { get; private set; }
     public CuriosityMovementController curiosityMovementController { get; private set; }
     public InteractionController interactionController { get; private set; }
+    public InverseKinematicsController[] inverseKinematicsControllers { get; private set; }
 
     private GameObject _spotLightObject;
 
@@ -35,6 +39,7 @@ public class CuriosityModel : MonoBehaviour
         curiosityInputController = GetComponent<CuriosityInputController>();
         curiosityMovementController = GetComponent<CuriosityMovementController>();
         interactionController = GetComponent<InteractionController>();
+        inverseKinematicsControllers = GetComponents<InverseKinematicsController>();
         _spotLightObject = Instantiate(SpotLightPrefab, Lens.transform);
 
         Instantiate(CuriosityColliderPrefab, Body);
@@ -89,10 +94,24 @@ public class CuriosityModel : MonoBehaviour
 
     void Respawn()
     {
-        Vector3 targetPos = transform.position;
-        targetPos.y += 10f;
+        if (Physics.Raycast(Body.position, Vector3.down, MaxResetDistanceFromGround))
+        {
+            Vector3 targetPos = transform.position;
+            targetPos.y += 10f;
 
-        transform.position = targetPos;
+            Vector3 targetEulerAngles = Body.rotation.eulerAngles;
+            targetEulerAngles.x = 0;
+            targetEulerAngles.z = 0;
+
+            transform.position = targetPos;
+            Body.rotation = Quaternion.Euler(targetEulerAngles);
+
+            curiosityMovementController.ResetWheels();
+            foreach (var inverseKinematicsController in inverseKinematicsControllers)
+            {
+                inverseKinematicsController.ResetIK();
+            }
+        }
     }
 
     void SwitchCamera()

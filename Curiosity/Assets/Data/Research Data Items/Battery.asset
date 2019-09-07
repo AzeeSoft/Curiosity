@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Battery
   m_EditorClassIdentifier: 
   title: Battery
-  description: This is the skull of the oldest Martian that ever lived.
-  sprite: {fileID: 21300000, guid: 09de5e38fca077e4eaee1504ee323e09, type: 3}
+  description: 'This power source was used to sustain Martian vehicles, now it lays
+    dormant and drained. '
+  sprite: {fileID: 21300000, guid: c17fd59ec45814a45ac5708ada40995a, type: 3}

@@ -17,4 +17,4 @@ MonoBehaviour:
     with an extreme velocity from a high alititude. It emits the same radioactive
     signature as many of these abandoned structures. Perhaps what caused this satellite
     to crash is what caused this settlement to be abandoned. '
-  sprite: {fileID: 21300000, guid: c8b3cb41742436044adedf1a4144efe1, type: 3}
+  sprite: {fileID: 21300000, guid: 659ee0b43dfc1f04fb605572c28f0d90, type: 3}

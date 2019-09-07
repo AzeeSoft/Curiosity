@@ -8307,6 +8307,7 @@ MonoBehaviour:
   SolarChargeRate: 1
   BatteryDepletionRate: 1
   ChargePadRechargeAmount: 100
+  cyclableCameraStates: 010000000400000002000000
   thirdPersonPlayerCamera: {fileID: 0}
   Lens: {fileID: 246841548}
   Body: {fileID: 246488440}
@@ -8410,6 +8411,7 @@ MonoBehaviour:
     Jump: 0
     Scan: 0
     Respawn: 0
+    SwitchCamera: 0
 --- !u!114 &462240520341299756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8573,7 +8575,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 4880.8447
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0

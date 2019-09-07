@@ -21,6 +21,7 @@ public class CuriosityInputController : MonoBehaviour
         public bool Jump;
         public bool Scan;
         public bool Respawn;
+        public bool SwitchCamera;
     }
 
     [SerializeField] private CuriosityInputSettings _curiosityInputSettings = new CuriosityInputSettings();
@@ -49,5 +50,6 @@ public class CuriosityInputController : MonoBehaviour
         _curiosityInput.Jump = Input.GetButton("Jump");
         _curiosityInput.Scan = Input.GetButtonDown("Scan");
         _curiosityInput.Respawn = Input.GetButtonDown("Respawn");
+        _curiosityInput.SwitchCamera = Input.GetButtonDown("Switch Camera");
     }
 }

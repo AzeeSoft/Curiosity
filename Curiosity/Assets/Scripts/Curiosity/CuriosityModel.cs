@@ -7,6 +7,7 @@ public class CuriosityModel : MonoBehaviour
     public float SolarChargeRate = 5f;
     public float BatteryDepletionRate = 5f;
     public float ChargePadRechargeAmount = 100f;
+    public List<CinemachineCameraManager.CinemachineCameraState> cyclableCameraStates = new List<CinemachineCameraManager.CinemachineCameraState>();
 
     [ReadOnly] public ThirdPersonPlayerCamera thirdPersonPlayerCamera;
     [HideInInspector] public Transform CamTarget => Body;
@@ -79,6 +80,11 @@ public class CuriosityModel : MonoBehaviour
         {
             Respawn();
         }
+
+        if (input.SwitchCamera)
+        {
+            SwitchCamera();
+        }
     }
 
     void Respawn()
@@ -87,6 +93,25 @@ public class CuriosityModel : MonoBehaviour
         targetPos.y += 10f;
 
         transform.position = targetPos;
+    }
+
+    void SwitchCamera()
+    {
+        if (cyclableCameraStates.Count > 0)
+        {
+            int curCyclableState = 0;
+            for (int i = 0; i < cyclableCameraStates.Count; i++)
+            {
+                if (cyclableCameraStates[i] == CinemachineCameraManager.Instance.CurrentState)
+                {
+                    curCyclableState = i;
+                    break;
+                }
+            }
+
+            curCyclableState = (curCyclableState + 1) % cyclableCameraStates.Count;
+            CinemachineCameraManager.Instance.SwitchCameraState(cyclableCameraStates[curCyclableState]);
+        }
     }
 
     void RefreshSunState(Sun.SunState? curSunState = null)

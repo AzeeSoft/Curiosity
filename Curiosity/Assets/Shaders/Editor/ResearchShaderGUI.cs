@@ -49,8 +49,13 @@ class ResearchShaderGUI : ShaderGUI
         public static GUIContent detailAlbedoText = new GUIContent("Detail Albedo x2", "Albedo (RGB) multiplied by 2");
         public static GUIContent detailNormalMapText = new GUIContent("Normal Map", "Normal Map");
         public static GUIContent xRayColorText = new GUIContent("X-Ray Color", "X-Ray Color (Black for default)");
-//        public static GUIContent outlineThickness = new GUIContent("Outline Thickness", "Outline Thickness");
-//        public static GUIContent outlineColor = new GUIContent("Outline Color", "Outline Color");
+        public static GUIContent scanlineColorText = new GUIContent("Scanline Color", "Scanline Color");
+        public static GUIContent scanlineWidthText = new GUIContent("Scanline Width", "Scanline Width");
+        public static GUIContent wireframeBandSizeText = new GUIContent("Wireframe band size", "Wireframe band size");
+        public static GUIContent wireframeWidthText = new GUIContent("Wireframe width", "Wireframe width");
+        public static GUIContent wireframeColorText = new GUIContent("Wireframe color", "Wireframe color");
+        //        public static GUIContent outlineThickness = new GUIContent("Outline Thickness", "Outline Thickness");
+        //        public static GUIContent outlineColor = new GUIContent("Outline Color", "Outline Color");
 
         public static string primaryMapsText = "Main Maps";
         public static string secondaryMapsText = "Secondary Maps";
@@ -87,6 +92,11 @@ class ResearchShaderGUI : ShaderGUI
     MaterialProperty detailNormalMap = null;
     MaterialProperty uvSetSecondary = null;
     MaterialProperty xRayColorForRendering = null;
+    MaterialProperty scanlineColor = null;
+    MaterialProperty scanlineWidth = null;
+    MaterialProperty wireframeBandSize = null;
+    MaterialProperty wireframeWidth = null;
+    MaterialProperty wireframeColor = null;
 //    MaterialProperty outlineThickness = null;
 //    MaterialProperty outlineColor = null;
 
@@ -131,6 +141,11 @@ class ResearchShaderGUI : ShaderGUI
         detailNormalMap = FindProperty("_DetailNormalMap", props);
         uvSetSecondary = FindProperty("_UVSec", props);
         xRayColorForRendering = FindProperty("_XRayColor", props);
+        scanlineColor = FindProperty("_ScanlineColor", props);
+        scanlineWidth = FindProperty("_ScanlineWidth", props);
+        wireframeBandSize = FindProperty("_WireframeBandSize", props);
+        wireframeWidth = FindProperty("_WireframeVal", props);
+        wireframeColor = FindProperty("_WireframeColor", props);
 //        outlineThickness = FindProperty("_OutlineThickness", props);
 //        outlineColor = FindProperty("_OutlineColor", props);
     }
@@ -191,10 +206,15 @@ class ResearchShaderGUI : ShaderGUI
             GUILayout.Label("X-Ray Vision", EditorStyles.boldLabel);
             DoXRayArea(material);
 
-//            EditorGUILayout.Space();
+            EditorGUILayout.Space();
 
-//            GUILayout.Label("Outline", EditorStyles.boldLabel);
-//            DoOutlineArea(material);
+            GUILayout.Label("Research Props", EditorStyles.boldLabel);
+            DoResearchArea(material);
+
+            //            EditorGUILayout.Space();
+
+            //            GUILayout.Label("Outline", EditorStyles.boldLabel);
+            //            DoOutlineArea(material);
 
             // Third properties
             GUILayout.Label(Styles.forwardText, EditorStyles.boldLabel);
@@ -316,6 +336,15 @@ class ResearchShaderGUI : ShaderGUI
             xRayColorForRendering.colorValue = Color.black;
         }
 
+    }
+
+    void DoResearchArea(Material material)
+    {
+        m_MaterialEditor.ColorProperty(scanlineColor, Styles.scanlineColorText.text);
+        m_MaterialEditor.FloatProperty(scanlineWidth, Styles.scanlineWidthText.text);
+        m_MaterialEditor.FloatProperty(wireframeBandSize, Styles.wireframeBandSizeText.text);
+        m_MaterialEditor.FloatProperty(wireframeColor, Styles.wireframeColorText.text);
+        m_MaterialEditor.RangeProperty(wireframeWidth, Styles.wireframeWidthText.text);
     }
 
     /*void DoOutlineArea(Material material)

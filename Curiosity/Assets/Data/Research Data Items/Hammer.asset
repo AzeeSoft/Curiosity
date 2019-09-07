@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a865ec4c77cb4a15ba09f401550ba7d7, type: 3}
+  m_Name: Hammer
+  m_EditorClassIdentifier: 
+  title: Hammer
+  description: In norse mythology, the God of thunder, Thor, used a hammer to smite
+    his enemies. Mars is named after the Greek god of war of the same name. This hammer
+    found on Mars could be a gift from Thor himself or... it's just a stupid hammer...
+    further investigation pending.
+  sprite: {fileID: 21300000, guid: 5690f8fc1d59eed40a0c06317300bd8d, type: 3}

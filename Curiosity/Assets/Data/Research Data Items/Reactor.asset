@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a865ec4c77cb4a15ba09f401550ba7d7, type: 3}
+  m_Name: Reactor
+  m_EditorClassIdentifier: 
+  title: Reactor
+  description: 'This is an energy source. If you''re not careful, it could blow up
+    and Curiosity may end up like Opportunity... out of commission.
+
+
+    Perhaps this is what the astronauts used to revive some of the power in these
+    facilities. '
+  sprite: {fileID: 21300000, guid: 0a7ca956eb4d5bb4e94470d33aebb840, type: 3}

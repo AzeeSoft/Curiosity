@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a865ec4c77cb4a15ba09f401550ba7d7, type: 3}
+  m_Name: Wrench
+  m_EditorClassIdentifier: 
+  title: Wrench
+  description: 'This object does not exist in the database. It''s surface properties
+    are cold and hard like metal. It''s probably from a higher dimension and must
+    have taken a long time to bring into this realm. '
+  sprite: {fileID: 21300000, guid: df20a4c436aaa1247b809b13ed7015f8, type: 3}

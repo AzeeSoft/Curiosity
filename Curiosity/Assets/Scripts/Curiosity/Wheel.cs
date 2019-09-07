@@ -26,6 +26,7 @@ public class Wheel : MonoBehaviour
     private bool initialized = false;
     private float _origParentDist;
     private float groundHugSpeed => _curiosityMovementController.GroundHugSpeed;
+    private Vector3 _origOffsetFromBody;
 
     private TrailRenderer _trailRenderer;
     private CuriosityModel _curiosityModel;
@@ -68,6 +69,7 @@ public class Wheel : MonoBehaviour
         Vector3 wheelBottomPos = WheelHolder.transform.position;
         wheelBottomPos.y -= radius;
         _origParentDist = Vector3.Distance(transform.position, WheelParentJoint.transform.position);
+        _origOffsetFromBody = _curiosityModel.Body.InverseTransformVector(_curiosityModel.Body.position - transform.position);
     }
 
     private void Update()
@@ -79,7 +81,11 @@ public class Wheel : MonoBehaviour
     {
 //        Debug.Log("Children " + transform.childCount);
 
-        Reposition();
+        if (_curiosityModel.wheelsReposition)
+        {
+            Reposition();
+        }
+
         AlignWithFloor();
         Spin();
     }
@@ -186,6 +192,11 @@ public class Wheel : MonoBehaviour
         wheelBottomPos.y -= radius;
         
     }*/
+
+    public void ResetWheel()
+    {
+        transform.position = _curiosityModel.Body.position - _curiosityModel.Body.TransformVector(_origOffsetFromBody);
+    }
 
     void Reposition()
     {

@@ -114,7 +114,7 @@ public class InverseKinematicsController : MonoBehaviour
 
     }
 
-    void ResetIK()
+    public void ResetIK()
     {
         Debug.Log("Resetting IK");
         Parent.transform.position = ParentHandle.transform.position;

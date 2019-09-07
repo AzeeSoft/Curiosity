@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a865ec4c77cb4a15ba09f401550ba7d7, type: 3}
   m_Name: BlockingDoor
   m_EditorClassIdentifier: 
-  title: Flashdrive
-  description: 'This data storage device has a pleasent space theme to it. Perhaps
-    it''s previous owner was a space enthusiast. The disaster that befell this settlement
-    appears to have corrupted the data stored inside. '
+  title: Door
+  description: 'A steel mechanical door blocks the path. Perhaps there is something
+    that must be done in this area first. '
   sprite: {fileID: 21300000, guid: f6d7442794356b24fb53512a52ff60c6, type: 3}

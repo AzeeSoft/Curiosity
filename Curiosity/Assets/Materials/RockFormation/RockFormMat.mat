@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SmallToolBoxMat
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: RockFormMat
+  m_Shader: {fileID: 4800000, guid: 9abac160266f1e34a96574214b393c52, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 0281ed51c650abc4d924e927acf26868, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0bb3b7c20ac9cd04592755fe7b54ee95, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d0aa9e331c1b2be4598d06dbe63bee11, type: 3}
+        m_Texture: {fileID: 2800000, guid: 20076325b9cc2ea45b0c36d0f8537c99, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 97001bb83cb777142998c62cbd522f5f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5eafa886baf3b1845b12ea2b5e91a0fe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.9497471, b: 0.11792451, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

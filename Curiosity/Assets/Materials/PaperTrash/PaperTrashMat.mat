@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SmallToolBoxMat
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Name: PaperTrashMat
+  m_Shader: {fileID: 4800000, guid: 9abac160266f1e34a96574214b393c52, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 0281ed51c650abc4d924e927acf26868, type: 3}
+        m_Texture: {fileID: 2800000, guid: f109489aba1e34f49bbd0affbdf48dc0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d0aa9e331c1b2be4598d06dbe63bee11, type: 3}
+        m_Texture: {fileID: 2800000, guid: f66c4d6ac27bb1a45abcdb8622fe80fb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 97001bb83cb777142998c62cbd522f5f, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1e0165ad44006d4ba2576eb0c93ef37, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -60,7 +60,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _GlossMapScale: 1
+    - _GlossMapScale: 0.56
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0

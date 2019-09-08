@@ -8395,6 +8395,7 @@ MonoBehaviour:
   MaxRotation: 2
   AntiRotationSpeed: 3
   bodyOffset: {x: 0, y: 25, z: 0}
+  _stopTrailsCount: 0
 --- !u!114 &2726949152520061088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8431,7 +8432,7 @@ MonoBehaviour:
   maxScanRadius: 200
   scanRadiusGrowthRate: 500
   scanStayTime: 1
-  scanRadiusShrinkRate: 600
+  scanRadiusShrinkRate: 150
   cooldownInterval: 100
   CooldownLevel: 0
   _curScanRadius: 0

@@ -20323,17 +20323,17 @@ PrefabInstance:
     - target: {fileID: 7672768134926291711, guid: 956649797c327f34a9aeb8eacbb1001e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.14831543
+      value: -0.2420044
       objectReference: {fileID: 0}
     - target: {fileID: 7672768134926291711, guid: 956649797c327f34a9aeb8eacbb1001e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.049222
+      value: 0.316329
       objectReference: {fileID: 0}
     - target: {fileID: 7672768134926291711, guid: 956649797c327f34a9aeb8eacbb1001e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.7805786
+      value: -1.3816223
       objectReference: {fileID: 0}
     - target: {fileID: 7672768134926291711, guid: 956649797c327f34a9aeb8eacbb1001e,
         type: 3}
@@ -20373,7 +20373,7 @@ PrefabInstance:
     - target: {fileID: 7672768134926291708, guid: 956649797c327f34a9aeb8eacbb1001e,
         type: 3}
       propertyPath: near clip plane
-      value: 0.4
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 643975756474912250, guid: 956649797c327f34a9aeb8eacbb1001e,
         type: 3}

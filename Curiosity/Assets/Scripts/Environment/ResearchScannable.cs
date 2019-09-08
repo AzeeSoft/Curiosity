@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResearchScannable : MonoBehaviour
 {
     public ResearchItemData researchItemData;
+    public Transform researchCameraPosition;
 
     private ResearchScannableEffect _researchScannableEffect;
     private Interactable _interactable;
@@ -35,6 +36,7 @@ public class ResearchScannable : MonoBehaviour
         CinemachineCameraManager.Instance.SwitchCameraState(
             CinemachineCameraManager.CinemachineCameraState.Research, new ResearchCamera.StateData()
             {
+                LookFromTarget = researchCameraPosition,
                 LookAtTarget = transform,
                 ZoomInOut = false,
                 EventLockDuration = researchDuration,

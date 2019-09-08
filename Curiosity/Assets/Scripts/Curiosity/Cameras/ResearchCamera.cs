@@ -10,6 +10,7 @@ public class ResearchCamera : MonoBehaviour
 {
     public class StateData
     {
+        public Transform LookFromTarget = null;
         public Transform LookAtTarget = null;
         public bool ZoomInOut = false;
         public float EventLockDuration;
@@ -29,6 +30,7 @@ public class ResearchCamera : MonoBehaviour
     private CinemachineVirtualCamera _virtualCamera;
     private CinemachineFollowZoom _cinemachineFollowZoom;
     private StatefulCinemachineCamera _statefulCinemachineCamera;
+    private CinemachineCameraOffset _cinemachineCameraOffset;
 
     private bool canExitResearchMode = false;
 
@@ -37,6 +39,7 @@ public class ResearchCamera : MonoBehaviour
         _virtualCamera = GetComponent<CinemachineVirtualCamera>();
         _cinemachineFollowZoom = GetComponent<CinemachineFollowZoom>();
         _statefulCinemachineCamera = GetComponent<StatefulCinemachineCamera>();
+        _cinemachineCameraOffset = GetComponent<CinemachineCameraOffset>();
 
         ResearchCanvas.gameObject.SetActive(false);
     }
@@ -61,21 +64,30 @@ public class ResearchCamera : MonoBehaviour
 
             if (stateData != null)
             {
-                if (stateData.LookAtTarget)
+                if (stateData.LookFromTarget)
                 {
+                    _cinemachineCameraOffset.enabled = false;
+                    _virtualCamera.transform.position = stateData.LookFromTarget.position;
+                    _virtualCamera.LookAt = null;
+                    _virtualCamera.transform.rotation = stateData.LookFromTarget.rotation;
+                }
+                else if (stateData.LookAtTarget)
+                {
+                    _cinemachineCameraOffset.enabled = true;
                     _virtualCamera.transform.position =
                         stateData.LookAtTarget.position + (stateData.LookAtTarget.forward * 1);
                     _virtualCamera.LookAt = stateData.LookAtTarget;
+                }
 
-                    if (stateData.ZoomInOut)
-                    {
-                        float zoomMinFOV = HelperUtilities.Remap(
-                            Vector3.Distance(transform.position, stateData.LookAtTarget.position), 0,
-                            farthestZoomDistance,
-                            _cinemachineFollowZoom.m_MinFOV, leastZoomMinFOV);
-                        zoomMinFOV = Mathf.Clamp(zoomMinFOV, leastZoomMinFOV, _cinemachineFollowZoom.m_MinFOV);
-                        StartCoroutine(ZoomInOut(stateData.EventLockDuration, zoomMinFOV));
-                    }
+
+                if (stateData.ZoomInOut)
+                {
+                    float zoomMinFOV = HelperUtilities.Remap(
+                        Vector3.Distance(transform.position, stateData.LookAtTarget.position), 0,
+                        farthestZoomDistance,
+                        _cinemachineFollowZoom.m_MinFOV, leastZoomMinFOV);
+                    zoomMinFOV = Mathf.Clamp(zoomMinFOV, leastZoomMinFOV, _cinemachineFollowZoom.m_MinFOV);
+                    StartCoroutine(ZoomInOut(stateData.EventLockDuration, zoomMinFOV));
                 }
             }
         });

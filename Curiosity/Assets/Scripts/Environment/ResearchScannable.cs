@@ -7,10 +7,19 @@ public class ResearchScannable : MonoBehaviour
     public ResearchItemData researchItemData;
 
     private ResearchScannableEffect _researchScannableEffect;
+    private Interactable _interactable;
 
     private void Awake()
     {
         _researchScannableEffect = GetComponent<ResearchScannableEffect>();
+        _interactable = GetComponentInParent<Interactable>();
+        foreach (var interactableInteraction in _interactable.interactions)
+        {
+            if (interactableInteraction.type == Interactable.InteractionType.Primary)
+            {
+                interactableInteraction.interactableUi.icon.sprite = researchItemData.sprite;
+            }
+        }
     }
 
     public void StartResearch()

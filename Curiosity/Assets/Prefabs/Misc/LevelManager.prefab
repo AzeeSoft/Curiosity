@@ -64,16 +64,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44129c125b51fc4dacd6dd468e963f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayCycleSpeed: 1
+  dayCycleSpeed: 0.5
+  nightCycleSpeed: 2
   sun: {fileID: 0}
   moon: {fileID: 0}
-  sunSetColor: {r: 0.1548149, g: 0.31714177, b: 0.46226418, a: 0.69411767}
+  sunSetColor: {r: 0.1548149, g: 0.31714177, b: 0.46226418, a: 0.8117647}
   sunSetIntensity: 0.6
-  sunSetLerpRate: 3
+  sunSetLerpRate: 0.1
   sunSetStart: 22
   sunSetEnd: 24
   sunRiseStart: 3
   sunRiseEnd: 5
+  dayStart: 13
+  dayEnd: 23
   _hourOfDay: 12
   _sunState: 2
 --- !u!114 &980026212

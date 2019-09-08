@@ -14,6 +14,7 @@ public class CuriosityModel : MonoBehaviour
     [HideInInspector] public Transform CamTarget => Body;
 
     [Header("Required References")] public GameObject Lens;
+    public Transform Avatar;
     public Transform Body;
 
     [Header("Required Prefabs")] public GameObject SpotLightPrefab;
@@ -92,26 +93,37 @@ public class CuriosityModel : MonoBehaviour
         }
     }
 
-    void Respawn()
+    public void Respawn(bool moveUp = true)
     {
-        if (Physics.Raycast(Body.position, Vector3.down, MaxResetDistanceFromGround))
+        StartCoroutine(_Respawn(moveUp));
+    }
+
+    IEnumerator _Respawn(bool moveUp)
+    {
+        curiosityMovementController.DrawTrails = false;
+        yield return new WaitForSeconds(0.3f);
+
+        if (moveUp && Physics.Raycast(Body.position, Vector3.down, MaxResetDistanceFromGround))
         {
             Vector3 targetPos = transform.position;
             targetPos.y += 10f;
-
-            Vector3 targetEulerAngles = Body.rotation.eulerAngles;
-            targetEulerAngles.x = 0;
-            targetEulerAngles.z = 0;
-
             transform.position = targetPos;
-            Body.rotation = Quaternion.Euler(targetEulerAngles);
-
-            curiosityMovementController.ResetWheels();
-            foreach (var inverseKinematicsController in inverseKinematicsControllers)
-            {
-                inverseKinematicsController.ResetIK();
-            }
         }
+
+        Vector3 targetEulerAngles = Body.rotation.eulerAngles;
+        targetEulerAngles.x = 0;
+        targetEulerAngles.z = 0;
+        Body.rotation = Quaternion.Euler(targetEulerAngles);
+
+        curiosityMovementController.ResetWheels();
+        foreach (var inverseKinematicsController in inverseKinematicsControllers)
+        {
+            inverseKinematicsController.ResetIK();
+        }
+
+        yield return new WaitForSeconds(0.3f);
+
+        curiosityMovementController.DrawTrails = true;
     }
 
     void SwitchCamera()

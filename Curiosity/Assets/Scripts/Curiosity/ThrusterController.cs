@@ -57,6 +57,15 @@ public class ThrusterController : MonoBehaviour
 
         _thrusterCharge -= ThrusterDepletionRate * Time.deltaTime;
         _lastUsedTime = Time.time;
+
+        StartCoroutine(StopTrailsTemp());
+    }
+
+    IEnumerator StopTrailsTemp()
+    {
+        _curiosityMovementController.DrawTrails = false;
+        yield return new WaitForSeconds(0.3f);
+        _curiosityMovementController.DrawTrails = true;
     }
 
     float GetThrusterForceToUse()

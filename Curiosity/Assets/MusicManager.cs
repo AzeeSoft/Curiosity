@@ -10,7 +10,13 @@ public class MusicManager : MonoBehaviour
     private int currentClip = 1;
 
     public AudioSource source;
-    
+
+    private Randomizer<AudioClip> audioClipRandomizer;
+
+    void Awake()
+    {
+        audioClipRandomizer = new Randomizer<AudioClip>(clips);
+    }
 
     private void Update()
     {
@@ -18,23 +24,12 @@ public class MusicManager : MonoBehaviour
         {
             return;
         }
-        if(source.clip == null)
-        {
-            source.clip = clips[1];
-            source.Play();
-        }
+        
         if (source.time >= source.clip.length)
         {
             Debug.Log("Switching");
-            source.clip = clips[currentClip];
+            source.clip = audioClipRandomizer.GetRandomItem();
             source.Play();
-            GetNewTrack();
         }
-    }
-
-    private void GetNewTrack()
-    {
-        Debug.Log("Getting New Track");
-        currentClip = Random.Range(0, clips.Length);
     }
 }

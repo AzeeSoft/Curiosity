@@ -5,12 +5,22 @@ using UnityEngine;
 public class ResearchScannable : MonoBehaviour
 {
     public ResearchItemData researchItemData;
+    public Transform researchCameraPosition;
 
     private ResearchScannableEffect _researchScannableEffect;
+    private Interactable _interactable;
 
     private void Awake()
     {
         _researchScannableEffect = GetComponent<ResearchScannableEffect>();
+        _interactable = GetComponentInParent<Interactable>();
+        foreach (var interactableInteraction in _interactable.interactions)
+        {
+            if (interactableInteraction.type == Interactable.InteractionType.Primary)
+            {
+                interactableInteraction.interactableUi.icon.sprite = researchItemData.sprite;
+            }
+        }
     }
 
     public void StartResearch()
@@ -26,6 +36,7 @@ public class ResearchScannable : MonoBehaviour
         CinemachineCameraManager.Instance.SwitchCameraState(
             CinemachineCameraManager.CinemachineCameraState.Research, new ResearchCamera.StateData()
             {
+                LookFromTarget = researchCameraPosition,
                 LookAtTarget = transform,
                 ZoomInOut = false,
                 EventLockDuration = researchDuration,

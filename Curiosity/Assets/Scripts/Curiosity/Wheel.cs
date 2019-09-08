@@ -113,11 +113,11 @@ public class Wheel : MonoBehaviour
         }
     }
 
-    void UpdateTrailRendererState()
+    public void UpdateTrailRendererState()
     {
         if (_trailRenderer)
         {
-            _trailRenderer.emitting = onGround;
+            _trailRenderer.emitting = _curiosityMovementController.DrawTrails && onGround;
         }
     }
 

@@ -83,6 +83,29 @@ public class CuriosityMovementController : MonoBehaviour
 
     public Vector3 bodyOffset;
 
+    public bool DrawTrails
+    {
+        get => _stopTrailsCount <= 0;
+        set
+        {
+            if (value)
+            {
+                _stopTrailsCount--;
+            }
+            else
+            {
+                _stopTrailsCount++;
+            }
+
+            _stopTrailsCount = Mathf.Max(0, _stopTrailsCount);
+
+            wheels.ForEach(wheel => wheel.UpdateTrailRendererState());
+        }
+    }
+
+    [ReadOnly] [SerializeField]
+    private int _stopTrailsCount = 0;
+
     private Rigidbody _rigidbody;
     private CuriosityModel _curiosityModel;
     private CuriosityInputController _curiosityInputController;

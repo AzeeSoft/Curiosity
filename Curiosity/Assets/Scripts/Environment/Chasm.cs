@@ -16,7 +16,6 @@ public class Chasm : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            LevelManager.Instance.CuriosityModel.curiosityMovementController.WheelTrailPrefab.SetActive(false);
             StartCoroutine("Respawn");
         }
     }
@@ -27,6 +26,7 @@ public class Chasm : MonoBehaviour
 
         fadePlay.Play();
 
+        LevelManager.Instance.CuriosityModel.curiosityMovementController.DrawTrails = false;
         float start = Time.realtimeSinceStartup;
         while (Time.realtimeSinceStartup < start + 2)
         {
@@ -44,14 +44,15 @@ public class Chasm : MonoBehaviour
         //CinemachineCameraManager.Instance.
 
         LevelManager.Instance.CuriosityModel.curiosityMovementController.enabled = false;
-        LevelManager.Instance.CuriosityModel.curiosityMovementController.WheelTrailPrefab.SetActive(false);
-        LevelManager.Instance.CuriosityModel.gameObject.transform.localRotation = new Quaternion(0,90,0,0);
+//        LevelManager.Instance.CuriosityModel.Avatar.rotation = Quaternion.Euler(0, spawn.transform.rotation.y, 0);
+        LevelManager.Instance.CuriosityModel.Avatar.forward = spawn.forward;
 
         LevelManager.Instance.CuriosityModel.transform.position = new Vector3(spawn.position.x, LevelManager.Instance.CuriosityModel.transform.position.y + heightdif, spawn.position.z);
 
         LevelManager.Instance.CuriosityModel.curiosityMovementController.enabled = true;
-        LevelManager.Instance.CuriosityModel.curiosityMovementController.WheelTrailPrefab.SetActive(true);
+        LevelManager.Instance.CuriosityModel.curiosityMovementController.DrawTrails = true;
 
+        LevelManager.Instance.CuriosityModel.Respawn(false);
 
 
     }

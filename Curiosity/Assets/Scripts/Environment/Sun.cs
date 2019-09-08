@@ -12,6 +12,7 @@ public class Sun : MonoBehaviour
     }
     
     public float dayCycleSpeed;
+    public float nightCycleSpeed;
     public GameObject sun;
     public GameObject moon;
 
@@ -23,6 +24,8 @@ public class Sun : MonoBehaviour
     public int sunSetEnd = 12;
     public int sunRiseStart = 1;
     public int sunRiseEnd = 6;
+    public int dayStart = 14;
+    public int dayEnd = 21;
 
     public event SunStateChangeCallback OnSunStateChanged;
     public event SunStateDetectionCallback OnDayStateDetected;
@@ -50,10 +53,21 @@ public class Sun : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        sun.transform.RotateAround(Vector3.zero, Vector3.left, dayCycleSpeed * Time.deltaTime);
+        float curCycleSpeed = dayCycleSpeed;
+        switch (_sunState)
+        {
+            case SunState.Day:
+                curCycleSpeed = dayCycleSpeed;
+                break;
+            case SunState.Night:
+                curCycleSpeed = nightCycleSpeed;
+                break;
+        }
+
+        sun.transform.RotateAround(Vector3.zero, Vector3.left, curCycleSpeed * Time.deltaTime);
 //        sun.transform.LookAt(Vector3.zero);
 
-        moon.transform.RotateAround(Vector3.zero, Vector3.left, dayCycleSpeed * Time.deltaTime);
+        moon.transform.RotateAround(Vector3.zero, Vector3.left, curCycleSpeed * Time.deltaTime);
 //        moon.transform.LookAt(Vector3.zero);
 
         UpdateSunState();
@@ -84,7 +98,7 @@ public class Sun : MonoBehaviour
         
         _hourOfDay = GetHourOfTheDay();
 
-        if (_hourOfDay >= 14 && _hourOfDay < 21)
+        if (_hourOfDay >= dayStart && _hourOfDay < dayEnd)
         {
             _sunState = SunState.Day;
         }

@@ -348,11 +348,13 @@ public class CuriosityMovementController : MonoBehaviour
         float xCorrection = 30;
         float lerpValue = Time.deltaTime;
 
-        if (CinemachineCameraManager.Instance.CurrentState ==
-            CinemachineCameraManager.CinemachineCameraState.FirstPerson)
+        switch(CinemachineCameraManager.Instance.CurrentState)
         {
-            xCorrection = 0;
-            lerpValue = 1;
+            case CinemachineCameraManager.CinemachineCameraState.FirstPerson:
+            case CinemachineCameraManager.CinemachineCameraState.OverTheShoulder:
+                xCorrection = 0;
+                lerpValue = 1;
+                break;
         }
 
         Quaternion targetRotation = Quaternion.Euler(currentCameraTransform.rotation.eulerAngles.x - xCorrection,

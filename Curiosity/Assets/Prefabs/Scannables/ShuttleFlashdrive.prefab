@@ -376,6 +376,7 @@ Transform:
   - {fileID: 3692970218882170240}
   - {fileID: 3692970220335052141}
   - {fileID: 5397175166362447550}
+  - {fileID: 1266232059253874706}
   m_Father: {fileID: 2134346513415267567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 72.345, z: 7.2320004}
@@ -408,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   researchItemData: {fileID: 11400000, guid: e18bd9716fa6e7d4583bf16535c9f9e2, type: 2}
+  researchCameraPosition: {fileID: 1266232059253874706}
 --- !u!114 &3692970219519313023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -519,15 +521,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
+  m_Color: {r: 0.46226418, g: 0.33863115, b: 0, a: 0.5254902}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: aef264971c73ae047b77fc2aa442c7e2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 1
@@ -680,6 +682,36 @@ MonoBehaviour:
   interactableUIPanel: {fileID: 3692970219690811506}
   icon: {fileID: 3692970219216254667}
   text: {fileID: 3692970218871973877}
+--- !u!1 &3734419612250529046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1266232059253874706}
+  m_Layer: 0
+  m_Name: CameraPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1266232059253874706
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3734419612250529046}
+  m_LocalRotation: {x: -0.30309772, y: -0.56459194, z: 0.25662777, w: -0.72353977}
+  m_LocalPosition: {x: -0.5750999, y: 0.7621616, z: -0.15582302}
+  m_LocalScale: {x: 1.9754864, y: 1.9754865, z: 1.9754865}
+  m_Children: []
+  m_Father: {fileID: 3692970220599044067}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4157738750290673592
 GameObject:
   m_ObjectHideFlags: 0

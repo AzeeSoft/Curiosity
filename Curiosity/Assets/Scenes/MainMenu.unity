@@ -3538,7 +3538,7 @@ MonoBehaviour:
   main: {fileID: 478640673}
   settings: {fileID: 141487303}
   objToDisable: {fileID: 1709169817}
-  masterVol: {fileID: 0}
+  masterVol: {fileID: 1316785060}
   currentState: 0
 --- !u!4 &1608234031
 Transform:

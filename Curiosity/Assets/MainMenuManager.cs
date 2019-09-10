@@ -11,6 +11,8 @@ public class MainMenuManager : MonoBehaviour
 
     public GameObject main, settings, objToDisable;
 
+    public Slider masterVol;
+
    
 
     public enum State
@@ -49,6 +51,7 @@ public class MainMenuManager : MonoBehaviour
         else
         {
             currentState = State.Settings;
+            masterVol.Select();
         }
     }
 

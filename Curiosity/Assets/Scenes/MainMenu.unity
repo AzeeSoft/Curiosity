@@ -1551,8 +1551,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
+  m_HorizontalAxis: UIX
+  m_VerticalAxis: UIY
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
@@ -1570,7 +1570,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1525029077}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &665978566
@@ -1654,11 +1654,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3048913784855485258, guid: 271ad5dffe8c64043bbda94fb1cf67f9,
-        type: 3}
-      propertyPath: CuriosityModel
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
       propertyPath: sun
       value: 
@@ -1668,20 +1663,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1772349661}
     - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
-      propertyPath: sunSetStart
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
       propertyPath: dayCycleSpeed
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
-      propertyPath: sunSetEnd
-      value: 24
+      propertyPath: nightCycleSpeed
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 108870352, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
-      propertyPath: sunSetIntensity
-      value: 0.6
+      propertyPath: sunSetLerpRate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 271ad5dffe8c64043bbda94fb1cf67f9, type: 3}
@@ -3547,6 +3538,7 @@ MonoBehaviour:
   main: {fileID: 478640673}
   settings: {fileID: 141487303}
   objToDisable: {fileID: 1709169817}
+  masterVol: {fileID: 0}
   currentState: 0
 --- !u!4 &1608234031
 Transform:
@@ -4184,6 +4176,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.60999
+      objectReference: {fileID: 0}
+    - target: {fileID: 415997103773503358, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.6273585
+      objectReference: {fileID: 0}
+    - target: {fileID: 415997103773503358, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.86026335
+      objectReference: {fileID: 0}
+    - target: {fileID: 415997103773503358, guid: dd664349644b61740a0e7139a358527c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4630655869271731457, guid: dd664349644b61740a0e7139a358527c,
         type: 3}

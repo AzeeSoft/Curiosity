@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Tire
   m_EditorClassIdentifier: 
   title: Tire
-  description: A stray tire found on the Martian Surface, just an abandoned tire?
-    Or a clue to the whereabouts of the astronauts?
+  description: 'A stray tire found on the Martian Surface, just an abandoned tire?
+    Or a clue to the whereabouts of the people who crashed this vehicle? The wreck
+    looks fresh, perhaps they are still nearby... It has been a long time since the
+    Curiosity rover left Earth. Perhaps if Curiosity could find these travelers, they
+    could take her home! '
   sprite: {fileID: 21300000, guid: 8ad7e8f970e3f274f84651ef2f3a9717, type: 3}

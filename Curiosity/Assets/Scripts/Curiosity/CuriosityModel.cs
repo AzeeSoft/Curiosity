@@ -130,7 +130,7 @@ public class CuriosityModel : MonoBehaviour
     {
         if (cyclableCameraStates.Count > 0)
         {
-            int curCyclableState = 0;
+            int curCyclableState = -1;
             for (int i = 0; i < cyclableCameraStates.Count; i++)
             {
                 if (cyclableCameraStates[i] == CinemachineCameraManager.Instance.CurrentState)
@@ -140,8 +140,11 @@ public class CuriosityModel : MonoBehaviour
                 }
             }
 
-            curCyclableState = (curCyclableState + 1) % cyclableCameraStates.Count;
-            CinemachineCameraManager.Instance.SwitchCameraState(cyclableCameraStates[curCyclableState]);
+            if (curCyclableState >= 0)
+            {
+                curCyclableState = (curCyclableState + 1) % cyclableCameraStates.Count;
+                CinemachineCameraManager.Instance.SwitchCameraState(cyclableCameraStates[curCyclableState]);
+            }
         }
     }
 

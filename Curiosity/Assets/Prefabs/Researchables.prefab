@@ -2275,46 +2275,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -178.18001
       objectReference: {fileID: 0}
-    - target: {fileID: 3263578807360938209, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+    - target: {fileID: 6013181860606542978, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
-      propertyPath: researchCameraPosition
-      value: 
-      objectReference: {fileID: 6725143506760675260}
-    - target: {fileID: 3263578806008205815, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+      propertyPath: m_LocalPosition.x
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013181860606542978, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
-      propertyPath: interactableUIPanel
-      value: 
-      objectReference: {fileID: 5498649716438714222}
-    - target: {fileID: 3263578806008205815, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+      propertyPath: m_LocalPosition.y
+      value: 0.173
+      objectReference: {fileID: 0}
+    - target: {fileID: 6013181860606542978, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 5498649716228788695}
-    - target: {fileID: 3263578806008205815, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
-        type: 3}
-      propertyPath: text
-      value: 
-      objectReference: {fileID: 5498649715682590953}
-    - target: {fileID: 3263578807360938208, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
-        type: 3}
-      propertyPath: top
-      value: 
-      objectReference: {fileID: 5498649716764413888}
-    - target: {fileID: 3263578807360938208, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
-        type: 3}
-      propertyPath: bottom
-      value: 
-      objectReference: {fileID: 5498649715638852252}
-    - target: {fileID: 3263578807360938214, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
-        type: 3}
-      propertyPath: interactions.Array.data[0].interactableUi
-      value: 
-      objectReference: {fileID: 5498649717423149682}
-    - target: {fileID: 3263578807360938214, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
-        type: 3}
-      propertyPath: interactions.Array.data[0].onInteractionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 5498649716611490660}
+      propertyPath: m_LocalPosition.z
+      value: -0.228
+      objectReference: {fileID: 0}
     - target: {fileID: 3263578806008205812, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -2365,21 +2340,81 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -0.88
       objectReference: {fileID: 0}
-    - target: {fileID: 6013181860606542978, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.06161221
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.32616082
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.93952894
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.08431143
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.63
+      value: 0.8063694
       objectReference: {fileID: 0}
-    - target: {fileID: 6013181860606542978, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.173
+      value: -1.2767998
       objectReference: {fileID: 0}
-    - target: {fileID: 6013181860606542978, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+    - target: {fileID: 4346304635224288313, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.228
+      value: -1.8739649
       objectReference: {fileID: 0}
+    - target: {fileID: 3263578807360938214, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: interactions.Array.data[0].interactableUi
+      value: 
+      objectReference: {fileID: 5498649717423149682}
+    - target: {fileID: 3263578807360938214, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: interactions.Array.data[0].onInteractionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5498649716611490660}
+    - target: {fileID: 3263578807360938209, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: researchCameraPosition
+      value: 
+      objectReference: {fileID: 6725143506760675260}
+    - target: {fileID: 3263578807360938208, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: top
+      value: 
+      objectReference: {fileID: 5498649716764413888}
+    - target: {fileID: 3263578807360938208, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: bottom
+      value: 
+      objectReference: {fileID: 5498649715638852252}
+    - target: {fileID: 3263578806008205815, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: interactableUIPanel
+      value: 
+      objectReference: {fileID: 5498649716438714222}
+    - target: {fileID: 3263578806008205815, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 5498649716228788695}
+    - target: {fileID: 3263578806008205815, guid: 9b8c6abff7d724a4f9b81bbbcc66b902,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 5498649715682590953}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b8c6abff7d724a4f9b81bbbcc66b902, type: 3}
 --- !u!4 &5498649715638852252 stripped
@@ -2467,26 +2502,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1184375186090964}
     m_Modifications:
-    - target: {fileID: 8960477080565549282, guid: 76327bc77f657034c909e93452f9844a,
+    - target: {fileID: 3214276399895933052, guid: 76327bc77f657034c909e93452f9844a,
         type: 3}
-      propertyPath: interactableUIPanel
-      value: 
-      objectReference: {fileID: 1535078343421743086}
-    - target: {fileID: 8960477080565549282, guid: 76327bc77f657034c909e93452f9844a,
-        type: 3}
-      propertyPath: icon
-      value: 
-      objectReference: {fileID: 1535078343902435671}
-    - target: {fileID: 8960477080565549282, guid: 76327bc77f657034c909e93452f9844a,
-        type: 3}
-      propertyPath: text
-      value: 
-      objectReference: {fileID: 1535078344213514345}
-    - target: {fileID: 8960477081360316916, guid: 76327bc77f657034c909e93452f9844a,
-        type: 3}
-      propertyPath: researchCameraPosition
-      value: 
-      objectReference: {fileID: 5386355116214794637}
+      propertyPath: m_Name
+      value: Astroturtle
+      objectReference: {fileID: 0}
     - target: {fileID: 2479781991775520071, guid: 76327bc77f657034c909e93452f9844a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2542,21 +2562,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.21900001
       objectReference: {fileID: 0}
-    - target: {fileID: 3214276399895933052, guid: 76327bc77f657034c909e93452f9844a,
-        type: 3}
-      propertyPath: m_Name
-      value: Astroturtle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8960477081360316917, guid: 76327bc77f657034c909e93452f9844a,
-        type: 3}
-      propertyPath: top
-      value: 
-      objectReference: {fileID: 1535078343364708160}
-    - target: {fileID: 8960477081360316917, guid: 76327bc77f657034c909e93452f9844a,
-        type: 3}
-      propertyPath: bottom
-      value: 
-      objectReference: {fileID: 1535078344232096284}
     - target: {fileID: 8960477081360316915, guid: 76327bc77f657034c909e93452f9844a,
         type: 3}
       propertyPath: interactions.Array.data[0].interactableUi
@@ -2567,6 +2572,36 @@ PrefabInstance:
       propertyPath: interactions.Array.data[0].onInteractionEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1535078343526034404}
+    - target: {fileID: 8960477081360316916, guid: 76327bc77f657034c909e93452f9844a,
+        type: 3}
+      propertyPath: researchCameraPosition
+      value: 
+      objectReference: {fileID: 5386355116214794637}
+    - target: {fileID: 8960477081360316917, guid: 76327bc77f657034c909e93452f9844a,
+        type: 3}
+      propertyPath: top
+      value: 
+      objectReference: {fileID: 1535078343364708160}
+    - target: {fileID: 8960477081360316917, guid: 76327bc77f657034c909e93452f9844a,
+        type: 3}
+      propertyPath: bottom
+      value: 
+      objectReference: {fileID: 1535078344232096284}
+    - target: {fileID: 8960477080565549282, guid: 76327bc77f657034c909e93452f9844a,
+        type: 3}
+      propertyPath: interactableUIPanel
+      value: 
+      objectReference: {fileID: 1535078343421743086}
+    - target: {fileID: 8960477080565549282, guid: 76327bc77f657034c909e93452f9844a,
+        type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 1535078343902435671}
+    - target: {fileID: 8960477080565549282, guid: 76327bc77f657034c909e93452f9844a,
+        type: 3}
+      propertyPath: text
+      value: 
+      objectReference: {fileID: 1535078344213514345}
     - target: {fileID: 6867572947946434104, guid: 76327bc77f657034c909e93452f9844a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

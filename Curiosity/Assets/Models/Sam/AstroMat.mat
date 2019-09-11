@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrowBarMat
-  m_Shader: {fileID: 4800000, guid: 50b164baf4da33f4c8129e339dae59d3, type: 3}
+  m_Name: AstroMat
+  m_Shader: {fileID: 4800000, guid: 9abac160266f1e34a96574214b393c52, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 90c9522a461af1445bdb500a91a037c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 133734a7a97966d45a37b034be30808a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 228bfe1e78c75554fb8fe5011a7dc60b, type: 3}
+        m_Texture: {fileID: 2800000, guid: ba7a057df9d530744b88c5ef59fb91eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 34e9c8d480b775d4a8c01fee8a2174d5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b0d17bfe69e2904b8f793ccd6163b0b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -67,20 +67,11 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _ScanlinePos: 0
-    - _ScanlineWidth: 0.015
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _WireframeBandSize: 0.35
-    - _WireframeVal: 0.03
     - _ZWrite: 1
     m_Colors:
-    - _Bottom: {r: 0, g: 0, b: 0, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ScanlineColor: {r: 0.11792451, g: 0.33542448, b: 1, a: 1}
-    - _Top: {r: 0, g: 0, b: 0, a: 1}
-    - _WireframeColor: {r: 0.042052314, g: 0.52034223, b: 0.990566, a: 1}
-    - _XRayColor: {r: 0, g: 0, b: 0, a: 1}

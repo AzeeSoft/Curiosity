@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +7,9 @@ public class ResearchScannable : MonoBehaviour
 {
     public ResearchItemData researchItemData;
     public Transform researchCameraPosition;
+    public bool collectible = true;
+
+    public event Action<ResearchScannable> onResearched;
 
     private ResearchScannableEffect _researchScannableEffect;
     private Interactable _interactable;
@@ -48,8 +52,8 @@ public class ResearchScannable : MonoBehaviour
 
         _researchScannableEffect.PlayScanEffect();
 
-//        yield return new WaitForSeconds(researchDuration);
+        yield return new WaitForSeconds(researchDuration);
 
-//        CinemachineCameraManager.Instance.SwitchToPreviousCameraState();
+        onResearched?.Invoke(this);
     }
 }

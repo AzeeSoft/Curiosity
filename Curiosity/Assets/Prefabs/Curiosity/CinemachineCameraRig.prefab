@@ -1832,6 +1832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1095b93cdd70dd541bc2fc0491ffb745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cinemachineBrain: {fileID: 7672768134926291654}
   _currentState: 1
   _prevReturnableState: 0
   _statefulCinemachineCameras:
@@ -2232,10 +2233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7672768134978442926}
     m_Modifications:
-    - target: {fileID: 8576289193996407553, guid: b53d27da472d30c4683d10d9e96a61eb,
+    - target: {fileID: 3535196792227700443, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 1
+      propertyPath: m_Name
+      value: ThirdPersonCameraRig
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700439, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
@@ -2292,20 +2293,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0.008
       objectReference: {fileID: 0}
-    - target: {fileID: 1059996236105945886, guid: b53d27da472d30c4683d10d9e96a61eb,
+    - target: {fileID: 8576289193996407553, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
-      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6590084808628398774}
-    - target: {fileID: 1059996236105945886, guid: b53d27da472d30c4683d10d9e96a61eb,
-        type: 3}
-      propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 6590084808628398774}
-    - target: {fileID: 3535196792227700443, guid: b53d27da472d30c4683d10d9e96a61eb,
-        type: 3}
-      propertyPath: m_Name
-      value: ThirdPersonCameraRig
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3535196792227700438, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
@@ -2322,6 +2313,16 @@ PrefabInstance:
       propertyPath: visualiseInEditor
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1059996236105945886, guid: b53d27da472d30c4683d10d9e96a61eb,
+        type: 3}
+      propertyPath: OnActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6590084808628398774}
+    - target: {fileID: 1059996236105945886, guid: b53d27da472d30c4683d10d9e96a61eb,
+        type: 3}
+      propertyPath: OnDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6590084808628398774}
     - target: {fileID: 2070303070552243988, guid: b53d27da472d30c4683d10d9e96a61eb,
         type: 3}
       propertyPath: m_ComponentOwner

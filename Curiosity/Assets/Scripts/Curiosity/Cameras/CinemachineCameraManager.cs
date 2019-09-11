@@ -26,6 +26,8 @@ public class CinemachineCameraManager : MonoBehaviour
 
     public static CinemachineCameraManager Instance;
 
+    public CinemachineBrain cinemachineBrain;
+
     public CinemachineCameraState CurrentState => _currentState;
 
     public StatefulCinemachineCamera CurrentStatefulCinemachineCamera

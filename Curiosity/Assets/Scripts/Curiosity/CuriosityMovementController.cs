@@ -354,13 +354,11 @@ public class CuriosityMovementController : MonoBehaviour
                 return;
         }
 
-        Transform currentCameraTransform = CinemachineCameraManager.Instance.CurrentStatefulCinemachineCamera.transform;
+        Transform currentCameraTransform = CinemachineCameraManager.Instance.cinemachineBrain.OutputCamera.transform;
 
         Quaternion targetRotation = Quaternion.Euler(currentCameraTransform.rotation.eulerAngles.x - xCorrection,
             currentCameraTransform.rotation.eulerAngles.y, 0);
         HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, lerpValue);
-
-        print("Head rotation updated");
     }
 
     void StayWithWheels()

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class ChangeTheScene : MonoBehaviour
 {
+
+    public float timeTillChange = 10f;
+
     private void Start()
     {
         StartCoroutine("LoadScene");
@@ -12,7 +15,7 @@ public class ChangeTheScene : MonoBehaviour
 
     IEnumerator LoadScene()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(timeTillChange);
         SceneManager.LoadScene("MainMenu");
     }
 }

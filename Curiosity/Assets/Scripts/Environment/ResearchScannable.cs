@@ -30,8 +30,8 @@ public class ResearchScannable : MonoBehaviour
 
     IEnumerator TriggerResearch()
     {
-        float transitionDuration = 2f;
-        float researchDuration = 5f;
+        float transitionDuration = 1.5f;
+        float researchDuration = _researchScannableEffect.scanAnimationDuration - 0.5f;
 
         CinemachineCameraManager.Instance.SwitchCameraState(
             CinemachineCameraManager.CinemachineCameraState.Research, new ResearchCamera.StateData()

@@ -17668,11 +17668,6 @@ PrefabInstance:
       propertyPath: maxCamAngle
       value: 50
       objectReference: {fileID: 0}
-    - target: {fileID: 462240520341299749, guid: ad8b08f4c4c89db43b4fefe6b8697bc9,
-        type: 3}
-      propertyPath: TurnSpeed
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 5541839164295039648, guid: ad8b08f4c4c89db43b4fefe6b8697bc9,
         type: 3}
       propertyPath: m_Layer
@@ -20727,10 +20722,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 268219705, guid: 5285adbe4434b764991a7ad4aca6c4ab, type: 3}
-      propertyPath: scanAnimationDuration
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5285adbe4434b764991a7ad4aca6c4ab, type: 3}

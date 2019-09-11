@@ -8381,7 +8381,7 @@ MonoBehaviour:
   Acceleration: 2
   Deceleration: 2
   BoostFactor: 2
-  TurnSpeed: 0.1
+  TurnSpeed: 0.2
   TurnAcceleration: 5
   TurnDeceleration: 5
   WheelTurnModifier: 45
@@ -8394,6 +8394,7 @@ MonoBehaviour:
   MaxWheelSpinSpeed: 30
   MaxRotation: 2
   AntiRotationSpeed: 3
+  HeadRotationLerpSpeed: 1
   bodyOffset: {x: 0, y: 25, z: 0}
   _stopTrailsCount: 0
 --- !u!114 &2726949152520061088

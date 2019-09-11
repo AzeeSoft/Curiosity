@@ -80,6 +80,7 @@ public class CuriosityMovementController : MonoBehaviour
 
     [Header("Others")] public float MaxRotation = 2f;
     public float AntiRotationSpeed = 3f;
+    public float HeadRotationLerpSpeed = 1f;
 
     public Vector3 bodyOffset;
 
@@ -103,8 +104,7 @@ public class CuriosityMovementController : MonoBehaviour
         }
     }
 
-    [ReadOnly] [SerializeField]
-    private int _stopTrailsCount = 0;
+    [ReadOnly] [SerializeField] private int _stopTrailsCount = 0;
 
     private Rigidbody _rigidbody;
     private CuriosityModel _curiosityModel;
@@ -338,28 +338,29 @@ public class CuriosityMovementController : MonoBehaviour
 
     void UpdateHeadRotation()
     {
-        if (!Camera.current)
-        {
-            return;
-        }
-
-        Transform currentCameraTransform = Camera.current.transform;
-
         float xCorrection = 30;
-        float lerpValue = Time.deltaTime;
+        float lerpValue = Time.deltaTime * HeadRotationLerpSpeed;
 
-        switch(CinemachineCameraManager.Instance.CurrentState)
+        switch (CinemachineCameraManager.Instance.CurrentState)
         {
             case CinemachineCameraManager.CinemachineCameraState.FirstPerson:
             case CinemachineCameraManager.CinemachineCameraState.OverTheShoulder:
                 xCorrection = 0;
                 lerpValue = 1;
                 break;
+            case CinemachineCameraManager.CinemachineCameraState.ThirdPerson:
+                break;
+            default:
+                return;
         }
+
+        Transform currentCameraTransform = CinemachineCameraManager.Instance.CurrentStatefulCinemachineCamera.transform;
 
         Quaternion targetRotation = Quaternion.Euler(currentCameraTransform.rotation.eulerAngles.x - xCorrection,
             currentCameraTransform.rotation.eulerAngles.y, 0);
         HeadRotX.transform.rotation = Quaternion.Lerp(HeadRotX.transform.rotation, targetRotation, lerpValue);
+
+        print("Head rotation updated");
     }
 
     void StayWithWheels()

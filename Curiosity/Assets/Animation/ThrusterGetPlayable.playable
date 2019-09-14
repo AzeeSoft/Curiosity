@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: SubtitleData
   m_EditorClassIdentifier: 
   subtitleData:
-    text: Press "Space" Or A on a controller.
+    text: Press "Space" Or RB on a controller.
     delay: 0
     color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &114349920635215592
